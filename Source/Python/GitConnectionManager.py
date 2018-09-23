@@ -8,8 +8,8 @@ class GitConnectionManager:
 
     #constants to store username and password of the github profile which is used to_
     #_access the api. Will be replaced with constant variables in the future
-    _USERNAME = "sarthak-tiwari"
-    _PASSWORD = "sarthak1!"
+    _USERNAME = "username"
+    _PASSWORD = "password"
 
 
 
