@@ -1,8 +1,16 @@
 #Class to manage all the data extraction from GitHub API
 
 #import statements
+import collections
 from github import Github
 from github import GithubException
+
+
+
+#defining commit data format
+CommitData = collections.namedtuple("CommitData", "commiterName, commitDate, commitMessage")
+
+
 
 #class definition
 class GitData:
@@ -41,20 +49,48 @@ class GitData:
 
 
 
-    #function to get list of user logins present in a class. Will be replaced by complete_
-    #_user data
+    #function to get list of user logins present as a collaborator in a repository.
 
-    def getUserData(self, gitHubRepository):
+    def getUserList(self, gitHubRepository = None):
 
-        self.setGitHubRepository(gitHubRepository)
+        gitHubRepo = gitHubRepository
 
-        if(self._gitHubRepository == None):
-            print("No repository provided for access.")
-            return None
+        if(gitHubRepository == None):
+            gitHubRepo = self._gitHubRepository
+
 
         userList = []
 
-        for user in self._gitHubConnection.get_user().get_repo(self._gitHubRepository).get_collaborators():
-            userList.append(user.login)
-
+        collaboratorList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_collaborators()
+        
+        if(collaboratorList.totalCount > 0):
+            for user in collaboratorList:
+                userList.append(user.login)
+                
         return userList
+
+
+
+    #function to get commit data in a repository
+
+    def getCommitList(self, gitHubRepository = None):
+
+        gitHubRepo = gitHubRepository
+
+        if(gitHubRepository == None):
+            gitHubRepo = self._gitHubRepository
+
+
+        commitList = []
+        commitDataSet = []
+
+        commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits()
+        
+        if(commitList.totalCount > 0):
+            for commit in commitList:
+                commitData = CommitData(commiterName = commit.author.login,
+                                       commitDate = commit.last_modified,
+                                      commitMessage = commit.raw_data['commit']['message'])
+                commitDataSet.append(commitData)
+                
+        return commitDataSet
