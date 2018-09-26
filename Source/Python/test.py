@@ -5,6 +5,7 @@
 #import statements
 from github import Github
 from GitConnectionManager import GitConnectionManager
+from GitData import GitData
 
 
 
@@ -27,9 +28,22 @@ from GitConnectionManager import GitConnectionManager
 #Sample code showing an example of how to validate a repository on gitHub_
 #_using the GitConnectionManager  class
 
+#manager = GitConnectionManager()
+
+#if(manager.isValidRepository("sarthak-tiwari/ScrumDevils-SER_515")):
+#    print("valid repo")
+#else:
+#    print("invalid repo")
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code showing an example of how to validate a repository on gitHub_
+#_using the GitConnectionManager  class
+
 manager = GitConnectionManager()
 
-if(manager.isValidRepository("sarthak-tiwari/ScrumDevils-SER_515")):
-    print("valid repo")
-else:
-    print("invalid repo")
+gitData = GitData(manager.getConnection())
+
+for user in gitData.getUserData("ScrumDevils-SER_515"):
+    print(user)
