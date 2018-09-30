@@ -8,7 +8,7 @@ from github import GithubException
 
 
 #defining commit data format
-CommitData = collections.namedtuple("CommitData", "commiterName, commitDate, commitMessage")
+CommitData = collections.namedtuple("CommitData", "commiterName, commitDate, commitMessage, numberOfAdditions, numberOfDeletions, filesModified")
 
 
 
@@ -73,7 +73,7 @@ class GitData:
 
     #function to get commit data in a repository
 
-    def getCommitList(self, gitHubRepository = None):
+    def getCommitData(self, gitHubRepository = None):
 
         gitHubRepo = gitHubRepository
 
@@ -81,16 +81,26 @@ class GitData:
             gitHubRepo = self._gitHubRepository
 
 
-        commitList = []
-        commitDataSet = []
+        branchList = []
+        branchList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_branches()
 
-        commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits()
-        
-        if(commitList.totalCount > 0):
-            for commit in commitList:
-                commitData = CommitData(commiterName = commit.author.login,
-                                       commitDate = commit.last_modified,
-                                      commitMessage = commit.raw_data['commit']['message'])
-                commitDataSet.append(commitData)
+        commitList = []
+        commitDataSet = set([])         #to eliminate redundancy in commit list we are using a set here
+        for branch in branchList:
+            commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits(branch.name)
+            if(commitList.totalCount > 0):
+                for commit in commitList:
+                    #creating a single comma-separated list of all files modified in this commit
+                    filesModified = ""
+                    for file in commit.files:
+                        filesModified += file.filename + ","
+
+                    commitData = CommitData(commiterName = commit.author.login,
+                                            commitDate = commit.raw_data['commit']['author']['date'],
+                                            commitMessage = commit.commit.message,
+                                            numberOfAdditions = commit.stats.additions, 
+                                            numberOfDeletions = commit.stats.deletions,
+                                            filesModified = filesModified)
+                    commitDataSet.add(commitData)       
                 
         return commitDataSet

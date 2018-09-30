@@ -65,8 +65,11 @@ manager = GitConnectionManager()
 gitData = GitData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-for commit in gitData.getCommitList():
-    print(commit.commiterName + "\n")
-    print(commit.commitDate + "\n")
-    print(commit.commitMessage + "\n")
-    print("----------" + "\n")
+for commit in gitData.getCommitData():
+    print(commit.commiterName)
+    print(commit.commitDate)
+    print("Number of Additions: " + str(commit.numberOfAdditions))
+    print("Number of Deletions: " + str(commit.numberOfDeletions))
+    print("Files Modified: " + commit.filesModified)
+    print(commit.commitMessage)
+    print("----------\n")
