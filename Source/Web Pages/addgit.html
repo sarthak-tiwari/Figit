@@ -1,0 +1,138 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css">
+  	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  	<link rel="stylesheet" href="https://fontawesome.com/icons/plus?style=regular">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body {
+  margin:20;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F7F7F7;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:transparent;
+}
+
+.topnav a {
+  float: left;
+  color: #707070;
+  text-align: center;
+  padding: 0px 10px;
+  margin-right: 15px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color:#F7F7F7;
+  color:#707070;
+}
+
+.topnav-right {
+  float:right;
+}
+
+.header {
+    padding: 5px;
+    text-align:center;
+    background:transparent;
+    color:#000000;
+    font-size: 50px;
+    font-family:'Josefin Sans', sans-serif;
+}
+
+
+    .button{
+        background-color: #F44336;
+          color: #FFFFFF;
+          text-align: center;
+          <!-- padding: 20px; -->
+          cursor: pointer;}
+
+
+        .button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+ .button:hover span {
+          padding-right: 25px;
+          } 
+
+.button:hover{
+background-color: #3e8e41;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0; }
+
+</style>
+</head>
+<body>
+<div class="topnav">
+  <a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src="C:/Users/desai/Desktop/logo.png"" alt="Smiley face" style="background-color: transparent; height:70px; width:70px;"></a>
+  <div class="topnav-right" style="margin-top: 25px; ">
+    <a href="#search">Help</a>
+    <a href="#about">About</a>
+  </div>
+</div>
+</br>
+</br>
+<div class="header">
+  <p>You need to add some repositories!</p>
+    
+</div>
+<br/>
+<div class="container-fluid">
+  <!-- <div class="form-row text-center"> -->
+    <form action="">
+    <div class="inline d-flex justify-content-center">
+      <div class="form-group">
+        <input type="text" class="form-control" style="width: 470px;
+          height: 37px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Paste your GitHub repository link here" name="username">
+        </input>
+      </div>
+
+      <button type="button" class="button" style="width: 40px; background-color: #3e8e41;
+          color: #FFFFFF;
+          text-align: center;
+          cursor: pointer;
+          margin-left: 10px;
+          height: 40px;
+            padding: 1px 16px;border-radius: 4px;"><i class="far fa-plus"></i></button>
+    </div>
+	</form>
+		<div class="d-flex justify-content-center">
+		<button type="button" class="button" style="width: 190px;
+          height: 45px;
+            padding: 1px 16px;border-radius: 4px; margin-top: 150px"><span>Go to Dashboard</span></button>
+        </div>
+
+  </div>  
+</body>
+</html>
