@@ -1,0 +1,12 @@
+<form method="POST" action="/search">
+    {% csrf_token %}
+    <input type="userid" name="userId">
+    
+    <button type="submit">Enter User name</button>
+    <input type="passwd" name="passwdField">
+    
+    <button type="submit">Enter Password</button>
+    <input type="email" name="emailId">
+    
+    <button type="submit">Enter emailId</button>
+</form>
