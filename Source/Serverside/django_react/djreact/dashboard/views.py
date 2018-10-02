@@ -15,3 +15,10 @@ def repository_list(request):
         repos = User_Repositories.objects.all()
         serializer = User_Repositories_Serializer(repos,many=True)
         return Response(serializer.data)
+    if request.method == 'POST':
+        serializer = User_Repositories_Serializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
