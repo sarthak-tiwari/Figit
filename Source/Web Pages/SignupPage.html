@@ -1,9 +1,10 @@
 
 <html lang="en">
 
-  
 <head>
+  <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -11,79 +12,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
 
+<style>
 body {
   margin:20;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #F7F7F7;
-  background-image: url("C:/Users/desai/Desktop/bg1.png");
   background-size: 105% 100%;
 }
-
-
-.topnav {
-  overflow: hidden;
-  background-color:transparent;
-}
-
-.topnav a {
-  float: left;
-  color: #707070;
-  text-align: center;
-  padding: 0px 10px;
-  margin-right: 15px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color:#F7F7F7;
-  color:#707070;
-}
-
-.topnav-right {
-  float:right;
-}
-
-.header {
-    padding: 5px;
-    text-align:center;
-    background:transparent;
-    color:#000000;
-    font-size: 40px;
-    font-family:'Josefin Sans', sans-serif;
-    
-}
-
-
-    .button{
-        background-color: #F44336;
-          color: #FFFFFF;
-          text-align: center;
-          padding: 0px;
-          cursor: pointer;}
-
-
-
-
-  a:hover 
-      {
-          color: #0066FF;
-      }
-
 </style>
+
+
 </head>
 <body>
 
 <div class="topnav">
-  <a class="active" href="C:/Users/PALAK%20CHUGH/Desktop/bootland%20(1).html"><img src="D:/ScrumDevils-SER_515/Source/Images/figit_logo.png" alt="LOGO" style="background-color: transparent;"height="67 px" width=""></a>
-  <div class="topnav-right" style="margin-top: 25px; ">
+  <a class="active" href="C:/Users/PALAK CHUGH/Desktop/SER 515/Bootstrap/Create.html"><img src="C:/Users/PALAK CHUGH/Desktop/SER 515\Bootstrap/figit_logo100x100.png" alt="LOGO" style="background-color: transparent;"height="67 px" width=""></a>
+  <div class="topnav-right">
     <a href="#search">Help</a>
     <a href="#about">About</a>
   </div>
@@ -94,31 +39,46 @@ body {
    
 </div>
 <div class="container-fluid">
-  <!-- <div class="form-row text-right"> -->
-    <form action="">
-    <div class="d-flex align-items-end flex-column">
-    	<h4 style=" margin-right: 210px; margin-bottom:40px;padding: 1px 16px;font-family: Roboto;font: 40px;font-weight:300px ;">Sign up with Details</h4>
+  <div class="row">
+ <div class="col-lg-3 offset-lg-1">
+   
+    <div >
+      <h4 >Sign up with account</h4>
       <div class="form-group">
-        <input type="text" class="form-control" style="width: 340px;margin-bottom:40px;margin-right: 150px;
-          height: 35px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Enter your email" name="username">
-        </input>
-        <input type="text" class="form-control" style="width: 340px;margin-bottom:40px;
-          height: 35px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Choose Password" name="Password">
-        </input>
-        <input type="text" class="form-control" style="width: 340px;margin-bottom:30px;
-          height: 35px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Confirm Password" name="Password">
-        </input>
+      <button type="button" class="btn btn-default" aria-label="Left Align" style="width: 300px; height:40px;background-color:#24292E;margin-bottom:50px"><span style="background-color: #24292E"><i class="fab fa-github-square"> Sign in with GitHub</i></span></button>
+      
+      <button type="button" class="btn btn-default" aria-label="Left Align" style="width: 300px;height:40px;background-color:#F44336; margin-top: 50px"><span style="background-color: #F44336"><i class="fab fa-google"> Sign in with Google</i></span></button>
       </div>
       </div>
-    <!-- <div class="form-row text-right"> -->
-      <div class="-flex align-items-end flex-column">
-       <button type="button" class="button" style="width: 82px;
-          height: 38px;margin-left: 950px;
-            padding: 1px 16px;font-family: 'Roboto',border-radius: 4px;"><span>Get in</span></button>
+ </div>
+
+ <div class="col-lg-2 offset-lg-1">
+  <h4>-or-</h4>
+ </div>
+
+  <div class="col-lg-3 offset-lg-1">
+    <form action="">
+
+    <div>
+    	<h4 >Sign up with Details</h4>
+      <div class="form-group">
+        <input type="text" class="form-control" id="usr" placeholder="Enter your email" name="username">
+        </input>
+        <input type="Password" class="form-control" id="usr" placeholder="Choose Password" name="Choose Password">
+        </input>
+        <input type="Password" class="form-control" id="usr" placeholder="Confirm Password" name="Confirm Password">
+        </input>
+        
+      </div>
+      </div>
+      <div>
+       <button type="button" class="button"><span>Get in</span></button>
       </div>
     <br></br>    
     
     </form>
+</div>
+</div>
   <!--</div> -->
 </div>
 </body>
