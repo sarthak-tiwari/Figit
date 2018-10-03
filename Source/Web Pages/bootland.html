@@ -104,8 +104,8 @@ background-color: #3e8e41;
 <body>
 
 <div class="topnav">
-  <a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src="C:/Users/desai/Desktop/logo2.png"" alt="Smiley face" style="background-color: transparent;"height="" width=""></a>
-  <div class="topnav-right" style="margin-top: 30px; ">
+  <a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src="C:/Users/desai/Desktop/logo2.png" alt="Smiley face" style="background-color: transparent;"height="" width=""></a>
+  <div class="topnav-right" style="margin-top: 25px; ">
     <a href="#search">Help</a>
     <a href="#about">About</a>
   </div>
@@ -117,26 +117,55 @@ background-color: #3e8e41;
 </div>
 <div class="container-fluid">
   <!-- <div class="form-row text-center"> -->
-    <form action="">
+   <div class="form-group">  
+    <form action="#">
+
     <div class="d-flex justify-content-center">
-      <div class="form-group">
         <input type="text" class="form-control" style="width: 340px;
-          height: 35px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Enter your email" name="username">
+          height: 35px; padding: 10px 16px; box-shadow:0px 2px 6px #707070;" id="usr" value="Enter your email" name="username" onfocus="" >
         </input>
-      </div>
-      </div>
+    </div>
+    </br>
     <!-- <div class="form-row text-center"> -->
-      <div class="d-flex justify-content-center">
-       <button type="button" class="button" style="width: 190px;
+    <div class="d-flex justify-content-center">
+       <button type="submit" class="button" name="submitbutton" id="submitbutton" style="width: 190px;
           height: 45px;
             padding: 1px 16px;border-radius: 4px;"><span>Get Started</span></button>
-      </div>
+    </div>
     <br></br>    
     <div class="d-flex justify-content-center">
       <a style="color: #0066FF;font-family: 'Roboto', sans-serif;" href="#">or Sign In</a>
     </div>
     </form>
+  </div>
   <!--</div> -->
 </div>
 </body>
 </html>
+
+
+<script>
+
+  function validateText(id)
+  {
+    if($("#"+id).val()==null || $("#"+id).val()=="Enter your email")
+    {
+      alert("Please enter your Email Id first!");
+      return false;
+    }
+  }
+
+  $(document).ready(
+
+    function()
+    {
+      $("#submitbutton").click(function()
+      {
+          validateText("usr");
+      });
+    }
+
+
+  );
+
+</script>
