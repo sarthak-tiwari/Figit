@@ -179,29 +179,28 @@ color: #FFFFFF;
 
  <script>
 
- 	function validateText(id)
- 	{
- 		if($("#"+id).val()==null || $("#"+id).val()=="")
- 		{
- 			alert("Please enter your GitHub link first!");
- 			return false;
- 		}
- 	}
+  function validateText(id)
+  {
+    if($("#"+id).val()==null || $("#"+id).val()=="")
+    {
+      alert("Please enter your GitHub link first!");
+      return false;
+    }
+  }
 
 
- 	$(document).ready(
+  $(document).ready(
 
- 		function()
- 		{
- 			$("#submit").click(function()
- 			{
- 					validateText("link");
- 			});
- 		}
+    function()
+    {
+      $("#submit").click(function()
+      {
+          validateText("link");
+      });
+    }
 
 
- 	);
+  );
 
  </script>
-
  
