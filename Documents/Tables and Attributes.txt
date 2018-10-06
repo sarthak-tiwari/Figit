@@ -1,0 +1,40 @@
+Application_Users
+
+ID	email_id	application_username	password
+
+-primary_key: email_id
+-unique: application_username
+
+
+
+User_Repositories
+
+ID	application_username	github_repository	cache_status(active/stale)
+
+-primary_key: composite(application_username, github_repository)
+-foreign_key: application_username
+
+
+
+Repository_Collaborators
+
+ID	application_username	github_repository	github_login
+
+-foreign_key: composite(application_username, github_repository)
+
+
+
+Repository_Branches
+
+ID	application_username	github_repository	branch_name
+
+--foreign_key: composite(application_username, github_repository)
+
+
+
+Repository_Commit_Data
+
+ID	github_repository	commiterName	commitDate	commitMessage	numberOfAdditions	numberOfDeletions	filesModified
+
+-primary_key: composite(github_repository, commiterName, commitDate)
+--foreign_key: github_repository
