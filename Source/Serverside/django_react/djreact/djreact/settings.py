@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'user_account',
+    'dashboard',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
