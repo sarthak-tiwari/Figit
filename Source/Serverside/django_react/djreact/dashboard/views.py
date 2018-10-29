@@ -34,10 +34,13 @@ def repository_list_by_user(request, user):
         return Response(serializer.data)
 
 @api_view(['GET'])
-def repository_collaborators(request, repository_name):
-    query = "SELECT * FROM dashboard_repository_collaborators WHERE repository_name ='" +repository_name+"'"
+def repository_collaborators(request, repository_id):
+    query1 = "SELECT * FROM dashboard_user_repositories WHERE id ='" +repository_id+"'"
+    repo = User_Repositories.objects.raw(query1)[0]
+
+    query2 = "SELECT * FROM dashboard_repository_collaborators WHERE repository_link ='" + repo.repository_link +"'"
     if request.method == 'GET':
-        collaborators = Repository_Collaborators.objects.raw(query)
+        collaborators = Repository_Collaborators.objects.raw(query2)
         serializer = Repository_Collaborators_Serializer(collaborators,many=True)
         return Response(serializer.data)
     
