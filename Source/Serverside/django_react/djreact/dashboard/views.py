@@ -22,3 +22,14 @@ def repository_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def repository_list_by_user(request, user):
+    #repos = User_Repositories.objects.all()
+    #return render(request,'repository_list.html',{'repos':repos})
+    query = "SELECT * FROM dashboard_user_repositories WHERE application_username ='" +user+"'"
+    if request.method == 'GET':
+        repos = User_Repositories.objects.raw(query)
+        serializer = User_Repositories_Serializer(repos,many=True)
+        return Response(serializer.data)
+    
