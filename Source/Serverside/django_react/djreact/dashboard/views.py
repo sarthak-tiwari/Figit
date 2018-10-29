@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.shortcuts import render
-from .models import User_Repositories
-from .serializers import User_Repositories_Serializer
+from .models import User_Repositories, Repository_Collaborators
+from .serializers import User_Repositories_Serializer, Repository_Collaborators_Serializer
 
 # Create your views here.
 @api_view(['GET','POST'])
@@ -16,7 +16,7 @@ def repository_list(request):
         serializer = User_Repositories_Serializer(repos,many=True)
         return Response(serializer.data)
     if request.method == 'POST':
-        serializer = User_Repositories_Serializer(data = request.data)
+        serializer = User_Repositories_Serializer(data = request.data, many = True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -31,5 +31,13 @@ def repository_list_by_user(request, user):
     if request.method == 'GET':
         repos = User_Repositories.objects.raw(query)
         serializer = User_Repositories_Serializer(repos,many=True)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def repository_collaborators(request, repository_name):
+    query = "SELECT * FROM dashboard_repository_collaborators WHERE repository_name ='" +repository_name+"'"
+    if request.method == 'GET':
+        collaborators = Repository_Collaborators.objects.raw(query)
+        serializer = Repository_Collaborators_Serializer(collaborators,many=True)
         return Response(serializer.data)
     
