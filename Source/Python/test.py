@@ -5,9 +5,12 @@
 #import statements
 from github import Github
 from GitConnectionManager import GitConnectionManager
-from GitData import GitData
-from GitData import CommitData
 
+from GitCommitData import GitCommitData
+from GitCommitData import CommitData
+
+from GitPullRequestData import GitPullRequestData
+from GitPullRequestData import PullRequestData
 
 
 #----------------------------------------------------------------------------------------
@@ -58,14 +61,39 @@ from GitData import CommitData
 
 
 #----------------------------------------------------------------------------------------
-#Sample code showing two ways of how to get a list of commits in a_
-#_repository using the GitData class
+#Sample code showing how to get a list of commits in a_
+#_repository using the GitCommitData class
+#manager = GitConnectionManager()
+
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#for commit in gitData.getCommitData():
+#    print(commit.commiterName)
+#    print(commit.commitDate)
+#    print("Number of Additions: " + str(commit.numberOfAdditions))
+#    print("Number of Deletions: " + str(commit.numberOfDeletions))
+#    print("Files Modified: " + commit.filesModified)
+#    print(commit.commitMessage)
+#    print("----------\n")
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code showing how to get a list of pull requests in a_
+#_repository using the GitPullRequestData class
 manager = GitConnectionManager()
 
-gitData = GitData(manager.getConnection())
+#gitData = GitPullRequestData(manager.getConnection())
+gitData = GitCommitData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-for commit in gitData.getCommitData():
+#gitData.getPullRequestData()
+
+result = gitData.getCommitDataUsingUsers()
+print(len(result))
+#print(len(gitData.getCommitData()))
+for commit in result:
     print(commit.commiterName)
     print(commit.commitDate)
     print("Number of Additions: " + str(commit.numberOfAdditions))

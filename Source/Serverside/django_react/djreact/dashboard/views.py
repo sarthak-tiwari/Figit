@@ -8,11 +8,13 @@ from .serializers import User_Repositories_Serializer
 
 # Create your views here.
 @api_view(['GET','POST'])
-def repository_list(request):
+def repository_list(request, username):
     #repos = User_Repositories.objects.all()
     #return render(request,'repository_list.html',{'repos':repos})
     if request.method == 'GET':
-        repos = User_Repositories.objects.all()
+        query = "SELECT * FROM dashboard_user_repositories WHERE application_username='" + username + "'"
+        repos = User_Repositories.objects.raw(query)
+        #repos = User_Repositories.objects.all()
         serializer = User_Repositories_Serializer(repos,many=True)
         return Response(serializer.data)
     if request.method == 'POST':

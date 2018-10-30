@@ -9,8 +9,11 @@ class GitConnectionManager:
 
     #constants to store username and password of the github profile which is used to_
     #_access the api. Will be replaced with constant variables in the future
-    _USERNAME = "username"
-    _PASSWORD = "password"
+    
+    #_USERNAME = "username"
+    #_PASSWORD = "password"
+    _USERNAME = "sarthak-tiwari"
+    _PASSWORD = "sarthak1!"
 
 
 
@@ -26,7 +29,7 @@ class GitConnectionManager:
     def getConnection(self):
 
         if(not(self._gitHubConnection)):
-            self._gitHubConnection = Github(self._USERNAME, self._PASSWORD)
+            self._gitHubConnection = Github(self._USERNAME, self._PASSWORD, timeout=100)
 
         try:
             for str in self._gitHubConnection.get_user().get_repos():
