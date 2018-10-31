@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Chart from "react-google-charts";
 
 const pieOptions = {
-  title: "",
+  title: "Commits in a Sprint",
+  is3D:true,
 
   slices: [
     {
@@ -27,6 +28,10 @@ const pieOptions = {
       fontSize: 14
     }
   },
+  mydata:{
+    name:['Palak','Bijaya','Shefali','Yuti','Bharat','Sarthak'],
+    commit:[8,2,4,2,8,4]
+  },
   tooltip: {
     showColorCode: true
   },
@@ -40,9 +45,11 @@ const pieOptions = {
 };
 class PieChart extends Component {
   state = {
-    chartImageURI: ""
+    chartImageURI: "",
+    
   };
   render() {
+   
     return (
       <div className="App">
         <Chart
@@ -62,6 +69,8 @@ class PieChart extends Component {
           height={"400px"}
           legend_toggle
         />
+
+        
       </div>
     );
   }
