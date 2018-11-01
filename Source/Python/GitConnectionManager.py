@@ -3,6 +3,7 @@
 #import statements
 from github import Github
 from github import GithubException
+from Constants import Constants
 
 #class definition
 class GitConnectionManager:
@@ -10,10 +11,8 @@ class GitConnectionManager:
     #constants to store username and password of the github profile which is used to_
     #_access the api. Will be replaced with constant variables in the future
     
-    #_USERNAME = "username"
-    #_PASSWORD = "password"
-    _USERNAME = "sarthak-tiwari"
-    _PASSWORD = "sarthak1!"
+    _USERNAME = Constants.GITHUB_USERNAME
+    _PASSWORD = Constants.GITHUB_PASSWORD
 
 
 

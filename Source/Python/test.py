@@ -84,20 +84,24 @@ from GitPullRequestData import PullRequestData
 #_repository using the GitPullRequestData class
 manager = GitConnectionManager()
 
-#gitData = GitPullRequestData(manager.getConnection())
-gitData = GitCommitData(manager.getConnection())
+gitData = GitPullRequestData(manager.getConnection())
+#gitData = GitCommitData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-#gitData.getPullRequestData()
+result = gitData.getPullRequestData()
 
-result = gitData.getCommitDataUsingUsers()
-print(len(result))
+#result = gitData.getCommitDataUsingUsers()
+#print(len(result))
 #print(len(gitData.getCommitData()))
+
+#"creatorLogin, createdAt, requestDescription, reviewers"
+
+print(len(result))
+
 for commit in result:
-    print(commit.commiterName)
-    print(commit.commitDate)
-    print("Number of Additions: " + str(commit.numberOfAdditions))
-    print("Number of Deletions: " + str(commit.numberOfDeletions))
-    print("Files Modified: " + commit.filesModified)
-    print(commit.commitMessage)
+    print(commit.creatorLogin)
+    print(commit.createdAt)
+    print(commit.requestTitle)
+    print(commit.requestDescription)
+    print(commit.reviewers)
     print("----------\n")
