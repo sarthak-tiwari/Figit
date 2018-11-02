@@ -22,10 +22,10 @@ class UserCreateSerializer(serializers.ModelSerializer):
                             {"write_only": True}
                             }
     def validate(self, data):
-        # email = data['email']
-        # user_qs = User.objects.filter(email=email)
-        # if user_qs.exists():
-        #     raise ValidationError("This user has already registered.")
+        email = data['email']
+        user_qs = User.objects.filter(email=email)
+        if user_qs.exists():
+             raise serializers.ValidationError("This user has already registered.")
         return data
 
     def create(self, validated_data):
