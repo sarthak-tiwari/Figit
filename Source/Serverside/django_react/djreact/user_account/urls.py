@@ -1,6 +1,10 @@
 from django.conf.urls import url
-from . import views
+from .views import (
+    signup,
+    UserCreateAPIView
+)
 
 urlpatterns = [
-    url(r'^signup/',views.signup),
+    url(r'^signup/',signup),
+    url(r'^register/$', UserCreateAPIView.as_view(), name='register'),
 ]
