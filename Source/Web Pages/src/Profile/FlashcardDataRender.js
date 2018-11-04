@@ -6,14 +6,14 @@ class FlashcardDataRender extends React.Component {
 
     state = {
       flashcards: [
-        { uname:'Yuti', date:'11/23/1995'}
+        { value1:'116', value2:'Unknown'}
       ]
     }
   
     render() {
       return(
         <div>
-            <FlashcardData color="cir1" mainheading="Commit Info" heading1="Last commit by:" uname={this.state.flashcards[0].uname} heading2="Last commit date:" date={this.state.flashcards[0].date}></FlashcardData>
+            <FlashcardData color="cir1" mainheading="Commit Info" heading1="Commit Number:" value1={this.state.flashcards[0].value1} heading2="Unknown:" value2={this.state.flashcards[0].value2}></FlashcardData>
         </div>
       );
     }
