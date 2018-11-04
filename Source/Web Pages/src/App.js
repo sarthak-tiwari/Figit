@@ -24,9 +24,20 @@ class App extends Component {
       <Flashcard color="cir1" mainheading="Commit Info" heading1="Last commit by:" uname={this.state.flashcards[0].uname} heading2="Last commit date:" date={this.state.flashcards[0].date}></Flashcard>
       <Flashcard color="cir2" mainheading="% of change" heading1="Last commit by:" uname={this.state.flashcards[1].uname} heading2="Last commit date:" date={this.state.flashcards[0].date}></Flashcard>
       <Flashcard color="cir3" mainheading="Pull request" heading1="Last commit by:" uname={this.state.flashcards[2].uname} heading2="Last commit date:" date={this.state.flashcards[0].date}></Flashcard>
+import Projects from './Components/Projects';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        
+        <Projects>
+        </Projects>
       </div>
     );
   }
 }
 
+
 export default App;
+
