@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.shortcuts import render
-from .models import User_Repositories, Repository_Collaborators
-from .serializers import User_Repositories_Serializer, Repository_Collaborators_Serializer
+from .models import User_Repositories, Repository_Collaborators, Repository_Commit_Data
+from .serializers import User_Repositories_Serializer, Repository_Collaborators_Serializer, commitCountInfo_Serializer
 
 # Create your views here.
 @api_view(['GET','POST'])
@@ -44,3 +44,16 @@ def repository_collaborators(request, repository_id):
         serializer = Repository_Collaborators_Serializer(collaborators,many=True)
         return Response(serializer.data)
     
+#getCommitDataForRepository
+@api_view(['GET'])
+def getCommitDataForRepository(request, repository_id):
+    #(repo, collaboratorList) = getCollaboratorList(repository_id)
+    getInfoByRepoIdSql = "SELECT * FROM dashboard_user_repositories WHERE id ='" +str(repository_id)+"'"
+    repo = User_Repositories.objects.raw(getInfoByRepoIdSql)[0]
+    
+    getInfoByRepoLinkSql = "SELECT * FROM dashboard_Repository_Commit_Data WHERE repository_link ='" + repo.repository_link +"'"
+    
+    collaboratorList = Repository_Commit_Data.objects.raw(getInfoByRepoLinkSql)
+
+    serializer = commitCountInfo_Serializer(collaboratorList, many = True)
+    return Response(serializer.data)
