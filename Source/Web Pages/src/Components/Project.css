@@ -22,7 +22,8 @@ hr{
   position: absolute;
   text-align: center;
   height: 420px ;
-  width: 300px;
+
+  width: 380px;
   overflow-y: scroll;
   margin-bottom: 25px;
 }
