@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
-    'dashboard',
     'rest_framework',
+    'user_account',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

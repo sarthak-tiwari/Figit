@@ -5,6 +5,8 @@
 #import statements
 from github import Github
 from GitConnectionManager import GitConnectionManager
+from GitData import GitData
+from GitData import CommitData
 
 
 
@@ -19,17 +21,55 @@ from GitConnectionManager import GitConnectionManager
 #    #print(dir(repo))
 
 #    for user in repo.get_collaborators():
-#        print("  - " + user.login)
+#        print(" - " + user.login)
 
 
 
 #----------------------------------------------------------------------------------------
 #Sample code showing an example of how to validate a repository on gitHub_
-#_using the GitConnectionManager  class
+#_using the GitConnectionManager class
 
+#manager = GitConnectionManager()
+
+#if(manager.isValidRepository("sarthak-tiwari/ScrumDevils-SER_515")):
+#    print("valid repo")
+#else:
+#    print("invalid repo")
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code showing two ways of how to get a list of collaborators in a_
+#_repository using the GitData class
+
+#manager = GitConnectionManager()
+
+#gitData = GitData(manager.getConnection())
+
+##--(1)
+#for user in gitData.getUserList("ScrumDevils-SER_515"):
+#    print(user)
+
+##--(2)
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+#for user in gitData.getUserList():
+#    print(user)
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code showing two ways of how to get a list of commits in a_
+#_repository using the GitData class
 manager = GitConnectionManager()
 
-if(manager.isValidRepository("sarthak-tiwari/ScrumDevils-SER_515")):
-    print("valid repo")
-else:
-    print("invalid repo")
+gitData = GitData(manager.getConnection())
+gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+for commit in gitData.getCommitData():
+    print(commit.commiterName)
+    print(commit.commitDate)
+    print("Number of Additions: " + str(commit.numberOfAdditions))
+    print("Number of Deletions: " + str(commit.numberOfDeletions))
+    print("Files Modified: " + commit.filesModified)
+    print(commit.commitMessage)
+    print("----------\n")
