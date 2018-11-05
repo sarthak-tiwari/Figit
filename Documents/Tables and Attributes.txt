@@ -1,6 +1,6 @@
 Application_Users
 
-ID	email_id	application_username	password
+email_id	application_username	application_password
 
 -primary_key: email_id
 -unique: application_username
