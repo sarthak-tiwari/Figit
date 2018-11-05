@@ -1,18 +1,19 @@
 .column {
     float: left;
     width: 15%;
-    padding: 2px 5px;
+    padding: 10px;
   }
 
   .row{
     margin: 10px;
+    
   }
   .card
   {
     background-color:#FFFFFF; 
     border: 1px;
     box-shadow:0 4px 4px #ccc; 
-    width: 200px;
+    width: 203px;
     height: 235px;
    /* padding: 1px 16px; */
     border-radius: 4px;
