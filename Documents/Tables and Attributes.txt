@@ -20,7 +20,7 @@ Repository_Collaborators
 
 ID	application_username	repository_link		repository_name		collaborator_username 		collaborator_name	github_login
 
--foreign_key: composite(application_username, github_repository)
+-foreign_key: composite(application_username, repository_link)
 
 
 
