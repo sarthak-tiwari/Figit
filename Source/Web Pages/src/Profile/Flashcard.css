@@ -1,0 +1,62 @@
+.column {
+    float: left;
+    width: 20%;
+    padding: 2px 5px;
+  }
+  
+  .card
+  {
+    border: 10px; 
+    background-color:#FFFFFF;
+    border: 1px;
+    box-shadow:0 4px 4px #ccc;
+  }  
+  
+  .container hr{
+    margin: 3px 4px;
+    background-color: #bdbdbd;
+    height: 1px;
+  }
+  .card span{
+    font-size:25px;
+    padding: 5px 15px;
+    font-family:Roboto;
+    color:#707070;
+  }
+  
+  .container h5{
+    font-family:Roboto;
+    color:#707070;
+    font-size: 16px;
+    padding: 0px 15px;
+  }
+  .container p{
+    font-family:Roboto;
+    color:#000000;
+    font-size: 20px;
+    padding: 0px 15px;
+    }
+  
+  .cir1{
+    display:inline-block;
+    background-color:red;
+    width:21px;
+    height:21px;
+    border-radius:50px; 
+  }
+  
+  .cir2{
+    display:inline-block;
+    background-color:#7C4DFF;
+    width:21px;
+    height:21px;
+    border-radius:50px;  
+  }
+  
+  .cir3{
+    display:inline-block;
+    background-color:#FFC107;
+    width:21px;
+    height:21px;
+    border-radius:50px;  
+  }
