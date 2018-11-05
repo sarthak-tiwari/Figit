@@ -1,0 +1,117 @@
+
+.col-md-12
+{
+  border-right: 1px solid gray;
+  text-align: left;
+}
+
+div h4
+{
+  color:#707070;
+  font-size:18px;
+  padding-left: 10px;
+  font-family:'Roboto';
+}
+
+hr{
+  margin: 1px 4px;
+  background-color: #bdbdbd;
+  height: 1px;
+  
+}
+.card{
+  position: inherit;
+  text-align: center;
+  height: 420px ;
+  width: 300px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  
+}
+p
+{
+  text-align: justify;
+  padding-left: 20px;
+}
+.row
+{
+    padding:10px 10px;
+    box-shadow: 0px 0px 6px #707070;
+}
+
+.col-md-6
+{
+    text-align:right;
+}
+
+span{
+    font-size: 20px;color: #707070;margin-right: 10px;line-height:float;
+    font-family:Roboto;
+}
+img
+{
+    background-color: transparent;
+    height:67 px ;
+    margin-left: 5px;
+    align-items: float;
+    
+}
+#row1
+{
+    margin-top:2px;
+}
+
+#x1
+{
+    background-color:#323544;padding:34px 18px;
+    width:150px;
+    height:400px;
+}
+
+.col-md-3
+{
+    padding-left:0px; 
+    padding-right:0px; 
+    color:#000000;
+}
+#x
+{
+    background-color:#03A9F4;padding:58px 10px;
+    width:150px;
+}
+.row2
+{
+    color:#FFFFFF;padding: 10px;
+}
+
+#sp1
+{
+    color:#FFFFFF;
+}
+
+.col-md-9
+{
+    color:#000000;font-size:36px; font-family: Josefin Sans, Regular;
+    margin-left: -15px;
+}
+
+#chartContainer
+{
+    height: 226px;width: 100%;margin-top:6px;margin-bottom:6px;
+}
+
+#row3
+{
+    padding: 6px 1px;font-size: 22px;
+}
+
+.row4
+{
+    padding: 6px 1px;font-size: 22px;
+}
+
+.col-md-4
+{
+    text-align: left;
+    margin-left: -40px;
+}
