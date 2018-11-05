@@ -1,6 +1,6 @@
 Application_Users
 
-ID	email_id	application_username	password
+email_id	application_username	application_password
 
 -primary_key: email_id
 -unique: application_username
@@ -9,18 +9,18 @@ ID	email_id	application_username	password
 
 User_Repositories
 
-ID	application_username	github_repository	cache_status(active/stale)
+ID	application_username	repository_link		repository_name		cache_status(active/stale)
 
--primary_key: composite(application_username, github_repository)
+-primary_key: composite(application_username, repository_link)
 -foreign_key: application_username
 
 
 
 Repository_Collaborators
 
-ID	application_username	github_repository	github_login
+ID	application_username	repository_link		repository_name		collaborator_username 		collaborator_name	github_login
 
--foreign_key: composite(application_username, github_repository)
+-foreign_key: composite(application_username, repository_link)
 
 
 

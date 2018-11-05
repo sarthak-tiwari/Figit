@@ -5,9 +5,13 @@
 #import statements
 from github import Github
 from GitConnectionManager import GitConnectionManager
-from GitData import GitData
-from GitData import CommitData
 
+from GitCommitData import GitCommitData
+from GitCommitData import CommitData
+
+from GitPullRequestData import GitPullRequestData
+from GitPullRequestData import PullRequestData
+from DatabaseManager import DatabaseManager
 
 
 #----------------------------------------------------------------------------------------
@@ -58,18 +62,47 @@ from GitData import CommitData
 
 
 #----------------------------------------------------------------------------------------
-#Sample code showing two ways of how to get a list of commits in a_
-#_repository using the GitData class
-manager = GitConnectionManager()
+#Sample code showing how to get a list of commits in a_
+#_repository using the GitCommitData class
+#manager = GitConnectionManager()
 
-gitData = GitData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-for commit in gitData.getCommitData():
-    print(commit.commiterName)
-    print(commit.commitDate)
-    print("Number of Additions: " + str(commit.numberOfAdditions))
-    print("Number of Deletions: " + str(commit.numberOfDeletions))
-    print("Files Modified: " + commit.filesModified)
-    print(commit.commitMessage)
-    print("----------\n")
+#for commit in gitData.getCommitData():
+#    print(commit.commiterName)
+#    print(commit.commitDate)
+#    print("Number of Additions: " + str(commit.numberOfAdditions))
+#    print("Number of Deletions: " + str(commit.numberOfDeletions))
+#    print("Files Modified: " + commit.filesModified)
+#    print(commit.commitMessage)
+#    print("----------\n")
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code showing how to get a list of pull requests in a_
+#_repository using the GitPullRequestData class
+#manager = GitConnectionManager()
+
+#gitData = GitPullRequestData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#result = gitData.getPullRequestData()
+
+#print(len(result))
+
+#for commit in result:
+#    print(commit.creatorLogin)
+#    print(commit.createdAt)
+#    print(commit.requestTitle)
+#    print(commit.requestDescription)
+#    print(commit.reviewers)
+#    print("----------\n")
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code testing DatabaseManager Class
+
+DatabaseManager.getValues()

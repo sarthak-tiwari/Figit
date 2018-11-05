@@ -1,0 +1,1 @@
+All the web pages used to provide user interface are in this directory.
