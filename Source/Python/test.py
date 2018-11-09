@@ -69,7 +69,7 @@ manager = GitConnectionManager()
 gitData = GitCommitData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getCommitDataUsingUsers()
+result = gitData.getCommitData()
 
 print("Count of Commits: " + str(len(result)))
 

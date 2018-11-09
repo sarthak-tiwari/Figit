@@ -32,9 +32,22 @@ ID	application_username	github_repository	branch_name
 
 
 
-Repository_Commit_Data
+git_commit_data
 
-ID	github_repository	commiterName	commitDate	commitMessage	numberOfAdditions	numberOfDeletions	filesModified
+github_repository	committer_name	commit_date	commit_message	number_of_additions	number_of_deletions	files_modified	link_to_github
 
--primary_key: composite(github_repository, commiterName, commitDate)
+-primary_key: composite(github_repository, committer_name, commit_date)
 --foreign_key: github_repository
+
+
+CREATE TABLE `git_commit_data` (
+	`github_repository`	TEXT NOT NULL,
+	`committer_name`	TEXT NOT NULL,
+	`commit_date`	TEXT NOT NULL,
+	`commit_message`	TEXT,
+	`number_of_additions`	INTEGER DEFAULT 0,
+	`number_of_deletions`	INTEGER DEFAULT 0,
+	`number_of_files_modified`	INTEGER DEFAULT 0,
+	`link_to_github`	TEXT NOT NULL UNIQUE,
+	PRIMARY KEY(`github_repository`,`committer_name`,`commit_date`)
+);

@@ -85,62 +85,6 @@ class GitCommitData:
         if(gitHubRepository == None):
             gitHubRepo = self._gitHubRepository
 
-        #try to get branch names of all the branches in the gitHubRepo repository
-        try:
-            branchList = []
-            branchList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_branches()
-        except GithubException as err:
-            if(err.status == 404):
-                print("Not able to get branch structure of the specified repository.")
-                return branchList
-            raise
-
-        #try to get commit data from all the branches stored in branchList
-        commitList = []
-        commitDataSet = set([])         #to eliminate redundancy in commit list we are using a set here
-        for branch in branchList:
-            try:
-                commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits(branch.name)
-
-                if(commitList.totalCount > 0):
-                    for commit in commitList:
-                        #creating a single comma-separated list of all files modified in this commit
-                        filesModified = ""
-                        count=0
-                        for file in commit.files:
-                            if(count < 20):
-                                filesModified += file.filename + ","
-                            else:
-                                filesModified += " + " + str(len(commit.files) - 20) + " files"
-                                break
-
-                        commitData = CommitData(commiterName = commit.commit.author.name,
-                                                commitDate = commit.raw_data['commit']['author']['date'],
-                                                commitMessage = commit.commit.message,
-                                                numberOfAdditions = commit.stats.additions, 
-                                                numberOfDeletions = commit.stats.deletions,
-                                                filesModified = filesModified)
-                        commitDataSet.add(commitData)
-
-            except GithubException as err:
-                if(err.status == 404):
-                    print("Not able to get commit data from the branch.")
-                    return set([])
-                raise
-                
-        return commitDataSet
-
-
-
-    #function to get commit data in a repository
-
-    def getCommitDataUsingUsers(self, gitHubRepository = None):
-
-        gitHubRepo = gitHubRepository
-
-        if(gitHubRepository == None):
-            gitHubRepo = self._gitHubRepository
-
         #try to get user names of all the collaborators in the gitHubRepo repository
         try:
             userList = self.getUserList()
@@ -180,3 +124,59 @@ class GitCommitData:
                 raise
                 
         return commitDataSet
+
+
+
+ #function to get commit data in a repository
+
+    #def getCommitData(self, gitHubRepository = None):
+
+    #    gitHubRepo = gitHubRepository
+
+    #    if(gitHubRepository == None):
+    #        gitHubRepo = self._gitHubRepository
+
+    #    #try to get branch names of all the branches in the gitHubRepo repository
+    #    try:
+    #        branchList = []
+    #        branchList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_branches()
+    #    except GithubException as err:
+    #        if(err.status == 404):
+    #            print("Not able to get branch structure of the specified repository.")
+    #            return branchList
+    #        raise
+
+    #    #try to get commit data from all the branches stored in branchList
+    #    commitList = []
+    #    commitDataSet = set([])         #to eliminate redundancy in commit list we are using a set here
+    #    for branch in branchList:
+    #        try:
+    #            commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits(branch.name)
+
+    #            if(commitList.totalCount > 0):
+    #                for commit in commitList:
+    #                    #creating a single comma-separated list of all files modified in this commit
+    #                    filesModified = ""
+    #                    count=0
+    #                    for file in commit.files:
+    #                        if(count < 20):
+    #                            filesModified += file.filename + ","
+    #                        else:
+    #                            filesModified += " + " + str(len(commit.files) - 20) + " files"
+    #                            break
+
+    #                    commitData = CommitData(commiterName = commit.commit.author.name,
+    #                                            commitDate = commit.raw_data['commit']['author']['date'],
+    #                                            commitMessage = commit.commit.message,
+    #                                            numberOfAdditions = commit.stats.additions, 
+    #                                            numberOfDeletions = commit.stats.deletions,
+    #                                            filesModified = filesModified)
+    #                    commitDataSet.add(commitData)
+
+    #        except GithubException as err:
+    #            if(err.status == 404):
+    #                print("Not able to get commit data from the branch.")
+    #                return set([])
+    #            raise
+                
+    #    return commitDataSet
