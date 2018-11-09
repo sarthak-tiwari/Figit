@@ -8,7 +8,7 @@ from github import GithubException
 
 
 #defining commit data format
-CommitData = collections.namedtuple("CommitData", "commiterName, commitDate, commitMessage, numberOfAdditions, numberOfDeletions, filesModified")
+CommitData = collections.namedtuple("CommitData", "commiterName, commitDate, commitMessage, numberOfAdditions, numberOfDeletions, filesModified, linkToGithub")
 
 
 
@@ -131,6 +131,7 @@ class GitCommitData:
         return commitDataSet
 
 
+
     #function to get commit data in a repository
 
     def getCommitDataUsingUsers(self, gitHubRepository = None):
@@ -140,12 +141,12 @@ class GitCommitData:
         if(gitHubRepository == None):
             gitHubRepo = self._gitHubRepository
 
-        #try to get branch names of all the branches in the gitHubRepo repository
+        #try to get user names of all the collaborators in the gitHubRepo repository
         try:
             userList = self.getUserList()
         except GithubException as err:
             if(err.status == 404):
-                print("Not able to get branch structure of the specified repository.")
+                print("Not able to get collaborator names of the specified repository.")
                 return userList
             raise
 
@@ -158,6 +159,11 @@ class GitCommitData:
 
                 if(commitList.totalCount > 0):
                     for commit in commitList:
+
+                        #skipping merge commits
+                        if(len(commit.parents) > 1):
+                            continue
+
                         #creating a single comma-separated list of all files modified in this commit
                         filesModified = ""
                         count=0
@@ -173,7 +179,8 @@ class GitCommitData:
                                                 commitMessage = commit.commit.message,
                                                 numberOfAdditions = commit.stats.additions, 
                                                 numberOfDeletions = commit.stats.deletions,
-                                                filesModified = filesModified)
+                                                filesModified = filesModified,
+                                                linkToGithub = commit.commit.html_url)
                         commitDataSet.add(commitData)
 
             except GithubException as err:

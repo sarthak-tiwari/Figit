@@ -28,7 +28,7 @@ class GitConnectionManager:
     def getConnection(self):
 
         if(not(self._gitHubConnection)):
-            self._gitHubConnection = Github(self._USERNAME, self._PASSWORD, timeout=100)
+            self._gitHubConnection = Github(self._USERNAME, self._PASSWORD, timeout=100, per_page=1000)
 
         try:
             for str in self._gitHubConnection.get_user().get_repos():
