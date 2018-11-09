@@ -164,22 +164,12 @@ class GitCommitData:
                         if(len(commit.parents) > 1):
                             continue
 
-                        #creating a single comma-separated list of all files modified in this commit
-                        filesModified = ""
-                        count=0
-                        for file in commit.files:
-                            if(count < 20):
-                                filesModified += file.filename + ","
-                            else:
-                                filesModified += " + " + str(len(commit.files) - 20) + " files"
-                                break
-
-                        commitData = CommitData(commiterName = commit.commit.author.name,
+                        commitData = CommitData(commiterName = commit.committer.login,
                                                 commitDate = commit.raw_data['commit']['author']['date'],
                                                 commitMessage = commit.commit.message,
                                                 numberOfAdditions = commit.stats.additions, 
                                                 numberOfDeletions = commit.stats.deletions,
-                                                filesModified = filesModified,
+                                                filesModified = str(len(commit.files)),
                                                 linkToGithub = commit.commit.html_url)
                         commitDataSet.add(commitData)
 
