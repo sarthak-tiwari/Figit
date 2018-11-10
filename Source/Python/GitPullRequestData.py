@@ -8,7 +8,7 @@ from github import GithubException
 
 
 #defining commit data format
-PullRequestData = collections.namedtuple("PullRequestData", "creatorLogin, createdAt, requestTitle, requestDescription, reviewers")
+PullRequestData = collections.namedtuple("PullRequestData", "creatorLogin, createdAt, requestTitle, requestDescription, reviewers, reviewComments")
 
 
 
@@ -59,17 +59,32 @@ class GitPullRequestData:
             gitHubRepo = self._gitHubRepository
 
         try:
+            #response = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_issue(1)
+
+            #print(response)
+            
             response = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_pulls(state='all', sort='created')
 
             pullRequestData = []
 
             for request in response:
+
+                resp = request.get_reviews()
+                for r in resp:
+                    print(r)
+
+                resp = request.get_review_requests()
+                for r in resp:
+                    print(len(r))
+                    for i in r:
+                        print(r.totalCount)
                 
                 requestData = PullRequestData(creatorLogin=request.user.login,
                                               createdAt=request.created_at,
                                               requestTitle=request.title,
                                               requestDescription=request.body,
-                                              reviewers='NA')
+                                              reviewers='NA',
+                                              reviewComments='NA')
 
                 pullRequestData.append(requestData)
 

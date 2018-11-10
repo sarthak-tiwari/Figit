@@ -88,22 +88,22 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code showing how to get a list of pull requests in a_
 #_repository using the GitPullRequestData class
-#manager = GitConnectionManager()
+manager = GitConnectionManager()
 
-#gitData = GitPullRequestData(manager.getConnection())
-#gitData.setGitHubRepository("ScrumDevils-SER_515")
+gitData = GitPullRequestData(manager.getConnection())
+gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-#result = gitData.getPullRequestData()
+result = gitData.getPullRequestData()
 
-#print(len(result))
+print(len(result))
 
-#for commit in result:
-#    print(commit.creatorLogin)
-#    print(commit.createdAt)
-#    print(commit.requestTitle)
-#    print(commit.requestDescription)
-#    print(commit.reviewers)
-#    print("----------\n")
+for commit in result:
+    print(commit.creatorLogin)
+    print(commit.createdAt)
+    print(commit.requestTitle)
+    print(commit.requestDescription)
+    print(commit.reviewers)
+    print("----------\n")
 
 
 
@@ -112,11 +112,17 @@ from DatabaseManager import DatabaseManager
 
 #DatabaseManager.getValues()
 
-manager = GitConnectionManager()
+#manager = GitConnectionManager()
 
-gitData = GitCommitData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getCommitData()
+#result = gitData.getCommitData()
 
-DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
+#DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
+
+#manager = GitConnectionManager()
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#gitData.test()

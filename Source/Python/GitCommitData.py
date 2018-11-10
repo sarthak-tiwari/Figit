@@ -125,6 +125,27 @@ class GitCommitData:
                 
         return commitDataSet
 
+    def test(self, gitHubRepository = None):
+        gitHubRepo = gitHubRepository
+
+        if(gitHubRepository == None):
+            gitHubRepo = self._gitHubRepository
+
+        #try to get commit data from all the branches stored in branchList
+        commitList = []
+        commitDataSet = set([])         #to eliminate redundancy in commit list we are using a set here
+        
+        commitList = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_commits(sha='us99-task100', author='sarthak-tiwari')
+        for commit in commitList:
+
+            #skipping merge commits
+            if(len(commit.parents) > 1):
+                continue
+                        
+            commitDataSet.add(commit.commit.message)
+
+        print(len(commitDataSet))
+
 
 
  #function to get commit data in a repository
