@@ -108,12 +108,12 @@ class GitCommitData:
                         if(len(commit.parents) > 1):
                             continue
 
-                        commitData = CommitData(commiterName = commit.committer.login,
+                        commitData = CommitData(commiterName = commit.committer.login if (commit.committer.login != 'web-flow') else commit.author.login,
                                                 commitDate = commit.raw_data['commit']['author']['date'],
                                                 commitMessage = commit.commit.message,
-                                                numberOfAdditions = commit.stats.additions, 
-                                                numberOfDeletions = commit.stats.deletions,
-                                                filesModified = str(len(commit.files)),
+                                                numberOfAdditions = (int)(commit.stats.additions), 
+                                                numberOfDeletions = (int)(commit.stats.deletions),
+                                                filesModified = len(commit.files),
                                                 linkToGithub = commit.commit.html_url)
                         commitDataSet.add(commitData)
 

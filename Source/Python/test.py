@@ -64,24 +64,24 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code showing how to get a list of commits in a_
 #_repository using the GitCommitData class
-manager = GitConnectionManager()
+#manager = GitConnectionManager()
 
-gitData = GitCommitData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getCommitData()
+#result = gitData.getCommitData()
 
-print("Count of Commits: " + str(len(result)))
+#print("Count of Commits: " + str(len(result)))
 
-for commit in result:
-    print(commit.commiterName)
-    print(commit.commitDate)
-    print("Number of Additions: " + str(commit.numberOfAdditions))
-    print("Number of Deletions: " + str(commit.numberOfDeletions))
-    print("Files Modified: " + commit.filesModified)
-    print("Link: " + commit.linkToGithub)
-    print(commit.commitMessage)
-    print("----------\n")
+#for commit in result:
+#    print(commit.commiterName)
+#    print(commit.commitDate)
+#    print("Number of Additions: " + str(commit.numberOfAdditions))
+#    print("Number of Deletions: " + str(commit.numberOfDeletions))
+#    print("Files Modified: " + commit.filesModified)
+#    print("Link: " + commit.linkToGithub)
+#    print(commit.commitMessage)
+#    print("----------\n")
 
 
 
@@ -111,3 +111,12 @@ for commit in result:
 #Sample code testing DatabaseManager Class
 
 #DatabaseManager.getValues()
+
+manager = GitConnectionManager()
+
+gitData = GitCommitData(manager.getConnection())
+gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+result = gitData.getCommitData()
+
+DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
