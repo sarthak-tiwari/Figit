@@ -93,17 +93,10 @@ manager = GitConnectionManager()
 gitData = GitPullRequestData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getPullRequestData()
+(pullRequestData, pullReviewData) = gitData.getPullRequestData()
 
-print(len(result))
-
-for commit in result:
-    print(commit.creatorLogin)
-    print(commit.createdAt)
-    print(commit.requestTitle)
-    print(commit.requestDescription)
-    print(commit.reviewers)
-    print("----------\n")
+DatabaseManager.insertPullRequestDataValues(pullRequestData)
+DatabaseManager.insertPullReviewDataValues(pullReviewData)
 
 
 

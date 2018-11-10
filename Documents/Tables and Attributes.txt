@@ -79,6 +79,5 @@ CREATE TABLE `git_pull_review_data` (
 	`reviewer_login`	TEXT NOT NULL,
 	`review_date`	TEXT NOT NULL,
 	`review_comment`	TEXT,
-	`review_url`	TEXT NOT NULL,
-	PRIMARY KEY(`github_repository`,`request_id`)
+	`review_url`	TEXT NOT NULL
 );

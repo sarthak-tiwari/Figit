@@ -66,7 +66,7 @@ class DatabaseManager:
 
     #method to insert pull review data into the corrosponding table
     @staticmethod
-    def insertPullRequestDataValues(pullReviewData):
+    def insertPullReviewDataValues(pullReviewData):
 
         conn = DatabaseManager.getConnection()
 

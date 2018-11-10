@@ -89,7 +89,7 @@ class GitPullRequestData:
                                                   request_url=request.html_url)
                 pullRequestData.append(requestData)
 
-            return pullRequestData
+            return (pullRequestData, pullReviewData)
         except GithubException as err:
             if(err.status == 404):
                 print("Not able to get pull requests of the specified repository.")
