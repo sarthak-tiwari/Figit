@@ -31,6 +31,26 @@ class DatabaseManager:
             print(row)
 
 
+    #method to insert commit data into the corrosponding table
+    @staticmethod
+    def insertCollaboratorDataValues(repositoryName, collaboratorData):
+
+        conn = DatabaseManager.getConnection()
+
+        query = 'INSERT INTO git_user_profiles (github_login, github_username, github_profile_url, github_image_url\
+                    ) VALUES (?, ?, ?, ?)'
+
+        for user in collaboratorData:
+            conn.execute(query, user)
+
+        query = 'INSERT INTO git_repository_collaborators (github_repository, github_login) VALUES (?, ?)'
+
+        for user in collaboratorData:
+            conn.execute(query, [repositoryName, user.github_login])
+
+        conn.commit()
+
+
 
     #method to insert commit data into the corrosponding table
     @staticmethod

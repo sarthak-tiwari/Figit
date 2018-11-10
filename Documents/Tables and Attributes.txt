@@ -16,11 +16,32 @@ application_username	github_repository	repository_url	last_refreshed_at
 
 ####################################################################################################
 
+git_user_profiles
+
+github_login	github_username	github_profile_url	github_image_url
+
+-primary_key: github_login
+
+CREATE TABLE `git_user_profiles` (
+	`github_login`	TEXT NOT NULL,
+	`github_username`	TEXT NOT NULL,
+	`github_profile_url`	TEXT NOT NULL UNIQUE,
+	`github_image_url`	TEXT,
+	PRIMARY KEY(`github_login`)
+);
+
+####################################################################################################
+
 git_repository_collaborators
 
-github_login application_username	repository_link		repository_name		collaborator_username 		collaborator_name
+github_repository	github_login
 
--foreign_key: composite(application_username, repository_link)
+-foreign_key: composite(application_username, github_repository
+
+CREATE TABLE `git_repository_collaborators` (
+	`github_repository`	TEXT NOT NULL,
+	`github_login`	TEXT NOT NULL
+);
 
 ####################################################################################################
 
@@ -79,5 +100,6 @@ CREATE TABLE `git_pull_review_data` (
 	`reviewer_login`	TEXT NOT NULL,
 	`review_date`	TEXT NOT NULL,
 	`review_comment`	TEXT,
-	`review_url`	TEXT NOT NULL
+	`review_url`	TEXT NOT NULL,
+	PRIMARY KEY(`github_repository`,`request_id`)
 );

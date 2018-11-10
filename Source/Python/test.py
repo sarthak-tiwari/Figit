@@ -107,7 +107,7 @@ from DatabaseManager import DatabaseManager
 #manager = GitConnectionManager()
 
 #gitData = GitCommitData(manager.getConnection())
-#gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData.setGitHubRepository("sarthak-tiwari/ScrumDevils-SER_515")
 
 #result = gitData.getCommitData()
 
@@ -130,3 +130,4 @@ gitData = GitCollaboratorData(manager.getConnection())
 gitData.setGitHubRepository("ScrumDevils-SER_515")
 
 result = gitData.getCollaboratorData()
+DatabaseManager.insertCollaboratorDataValues("sarthak-tiwari/ScrumDevils-SER_515", result)
