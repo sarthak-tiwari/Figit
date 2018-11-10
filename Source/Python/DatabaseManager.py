@@ -31,6 +31,29 @@ class DatabaseManager:
             print(row)
 
 
+
+    #method to clean all information pertaining to a repository from database
+    @staticmethod
+    def cleanRepository(repositoryName):
+
+        conn = DatabaseManager.getConnection()
+
+        query = 'DELETE FROM git_pull_review_data WHERE github_repository = \'' + repositoryName + '\''
+        conn.execute(query)
+
+        query = 'DELETE FROM git_pull_request_data WHERE github_repository = \'' + repositoryName + '\''
+        conn.execute(query)
+
+        query = 'DELETE FROM git_commit_data WHERE github_repository = \'' + repositoryName + '\''
+        conn.execute(query)
+
+        query = 'DELETE FROM git_repository_collaborators WHERE github_repository = \'' + repositoryName + '\''
+        conn.execute(query)
+
+        conn.commit()
+
+
+
     #method to insert commit data into the corrosponding table
     @staticmethod
     def insertCollaboratorDataValues(repositoryName, collaboratorData):
