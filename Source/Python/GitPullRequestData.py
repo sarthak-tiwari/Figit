@@ -1,4 +1,4 @@
-#Class to manage all the data extraction from GitHub API
+#Class to manage all the data extraction regarding pull requests from GitHub API
 
 #import statements
 import collections
@@ -7,8 +7,9 @@ from github import GithubException
 
 
 
-#defining commit data format
-PullRequestData = collections.namedtuple("PullRequestData", "creatorLogin, createdAt, requestTitle, requestDescription, reviewers, reviewComments")
+#defining data format
+PullRequestData = collections.namedtuple("PullRequestData", "github_repository, request_id, requester_login, request_date, request_title, request_body, request_url")
+PullReviewData = collections.namedtuple("PullReviewData", "github_repository, request_id, reviewer_login, review_date, review_comment, review_url")
 
 
 
@@ -59,33 +60,33 @@ class GitPullRequestData:
             gitHubRepo = self._gitHubRepository
 
         try:
-            #response = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_issue(1)
-
-            #print(response)
             
             response = self._gitHubConnection.get_user().get_repo(gitHubRepo).get_pulls(state='all', sort='created')
 
             pullRequestData = []
+            pullReviewData = []
 
             for request in response:
 
-                resp = request.get_reviews()
-                for r in resp:
-                    print(r)
-
-                resp = request.get_review_requests()
-                for r in resp:
-                    print(len(r))
-                    for i in r:
-                        print(r.totalCount)
+                reviews = request.get_reviews()
+                for review in reviews:
+                    reviewData = pullReviewData(github_repository=gitHubRepo,
+                                                request_id='',
+                                                reviewer_login='',
+                                                review_date='',
+                                                review_comment='',
+                                                review_url='')
+                    pullReviewData.append(reviewData)
                 
-                requestData = PullRequestData(creatorLogin=request.user.login,
-                                              createdAt=request.created_at,
-                                              requestTitle=request.title,
-                                              requestDescription=request.body,
-                                              reviewers='NA',
-                                              reviewComments='NA')
+                    
 
+                requestData = PullRequestData(github_repository=gitHubRepo,
+                                                  request_id='',
+                                                  requester_login=request.user.login,
+                                                  request_date=request.created_at,
+                                                  request_title=request.title,
+                                                  request_body=request.body,
+                                                  request_url='')
                 pullRequestData.append(requestData)
 
             return pullRequestData

@@ -1,4 +1,4 @@
-Application_Users
+Application_User
 
 email_id	application_username	application_password
 
@@ -7,18 +7,18 @@ email_id	application_username	application_password
 
 
 
-User_Repositories
+application_user_repositories
 
-ID	application_username	repository_link		repository_name		cache_status(active/stale)
+application_username	github_repository	repository_url	last_refreshed_at
 
--primary_key: composite(application_username, repository_link)
+-primary_key: composite(application_username, github_repository)
 -foreign_key: application_username
 
 
 
-Repository_Collaborators
+git_repository_collaborators
 
-ID	application_username	repository_link		repository_name		collaborator_username 		collaborator_name	github_login
+application_username	repository_link		repository_name		collaborator_username 		collaborator_name	github_login
 
 -foreign_key: composite(application_username, repository_link)
 
@@ -51,3 +51,21 @@ CREATE TABLE `git_commit_data` (
 	`link_to_github`	TEXT NOT NULL UNIQUE,
 	PRIMARY KEY(`github_repository`,`committer_name`,`commit_date`)
 );
+
+
+
+git_pull_request_data
+
+github_repository	request_id	requester_login	request_date	request_title	request_body	request_url
+
+-primary_key: composite(github_repository, request_id)
+-foreign_key: github_repository, requester_login
+
+
+
+git_pull_review_data
+
+github_repository	request_id	reviewer_login	review_date	review_comment	review_url
+
+-primary_key: composite(github_repository, request_id)
+-foreign_key: github_repository, reviewer_login
