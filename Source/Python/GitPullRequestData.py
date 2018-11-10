@@ -70,23 +70,23 @@ class GitPullRequestData:
 
                 reviews = request.get_reviews()
                 for review in reviews:
-                    reviewData = pullReviewData(github_repository=gitHubRepo,
-                                                request_id='',
-                                                reviewer_login='',
-                                                review_date='',
-                                                review_comment='',
-                                                review_url='')
+                    reviewData = PullReviewData(github_repository=gitHubRepo,
+                                                request_id=request.number,
+                                                reviewer_login=review.user.login,
+                                                review_date=review.submitted_at,
+                                                review_comment=review.body,
+                                                review_url=review.html_url)
                     pullReviewData.append(reviewData)
                 
                     
 
                 requestData = PullRequestData(github_repository=gitHubRepo,
-                                                  request_id='',
+                                                  request_id=request.number,
                                                   requester_login=request.user.login,
                                                   request_date=request.created_at,
                                                   request_title=request.title,
                                                   request_body=request.body,
-                                                  request_url='')
+                                                  request_url=request.html_url)
                 pullRequestData.append(requestData)
 
             return pullRequestData

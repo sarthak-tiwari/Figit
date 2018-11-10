@@ -5,7 +5,7 @@ email_id	application_username	application_password
 -primary_key: email_id
 -unique: application_username
 
-
+####################################################################################################
 
 application_user_repositories
 
@@ -14,23 +14,15 @@ application_username	github_repository	repository_url	last_refreshed_at
 -primary_key: composite(application_username, github_repository)
 -foreign_key: application_username
 
-
+####################################################################################################
 
 git_repository_collaborators
 
-application_username	repository_link		repository_name		collaborator_username 		collaborator_name	github_login
+github_login application_username	repository_link		repository_name		collaborator_username 		collaborator_name
 
 -foreign_key: composite(application_username, repository_link)
 
-
-
-Repository_Branches
-
-ID	application_username	github_repository	branch_name
-
---foreign_key: composite(application_username, github_repository)
-
-
+####################################################################################################
 
 git_commit_data
 
@@ -52,7 +44,7 @@ CREATE TABLE `git_commit_data` (
 	PRIMARY KEY(`github_repository`,`committer_name`,`commit_date`)
 );
 
-
+####################################################################################################
 
 git_pull_request_data
 
@@ -61,7 +53,18 @@ github_repository	request_id	requester_login	request_date	request_title	request_
 -primary_key: composite(github_repository, request_id)
 -foreign_key: github_repository, requester_login
 
+CREATE TABLE `git_pull_request_data` (
+	`github_repository`	TEXT NOT NULL,
+	`request_id`	INTEGER NOT NULL,
+	`requester_login`	TEXT NOT NULL,
+	`request_date`	TEXT NOT NULL,
+	`request_title`	TEXT,
+	`request_body`	TEXT,
+	`request_url`	TEXT NOT NULL,
+	PRIMARY KEY(`github_repository`,`request_id`)
+);
 
+####################################################################################################
 
 git_pull_review_data
 
@@ -69,3 +72,13 @@ github_repository	request_id	reviewer_login	review_date	review_comment	review_ur
 
 -primary_key: composite(github_repository, request_id)
 -foreign_key: github_repository, reviewer_login
+
+CREATE TABLE `git_pull_review_data` (
+	`github_repository`	TEXT NOT NULL,
+	`request_id`	INTEGER NOT NULL,
+	`reviewer_login`	TEXT NOT NULL,
+	`review_date`	TEXT NOT NULL,
+	`review_comment`	TEXT,
+	`review_url`	TEXT NOT NULL,
+	PRIMARY KEY(`github_repository`,`request_id`)
+);
