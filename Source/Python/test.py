@@ -11,6 +11,7 @@ from GitCommitData import CommitData
 
 from GitPullRequestData import GitPullRequestData
 from GitPullRequestData import PullRequestData
+from GitCollaboratorData import GitCollaboratorData
 from DatabaseManager import DatabaseManager
 
 
@@ -88,22 +89,20 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code showing how to get a list of pull requests in a_
 #_repository using the GitPullRequestData class
-manager = GitConnectionManager()
+#manager = GitConnectionManager()
 
-gitData = GitPullRequestData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitPullRequestData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-(pullRequestData, pullReviewData) = gitData.getPullRequestData()
+#(pullRequestData, pullReviewData) = gitData.getPullRequestData()
 
-DatabaseManager.insertPullRequestDataValues(pullRequestData)
-DatabaseManager.insertPullReviewDataValues(pullReviewData)
+#DatabaseManager.insertPullRequestDataValues(pullRequestData)
+#DatabaseManager.insertPullReviewDataValues(pullReviewData)
 
 
 
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
-
-#DatabaseManager.getValues()
 
 #manager = GitConnectionManager()
 
@@ -119,3 +118,15 @@ DatabaseManager.insertPullReviewDataValues(pullReviewData)
 #gitData.setGitHubRepository("ScrumDevils-SER_515")
 
 #gitData.test()
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code testing GitCollaboratorData Class
+
+manager = GitConnectionManager()
+
+gitData = GitCollaboratorData(manager.getConnection())
+gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+result = gitData.getCollaboratorData()

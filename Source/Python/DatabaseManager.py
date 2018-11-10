@@ -48,6 +48,22 @@ class DatabaseManager:
 
 
 
+    #method to insert commit data into the corrosponding table
+    @staticmethod
+    def insertCommitDataValues(repositoryName, commitData):
+
+        conn = DatabaseManager.getConnection()
+
+        query = 'INSERT INTO git_commit_data (github_repository, committer_name, commit_date, commit_message, \
+        number_of_additions, number_of_deletions, number_of_files_modified, link_to_github) VALUES (\'' + repositoryName + '\', ?, ?, ?, ?, ?, ?, ?)'
+
+        for commit in commitData:
+            conn.execute(query, commit)
+
+        conn.commit()
+
+
+
     #method to insert pull request data into the corrosponding table
     @staticmethod
     def insertPullRequestDataValues(pullRequestData):
