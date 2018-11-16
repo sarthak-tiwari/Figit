@@ -53,8 +53,23 @@ class DatabaseManager:
         conn.commit()
 
 
+    #method to populate database with all information of a repository from GitHub
+    @staticmethod
+    def populateRepository(repositoryName, collaboratorData, commitData, pullRequestData, pullReviewData):
 
-    #method to insert commit data into the corrosponding table
+        cleanRepository(repositoryName)
+
+        insertCollaboratorDataValues(repositoryName, collaboratorData)
+
+        insertCommitDataValues(repositoryName, commitData)
+
+        insertPullRequestDataValues(pullRequestData)
+
+        insertPullReviewDataValues(pullReviewData)
+
+
+
+    #method to insert collaborator data into the corrosponding table
     @staticmethod
     def insertCollaboratorDataValues(repositoryName, collaboratorData):
 
@@ -70,22 +85,6 @@ class DatabaseManager:
 
         for user in collaboratorData:
             conn.execute(query, [repositoryName, user.github_login])
-
-        conn.commit()
-
-
-
-    #method to insert commit data into the corrosponding table
-    @staticmethod
-    def insertCommitDataValues(repositoryName, commitData):
-
-        conn = DatabaseManager.getConnection()
-
-        query = 'INSERT INTO git_commit_data (github_repository, committer_name, commit_date, commit_message, \
-        number_of_additions, number_of_deletions, number_of_files_modified, link_to_github) VALUES (\'' + repositoryName + '\', ?, ?, ?, ?, ?, ?, ?)'
-
-        for commit in commitData:
-            conn.execute(query, commit)
 
         conn.commit()
 

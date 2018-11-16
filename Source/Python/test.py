@@ -104,14 +104,14 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
 
-#manager = GitConnectionManager()
+manager = GitConnectionManager()
 
-#gitData = GitCommitData(manager.getConnection())
-#gitData.setGitHubRepository("sarthak-tiwari/ScrumDevils-SER_515")
+gitData = GitCommitData(manager.getConnection())
+gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-#result = gitData.getCommitData()
+result = gitData.getCommitData()
 
-#DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
+DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
 
 #manager = GitConnectionManager()
 #gitData = GitCommitData(manager.getConnection())
@@ -124,10 +124,10 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code testing GitCollaboratorData Class
 
-manager = GitConnectionManager()
+#manager = GitConnectionManager()
 
-gitData = GitCollaboratorData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitCollaboratorData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getCollaboratorData()
-DatabaseManager.insertCollaboratorDataValues("sarthak-tiwari/ScrumDevils-SER_515", result)
+#result = gitData.getCollaboratorData()
+#DatabaseManager.insertCollaboratorDataValues("sarthak-tiwari/ScrumDevils-SER_515", result)
