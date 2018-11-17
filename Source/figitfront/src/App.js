@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Firstpage from './Firstpage/Firstpage';
 
 class App extends Component {
+
   render() {
-    return (
-      <div className="App">
-		<Firstpage_json></Firstpage_json>
+    return(
+      <div className ="App"> 
+	      <Firstpage></Firstpage>
       </div>
     );
   }
 }
-
 export default App;
+
