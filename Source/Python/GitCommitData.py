@@ -84,6 +84,8 @@ class GitCommitData:
 
         if(gitHubRepository == None):
             gitHubRepo = self._gitHubRepository
+        else:
+            self.setGitHubRepository(gitHubRepository)
 
         #try to get user names of all the collaborators in the gitHubRepo repository
         try:

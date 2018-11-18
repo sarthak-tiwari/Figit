@@ -57,15 +57,15 @@ class DatabaseManager:
     @staticmethod
     def populateRepository(repositoryName, collaboratorData, commitData, pullRequestData, pullReviewData):
 
-        cleanRepository(repositoryName)
+        DatabaseManager.cleanRepository(repositoryName)
 
-        insertCollaboratorDataValues(repositoryName, collaboratorData)
+        DatabaseManager.insertCollaboratorDataValues(repositoryName, collaboratorData)
 
-        insertCommitDataValues(repositoryName, commitData)
+        DatabaseManager.insertCommitDataValues(repositoryName, commitData)
 
-        insertPullRequestDataValues(pullRequestData)
+        DatabaseManager.insertPullRequestDataValues(pullRequestData)
 
-        insertPullReviewDataValues(pullReviewData)
+        DatabaseManager.insertPullReviewDataValues(pullReviewData)
 
 
 

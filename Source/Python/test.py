@@ -104,14 +104,14 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
 
-manager = GitConnectionManager()
+#manager = GitConnectionManager()
 
-gitData = GitCommitData(manager.getConnection())
-gitData.setGitHubRepository("ScrumDevils-SER_515")
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-result = gitData.getCommitData()
+#result = gitData.getCommitData()
 
-DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
+#DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
 
 #manager = GitConnectionManager()
 #gitData = GitCommitData(manager.getConnection())
@@ -131,3 +131,20 @@ DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
 
 #result = gitData.getCollaboratorData()
 #DatabaseManager.insertCollaboratorDataValues("sarthak-tiwari/ScrumDevils-SER_515", result)
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code testing DatabaseManager Class
+
+manager = GitConnectionManager()
+
+collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData("ScrumDevils-SER_515")
+print("Got Collaborator Data !")
+commitData = GitCommitData(manager.getConnection()).getCommitData("ScrumDevils-SER_515")
+print("Got Commit Data !")
+(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData("ScrumDevils-SER_515")
+print("Got Pull Request Data !")
+
+DatabaseManager.populateRepository("ScrumDevils-SER_515", collaboratorData, commitData, pullRequestData, pullReviewData)
+print("Data Inserted !")

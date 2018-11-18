@@ -6,6 +6,14 @@ from django.shortcuts import render
 from .models import User_Repositories, Repository_Collaborators, Repository_Commit_Data
 from .serializers import User_Repositories_Serializer, Repository_Collaborators_Serializer, commitCountInfo_Serializer
 
+from django.db import connection
+import json
+from django.http import JsonResponse
+from django.core import serializers
+from django.http import HttpResponse
+
+from .helper.helper import Helper
+
 # Create your views here.
 @api_view(['GET','POST'])
 def repository_list(request, username):
@@ -29,11 +37,11 @@ def repository_list(request, username):
 def repository_list_by_user(request, user):
     #repos = User_Repositories.objects.all()
     #return render(request,'repository_list.html',{'repos':repos})
-    query = "SELECT * FROM dashboard_user_repositories WHERE application_username ='" +user+"'"
     if request.method == 'GET':
-        repos = User_Repositories.objects.raw(query)
-        serializer = User_Repositories_Serializer(repos,many=True)
-        return Response(serializer.data)
+        columnNames = ['committer_name', 'commit_count']
+        query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data GROUP BY committer_name ORDER BY commit_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
 
 @api_view(['GET'])
 def repository_collaborators(request, repository_id):
