@@ -16,22 +16,16 @@ class Firstpage extends React.Component {
 
     onSubmit (event) {
       event.preventDefault();
-      var url = 'http://localhost:5000/api/getRow';
+      var url = 'http://localhost:8000/dashboard/repos_byuser/';
       const value = this.state.value;
-      alert(this.state.value);
+	  url = url + value + "/";
       fetch(url, {
-      method: 'post',
+      method: 'GET',
       headers: {
       'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'},
-       body: JSON.stringify({value: this.state.value, str: 'Hello!'})
-      
-    })
-      .then(res=>res.json())
-      .then(res => console.log(res.wow) );
-
-      var y = {value: this.state.value, str: 'Hello!'};
-      alert(JSON.stringify(y));
+      'Content-Type': 'application/json'}})
+      .then(response => response.json())
+.then(response => {alert(response[0].repository_name)});
     }
 
    
