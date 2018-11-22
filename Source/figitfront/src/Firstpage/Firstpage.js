@@ -18,7 +18,7 @@ class Firstpage extends React.Component {
       event.preventDefault();
       var url = 'http://localhost:5000/api/getRow';
       const value = this.state.value;
-      alert(this.state.value);
+      alert(value);
       fetch(url, {
       method: 'post',
       headers: {
@@ -42,10 +42,10 @@ class Firstpage extends React.Component {
       }
 
     render(){
-    return(   <div class="body">  
-                <div class="topnav">
-                    <a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src={Pin} alt="Smiley face"/></a>
-                        <div class="topnav-right">
+    return(   <div className="body">  
+                <div className="topnav">
+                    <a className="active" href="C:/Users/desai/Desktop/bootland.html"><img src={Pin} alt="FigitLogo"/></a>
+                        <div className="topnav-right">
                             <a href="C:/Users/desai/Desktop/help.html">Help</a>
                             <a href="C:/Users/desai/Desktop/about.html">About</a>
                         </div>
@@ -53,23 +53,23 @@ class Firstpage extends React.Component {
                 <br/>
                 <br/>
                 <br/>
-                <div class="header">
+                <div className="header" id="home">
                     <p>Analysing Git.</p>
                     <p>Simplified.</p>
                 </div>
-                <div class="container-fluid">
-                    <div class="form-group">  
+                <div className="container-fluid">
+                    <div className="form-group">  
                         <form action="#" onSubmit={(event)=>{this.onSubmit(event)}}>
-                            <div class="d-flex justify-content-center">
-                                <input type="text" class="form-control" id="usr" name="username" placeholder="Enter your email here" value={this.state.value} onChange={this.handleChange} onfocus=""></input>
+                            <div className="d-flex justify-content-center">
+                                <input type="email" className="form-control" id="usr" name="username" placeholder="Enter your email here" value={this.state.value} onChange={this.handleChange}></input>
                             </div>
                             <br/>
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="button"><span>Get Started</span></button>
+                            <div className="d-flex justify-content-center">
+                                <button type="submit" className="button"><span>Get Started</span></button>
                             </div>
                             <br/>
-                            <div class="d-flex justify-content-center">
-                                <a href="#">or Sign In</a>
+                            <div className="d-flex justify-content-center">
+                                <a href="#home">or Sign In</a>
                             </div>
                         </form>
                     </div>
