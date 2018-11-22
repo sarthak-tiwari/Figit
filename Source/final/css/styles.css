@@ -1,0 +1,73 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../images/background_trans.png");
+    background-size: cover;
+}
+
+.header {
+      padding: 5px;
+      text-align:center;
+      background:transparent;
+      color:#000000;
+      font-size: 50px;
+      font-family:'Josefin Sans', sans-serif;
+  }
+
+  .form-group input{
+     width: 340px;
+     height: 35px; 
+     padding: 10px 16px; 
+     box-shadow:0px 2px 6px #707070;
+  }
+
+  .form-group button{
+    width: 190px;
+    height: 45px;
+    padding: 1px 16px;
+    border-radius: 4px;
+  }
+
+  .form-group a{
+    color: #0066FF;
+    font-family: 'Roboto', sans-serif;
+  }
+
+   .button{
+        background-color: #F44336;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 20px; 
+        cursor: pointer;}
+  
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+   .button:hover span {
+            padding-right: 25px;
+            } 
+  
+  .button:hover{
+  background-color: #3e8e41;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0; }
+  
+    a:hover 
+    {
+        color: #0066FF;
+    }

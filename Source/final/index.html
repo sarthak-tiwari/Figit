@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css">
+    	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+    	<script type="text/javascript" src="./js/firstpage.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg">
+  			<a class="navbar-brand" href="#"><img src="./images/figit_logo100x100.png"></a>
+
+  			<div class="navmenu" id="landnav">
+    			<ul class="navbar-nav">
+      				<li class="nav-item active">
+        				<a class="nav-link" href="#">Help</a>
+      				</li>
+      				<li class="nav-item">
+        				<a class="nav-link" href="#">About Us</a>
+      				</li>
+    			</ul>
+  			</div>
+		</nav>
+		<br>
+		<br>
+		<br>
+		<div class="header">
+            <p>Analysing Git.</p>
+            <p>Simplified.</p>
+        </div>
+        <div class="container-fluid">
+            <div class="form-group">  
+                <form action="#" onSubmit=submit_email() id="email_form">
+                    <div class="d-flex justify-content-center">
+                        <input type="email" class="form-control" id="usr" name="username" placeholder="Enter your email here" value=onChange={this.handleChange} onfocus=""></input>
+                    </div>
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="button"><span>Get Started</span></button>
+                    </div>
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">or Sign In</a>
+                    </div>
+                </form>
+            </div>
+         </div>
+	</body>
+</html>

@@ -6,6 +6,24 @@
 
 <div id="piechart"></div>
 
+ <form id="dataselect" onclick="commitorpullreq()">
+  <input type="radio" name="valuetype" value="commit" id="commit">Commits<br>
+  <input type="radio" name="valuetype" value="pullrequest" id="pullrequest">Pull Requests<br>
+</form>
+<br>
+ <form id="commitselect" style="display: block;">
+  <input type="radio" name="committype" value="count">Commits counts<br>
+  <input type="radio" name="committype" value="adds">No. of additions<br>
+  <input type="radio" name="committype" value="dels">No. of deletions<br>
+  <input type="radio" name="committype" value="filmod">Files modified<br>
+</form>
+<br>
+<form id="pullreqselect" style="display: none;">
+  <input type="radio" name="pullreqtype" value="count">Count<br>
+  <input type="radio" name="pullreqtype" value="raised">raised<br>
+  <input type="radio" name="pullreqtype" value="reviewed">reviewed<br>
+</form>  
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
@@ -26,6 +44,9 @@ function drawChart() {
 ]);
 
 
+
+
+
   var options = {'title':'Team Commits Summary', 'width':550, 'height':400};
 
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -33,5 +54,18 @@ function drawChart() {
 }
 </script>
 
+
+
+<script type="text/javascript">
+function commitorpullreq() {
+  if (document.getElementById('commit').checked) {
+           document.getElementById('commitselect').style.display = "block";
+           document.getElementById('pullreqselect').style.display = "none";
+        } else if (document.getElementById('pullrequest').checked) {
+          document.getElementById('commitselect').style.display = "none";
+          document.getElementById('pullreqselect').style.display = "block";
+        }
+}
+</script>
 </body>
 </html>
