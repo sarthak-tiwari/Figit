@@ -1,4 +1,3 @@
-from .models import Application_Users
 from django.contrib.auth import get_user_model
 
 from django.db.models import Q
@@ -9,11 +8,6 @@ from rest_framework.serializers import (
     EmailField,
     ValidationError
 )
-
-class Application_Users_Serializer(ModelSerializer):
-    class Meta:
-        model = Application_Users
-        fields = ('email_id','application_username','password')
 
 User = get_user_model()
 
@@ -84,4 +78,25 @@ class UserLoginSerializer(ModelSerializer):
                 raise ValidationError("Incorrect credentials. Please try again")
 
         data["token"] = "SOME RANDOM TOKEN"
+        return data
+
+class UserExistSerializer(ModelSerializer):
+    email = EmailField(label='Email Address', required=False, allow_blank=True)
+    class Meta:
+        model = User
+        fields = [
+            'email',   
+        ]
+
+    def validate(self, data):
+        user_obj = None    
+        email = data.get("email", None)
+        if not email:
+            data["email"] = "NOT_EXISTS"
+        user = User.objects.filter( Q(email = email) ).distinct()
+        if user.exists() and user.count() == 1:
+            user_obj = user.first()
+        else:
+            data["email"] = "NOT_EXISTS"
+        
         return data
