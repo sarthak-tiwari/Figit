@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-<<<<<<< HEAD
+
 import ReactDOM from 'react-dom';
 import Help from './Help/Help';
 import CommitList from './CommitList/CommitList';
@@ -11,14 +11,10 @@ import Addrepository from './Addrepository/Addrepository';
 
 class App extends Component {
   
-  showAlert() {
-    ReactDOM.render(<Help/>, document.getElementById('root'));
-  }
-  
   render() {
     return (
       <div className="App">
-        <CommitList></CommitList>
+        <Firstpage></Firstpage>
       </div>
     );
   }
