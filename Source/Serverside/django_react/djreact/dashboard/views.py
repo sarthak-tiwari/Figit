@@ -52,3 +52,30 @@ def commit_count(request, repo):
         query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY commit_count DESC"
         result = Helper.executeQuery(query, columnNames)
         return result
+
+# GET Number of Additions for each Collaborator of a Github Repository
+@api_view(['GET'])
+def additions_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'additions_count']
+        query = "SELECT committer_name, SUM(number_of_additions) AS additions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY additions_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Deletions for each Collaborator of a Github Repository
+@api_view(['GET'])
+def deletions_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'deletions_count']
+        query = "SELECT committer_name, SUM(number_of_deletions) AS deletions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY deletions_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Files Modified for each Collaborator of a Github Repository
+@api_view(['GET'])
+def files_modified_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'modified_count']
+        query = "SELECT committer_name, SUM(number_of_files_modified) AS files_modified_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY files_modified_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
