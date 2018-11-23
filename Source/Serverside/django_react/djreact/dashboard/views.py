@@ -1,61 +1,81 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from django.shortcuts import render
-from .models import User_Repositories, Repository_Collaborators, Repository_Commit_Data
-from .serializers import User_Repositories_Serializer, Repository_Collaborators_Serializer, commitCountInfo_Serializer
+from django.db import connection
+import json
+from django.http import JsonResponse
+from django.core import serializers
+from django.http import HttpResponse
+from .helper.helper import Helper
 
-# Create your views here.
+# GET and POST Repository List according to Application Users.
 @api_view(['GET','POST'])
 def repository_list(request, username):
-    #repos = User_Repositories.objects.all()
-    #return render(request,'repository_list.html',{'repos':repos})
     if request.method == 'GET':
-        query = "SELECT * FROM dashboard_user_repositories WHERE application_username='" + username + "'"
-        repos = User_Repositories.objects.raw(query)
-        #repos = User_Repositories.objects.all()
-        serializer = User_Repositories_Serializer(repos,many=True)
-        return Response(serializer.data)
+        columnNames = ['github_repository', 'repository_url']
+        query = "SELECT github_repository, repository_url FROM application_user_repositories where application_username = '" + username + "'"
+        result = Helper.executeQuery(query, columnNames)
+        return result
     if request.method == 'POST':
-        serializer = User_Repositories_Serializer(data = request.data, many = True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        rows = request.data
+        for row in rows:
+            query = "INSERT INTO application_user_repositories ('application_username','repository_url') values ('"+row["application_username"]+"','"+row["repository_url"]+"')"
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+"""
 @api_view(['GET'])
 def repository_list_by_user(request, user):
     #repos = User_Repositories.objects.all()
     #return render(request,'repository_list.html',{'repos':repos})
-    query = "SELECT * FROM dashboard_user_repositories WHERE application_username ='" +user+"'"
     if request.method == 'GET':
-        repos = User_Repositories.objects.raw(query)
-        serializer = User_Repositories_Serializer(repos,many=True)
-        return Response(serializer.data)
+        columnNames = ['committer_name', 'commit_count']
+        query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data GROUP BY committer_name ORDER BY commit_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+"""
 
+# GET List of Collaborators according to Github Repository.
 @api_view(['GET'])
-def repository_collaborators(request, repository_id):
-    query1 = "SELECT * FROM dashboard_user_repositories WHERE id ='" +repository_id+"'"
-    repo = User_Repositories.objects.raw(query1)[0]
-
-    query2 = "SELECT * FROM dashboard_repository_collaborators WHERE repository_link ='" + repo.repository_link +"'"
+def repository_collaborators(request, repo):
     if request.method == 'GET':
-        collaborators = Repository_Collaborators.objects.raw(query2)
-        serializer = Repository_Collaborators_Serializer(collaborators,many=True)
-        return Response(serializer.data)
-    
-#getCommitDataForRepository
-@api_view(['GET'])
-def getCommitDataForRepository(request, repository_id):
-    #(repo, collaboratorList) = getCollaboratorList(repository_id)
-    getInfoByRepoIdSql = "SELECT * FROM dashboard_user_repositories WHERE id ='" +str(repository_id)+"'"
-    repo = User_Repositories.objects.raw(getInfoByRepoIdSql)[0]
-    
-    getInfoByRepoLinkSql = "SELECT * FROM dashboard_Repository_Commit_Data WHERE repository_link ='" + repo.repository_link +"'"
-    
-    collaboratorList = Repository_Commit_Data.objects.raw(getInfoByRepoLinkSql)
+        columnNames = ['github_username', 'github_profile_url', 'github_image_url']
+        query = "select p.github_username, p.github_profile_url, p.github_image_url from git_user_profiles as p join git_repository_collaborators as g on p.github_login = g.github_login where g.github_repository = '"+ repo +"'"
+        result = Helper.executeQuery(query, columnNames)
+        return result
 
-    serializer = commitCountInfo_Serializer(collaboratorList, many = True)
-    return Response(serializer.data)
+# GET Number of Commits for each Collaborator of a Github Repository
+@api_view(['GET'])
+def commit_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'commit_count']
+        query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY commit_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Additions for each Collaborator of a Github Repository
+@api_view(['GET'])
+def additions_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'additions_count']
+        query = "SELECT committer_name, SUM(number_of_additions) AS additions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY additions_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Deletions for each Collaborator of a Github Repository
+@api_view(['GET'])
+def deletions_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'deletions_count']
+        query = "SELECT committer_name, SUM(number_of_deletions) AS deletions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY deletions_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Files Modified for each Collaborator of a Github Repository
+@api_view(['GET'])
+def files_modified_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'modified_count']
+        query = "SELECT committer_name, SUM(number_of_files_modified) AS files_modified_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY files_modified_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
