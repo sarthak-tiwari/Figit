@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css">
+    	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+    	<script type="text/javascript" src="./js/firstpage.js"></script>
+</head>
+<body>
+	<button class = "btn btn-primary" data-toggle= "modal" data-target="#cardmodal">hello modal</button>
+	<div class="modal" id="cardmodal">
+  <div class="modal-dialog" role="document" style="max-width: 800px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: scroll; height: 500px;">
+        <a href="https://www.google.com" class='commitTemplate'>
+   		<div id="compdiv">
+   		<table>
+   		<tr style="color: blue">
+    		<td class="tdtitle">Date</td>
+    		<td>:</td>
+    		<td>12/21/2018</td>
+  		</tr>
+  		<tr style="color: blue">
+    		<td class="tdtitle">Message</td>
+    		<td>:</td>
+    		<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    		tempor incididunt ut labore et dolore magna aliqua. </td>
+  		</tr>
+  		<tr style="color: green;">
+    		<td class="tdtitle">No. of additions</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		<tr  style="color: red;">
+    		<td class="tdtitle">No. of deletions</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		<tr style="color: purple;">
+    		<td class="tdtitle">No. of Files modified</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		</table>
+   		</div>
+   </a>
+   <a href="https://www.google.com" class='commitTemplate'>
+   		<div id="compdiv">
+   		<table>
+   		<tr style="color: blue">
+    		<td class="tdtitle">Date</td>
+    		<td>:</td>
+    		<td>12/21/2018</td>
+  		</tr>
+  		<tr style="color: blue">
+    		<td class="tdtitle">Message</td>
+    		<td>:</td>
+    		<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    		tempor incididunt ut labore et dolore magna aliqua. </td>
+  		</tr>
+  		<tr style="color: green;">
+    		<td class="tdtitle">No. of additions</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		<tr  style="color: red;">
+    		<td>No. of deletions</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		<tr style="color: purple;">
+    		<td>No. of Files modified</td>
+    		<td>:</td>
+    		<td>{prop[0]}</td>
+  		</tr>
+  		</table>
+   		</div>
+   </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+
+<style>
+
+.modal {
+	
+}
+   .commitTemplate {
+   margin: 10px;
+   text-decoration: none;
+   font-family: 'Roboto', sans-serif; 
+ }
+
+ #compdiv {
+ 	box-shadow: 3px 3px 7px #707070;
+ 	padding: 20px;
+ 	margin: 10px;
+ }
+
+ #compdiv:hover {
+ 	box-shadow: 3px 3px 7px #000000;
+ 	transition: 0.5s;
+ }
+
+ .committemplate td {
+ 	padding: 2px;
+ }
+
+ a:hover {
+ 	text-decoration: none;
+ }
+
+ .tdtitle {
+ 	font-weight: 800;
+ 	width: 25%;
+ }
+ </style>
+</body>
+</html>
