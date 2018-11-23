@@ -1,6 +1,7 @@
   import React from 'react';
   import './FirstpageStyle.css';
   import Pin from './logo2.png';
+  import { withRouter } from "react-router-dom";
 
 
   class Firstpage extends React.Component {
@@ -18,28 +19,27 @@
     event.preventDefault();
     var url = 'http://localhost:8000/dashboard/repos_byuser/';
     const value = this.state.value;
-    alert(value);
-     url = url + value + "/";
+    url = url + value + "/";
     fetch(url, {
     method: 'GET',
     headers: {
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json'}})
-    .then(response => response.json())
-    .then(response => {alert(response[0].repository_name)});
+    .then(response => response.json());
+    // .then(response => {alert(response)});
+    //Condition to check before redirection
+    // if(event.target.value != null){
+        this.redirectToTarget();
+      // }
   }
-
-
-
 
   handleChange(event) {
       this.setState({value: event.target.value});
-      // if(event.target.value != null){
-      //   render(){
-      //     return(<div>check</div>);
-      //   }
-      // }
     }
+
+  redirectToTarget = () => {
+    this.props.history.push('/addrepository');
+  }
 
   render(){
   return(   <div className="body">  
@@ -65,7 +65,7 @@
                           </div>
                           <br/>
                           <div className="d-flex justify-content-center">
-                              <button type="submit" className="button"><span>Get Started</span></button>
+                              <button type="submit" className="button">Get Started!!</button>
                           </div>
                           <br/>
                           <div className="d-flex justify-content-center">
@@ -79,4 +79,4 @@
   }
   }
 
-  export default Firstpage;
+  export default withRouter(Firstpage);
