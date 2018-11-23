@@ -1,8 +1,9 @@
 {
-  "name": "figitfront",
+  "name": "react-complete-guide",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.5",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5"

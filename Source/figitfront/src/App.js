@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+<<<<<<< HEAD
 import ReactDOM from 'react-dom';
 import Help from './Help/Help';
 import CommitList from './CommitList/CommitList';
 import PullRequest from './pullReq/pullReq';
+import Firstpage from './Firstpage/Firstpage';
+import Addrepository from './Addrepository/Addrepository';
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
   
@@ -20,5 +23,5 @@ class App extends Component {
     );
   }
 }
-
 export default App;
+

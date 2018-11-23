@@ -13,7 +13,6 @@ class Repository_Collaborators(models.Model):
     repository_name = models.CharField(max_length=200)
     collaborator_username = models.CharField(max_length=100)
     collaborator_name = models.CharField(max_length=100)
-<<<<<<< HEAD
 
 #Commit Data Model for Django
 class Repository_Commit_Data(models.Model):
@@ -24,5 +23,3 @@ class Repository_Commit_Data(models.Model):
     numberOfAdditions = models.IntegerField()
     numberOfDeletions = models.IntegerField()
     filesModified = models.IntegerField()
-=======
->>>>>>> development
