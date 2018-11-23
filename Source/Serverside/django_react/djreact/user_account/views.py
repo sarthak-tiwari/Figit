@@ -3,10 +3,9 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Application_Users
 
 from django.contrib.auth import get_user_model
-from .serializers import Application_Users_Serializer, UserCreateSerializer, UserLoginSerializer
+from .serializers import UserCreateSerializer, UserLoginSerializer, UserExistSerializer
 
 from rest_framework.views import APIView
 from rest_framework.generics import (
@@ -23,17 +22,6 @@ from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticatedOrReadOnly,
 )
-
-# Create your views here.
-@api_view(['POST'])
-def signup(request):
-    if request.method == 'POST':
-        serializer = Application_Users_Serializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
 User = get_user_model()
 
@@ -52,3 +40,17 @@ class UserLoginAPIView(APIView):
             new_data = serializer.data
             return Response(new_data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserExistAPIView(APIView):
+    serializer_class = UserExistSerializer
+    
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = UserExistSerializer(data=data)
+        if serializer.is_valid(raise_exception=True):
+            new_data = serializer.data
+            if new_data["email"] == "NOT_EXISTS":
+                return Response("false", status=status.HTTP_200_OK)
+            else:
+                return Response("true", status=status.HTTP_200_OK)
+        return Response("false", status=status.HTTP_400_BAD_REQUEST)

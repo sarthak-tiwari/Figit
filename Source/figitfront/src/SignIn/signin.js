@@ -20,7 +20,7 @@ class Signin extends Component {
       const title = event.target.elements.title.value;
       const content = event.target.elements.content.value;
       const user_id = localStorage.getItem('token');
-      var url = 'http://localhost:5000/api/getRow';
+      var url = 'http://localhost:8000/user/login/';
       console.log(event.target.elements.title.value);
       console.log(event.target.elements.content.value);
       fetch(url, {
@@ -28,13 +28,14 @@ class Signin extends Component {
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
+            
         },
-        body: JSON.stringify({title: event.target.elements.value, content:event.target.elements.content.value})
+        body: JSON.stringify({"email": event.target.elements.title.value, "password": event.target.elements.content.value})
       })
         .then(res=>res.json())
-        .then(res => console.log(res.wow) );
+        .then(res => console.log(res));
          
-        var x = {title:event.target.elements.title.value, content:event.target.elements.content.value};
+        var x = {email:event.target.elements.title.value, password:event.target.elements.content.value};
       alert(JSON.stringify(x));
         
     }
