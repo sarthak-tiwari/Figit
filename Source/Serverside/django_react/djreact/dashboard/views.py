@@ -43,4 +43,12 @@ def repository_collaborators(request, repo):
         query = "select p.github_username, p.github_profile_url, p.github_image_url from git_user_profiles as p join git_repository_collaborators as g on p.github_login = g.github_login where g.github_repository = '"+ repo +"'"
         result = Helper.executeQuery(query, columnNames)
         return result
-    
+
+# GET Number of Commits for each Collaborator of a Github Repository
+@api_view(['GET'])
+def commit_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['committer_name', 'commit_count']
+        query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY commit_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
