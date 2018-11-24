@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
-import axios from 'axios';
 import './Signup.css';
 
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const FormItem = Form.Item;
 
 class Signup extends Component {

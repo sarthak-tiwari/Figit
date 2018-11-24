@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
-import './Signin.css';
+import './signin.css';
 
 //axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const FormItem = Form.Item;
