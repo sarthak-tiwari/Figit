@@ -9,7 +9,8 @@
   constructor(props){
       super(props);
       this.state = {
-          value: ''
+          value: '',
+          returnedValue: 'default'
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -27,7 +28,8 @@
 	body: JSON.stringify({"email": value})
 	})
     .then(response => {return(response.json())})
-    .then(response => {alert(response["email"])});
+    .then(response => {this.setState({returnedValue: response["value"]})})
+    .then(response => {this.redirectToTarget()})
   }
 
   handleChange(event) {
@@ -35,7 +37,13 @@
     }
 
   redirectToTarget = () => {
-    this.props.history.push('/addrepository');
+      alert(this.state.returnedValue);
+    if (this.state.returnedValue == true){
+        this.props.history.push('/addrepository');
+    }
+    else {
+        this.props.history.push('/help');
+    }
   }
 
   render(){

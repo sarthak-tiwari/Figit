@@ -19,6 +19,7 @@ class App extends Component {
 	      <Route exact path="/" component={Firstpage} />
 	      <Route path="/addrepository" component={Addrepository} />
 	      <Route path="/dashboard" component={Dashboard} />
+				<Route path="/help" component={Help} />
       	</div>
 	  </Router>
     );

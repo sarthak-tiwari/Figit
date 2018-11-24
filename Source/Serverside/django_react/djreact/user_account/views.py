@@ -53,13 +53,13 @@ class UserExistAPIView(APIView):
         if serializer.is_valid(raise_exception=True):
             new_data = serializer.data
             element = {}
-            element["email"] = False
+            element["value"] = False
             json_output = json.dumps(element)
             if new_data["email"] == "NOT_EXISTS":
                 return HttpResponse(json_output, content_type="application/json", status=status.HTTP_200_OK)
                 #return Response('{"value":"false"}', status=status.HTTP_200_OK)
             else:
-                element["email"] = True
+                element["value"] = True
                 json_output = json.dumps(element)
                 return HttpResponse(json_output, content_type="application/json", status=status.HTTP_200_OK)
                 #return Response('{"value":"true"}', status=status.HTTP_200_OK)
