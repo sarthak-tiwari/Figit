@@ -37,7 +37,6 @@
     }
 
   redirectToTarget = () => {
-      alert(this.state.returnedValue);
     if (this.state.returnedValue == true){
         this.props.history.push('/addrepository');
     }
