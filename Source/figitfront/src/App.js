@@ -9,6 +9,7 @@ import './index.js';
 import Firstpage from './Firstpage/Firstpage';
 import Addrepository from './Addrepository/Addrepository';
 import Dashboard from './Dashboard/Dashboard';
+import Signin from './SignIn/signin';
 
 class App extends Component {
   
@@ -19,7 +20,8 @@ class App extends Component {
 	      <Route exact path="/" component={Firstpage} />
 	      <Route path="/addrepository" component={Addrepository} />
 	      <Route path="/dashboard" component={Dashboard} />
-				<Route path="/help" component={Help} />
+		  <Route path="/help" component={Help} />
+		  <Route path="/signin" component={Signin} />
       	</div>
 	  </Router>
     );

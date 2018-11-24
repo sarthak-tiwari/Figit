@@ -1,46 +1,53 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
-import axios from 'axios';
+//import axios from 'axios';
 import './signin.css';
 
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
+//axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const FormItem = Form.Item;
 
 class Signin extends Component {
 
     constructor() {
-        super();
-        
 
+        super();
+
+        this.state = {
+          returnedValue: 'default'
+        };
+
+        this.onSubmit = this.onSubmit.bind(this);
     }
-    handleSubmit = (event) =>
-  
-    { event.preventDefault();
+
+    onSubmit (event) { 
+      event.preventDefault();
       const title = event.target.elements.title.value;
       const content = event.target.elements.content.value;
-      const user_id = localStorage.getItem('token');
+      //const user_id = localStorage.getItem('token');
       var url = 'http://localhost:8000/user/login/';
-      console.log(event.target.elements.title.value);
-      console.log(event.target.elements.content.value);
+      //console.log(event.target.elements.title.value);
+      //console.log(event.target.elements.content.value);
       fetch(url, {
-        method: 'post',
+        method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-            
-        },
-        body: JSON.stringify({"email": event.target.elements.title.value, "password": event.target.elements.content.value})
+          'Content-Type': 'application/json' },
+        body: JSON.stringify({"email": title, "password": content})
       })
-        .then(res=>res.json())
-        .then(res => console.log(res));
-         
-        var x = {email:event.target.elements.title.value, password:event.target.elements.content.value};
-      alert(JSON.stringify(x));
-        
+      .then(response => {return(response.json())})
+      .then(response => {this.setState({returnedValue: response["token"]})})
+      .then(response => {this.redirectToTarget()})
     }
         
-
+    redirectToTarget = () => {
+      if (this.state.returnedValue != "SOME RANDOM TOKEN"){
+          alert("Invalid Username or Password !")
+      }
+      else {
+          this.props.history.push('/addrepository');
+      }
+    }
     
     render() {
       
@@ -83,7 +90,7 @@ class Signin extends Component {
   <div class="col-lg-3 offset-lg-1">
   <h4  id="head">Sign in with credentials</h4>
   <div class="form-group" >
-    <Form onSubmit= {(event) => this.handleSubmit(event)}>
+    <Form onSubmit= {(event) => this.onSubmit(event)}>
     
    <FormItem >
    <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" >

@@ -37,8 +37,8 @@
     }
 
   redirectToTarget = () => {
-    if (this.state.returnedValue == true){
-        this.props.history.push('/addrepository');
+    if (this.state.returnedValue === true){
+        this.props.history.push('/signin');
     }
     else {
         this.props.history.push('/help');
