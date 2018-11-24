@@ -55,7 +55,7 @@ def commit_count(request, repo):
 
 # GET Number of Additions for each Collaborator of a Github Repository
 @api_view(['GET'])
-def additions_count(request, repo):
+def commit_additions_count(request, repo):
     if request.method == 'GET':
         columnNames = ['committer_name', 'additions_count']
         query = "SELECT committer_name, SUM(number_of_additions) AS additions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY additions_count DESC"
@@ -64,7 +64,7 @@ def additions_count(request, repo):
 
 # GET Number of Deletions for each Collaborator of a Github Repository
 @api_view(['GET'])
-def deletions_count(request, repo):
+def commit_deletions_count(request, repo):
     if request.method == 'GET':
         columnNames = ['committer_name', 'deletions_count']
         query = "SELECT committer_name, SUM(number_of_deletions) AS deletions_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY deletions_count DESC"
@@ -73,9 +73,45 @@ def deletions_count(request, repo):
 
 # GET Number of Files Modified for each Collaborator of a Github Repository
 @api_view(['GET'])
-def files_modified_count(request, repo):
+def commit_files_modified_count(request, repo):
     if request.method == 'GET':
         columnNames = ['committer_name', 'modified_count']
         query = "SELECT committer_name, SUM(number_of_files_modified) AS files_modified_count FROM git_commit_data where github_repository = '"+ repo +"' GROUP BY committer_name ORDER BY files_modified_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Pull Requests Raised for each Collaborator of a Github Repository
+@api_view(['GET'])
+def pull_requests_raise_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['requester_login', 'raise_count']
+        query = "SELECT requester_login, COUNT(*) AS raise_count FROM git_pull_request_data where github_repository = '"+ repo +"' GROUP BY requester_login ORDER BY raise_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Pull Requests Reviewed for each Collaborator of a Github Repository
+@api_view(['GET'])
+def pull_requests_review_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['reviewer_login', 'review_count']
+        query = "SELECT reviewer_login, COUNT(*) AS review_count FROM git_pull_review_data where github_repository = '"+ repo +"' GROUP BY reviewer_login ORDER BY review_count DESC"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Details of a Pull Requests Raised of a Github Repository
+@api_view(['GET'])
+def pull_requests_raise_details(request, repo, req_id):
+    if request.method == 'GET':
+        columnNames = ['requester_login', 'request_date','request_title','request_body','request_url']
+        query = "SELECT requester_login, request_date, request_title, request_body, request_url FROM git_pull_request_data where github_repository = '"+ repo +"' and request_id = '"+ req_id +"'"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Details of a Pull Requests Reviewed of a Github Repository
+@api_view(['GET'])
+def pull_requests_review_details(request, repo, req_id):
+    if request.method == 'GET':
+        columnNames = ['reviewer_login', 'review_date','review_comment','review_url']
+        query = "SELECT reviewer_login, review_date, review_comment, review_url FROM git_pull_review_data where github_repository = '"+ repo +"' and request_id = '"+ req_id +"'"
         result = Helper.executeQuery(query, columnNames)
         return result
