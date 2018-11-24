@@ -21,10 +21,10 @@ class App extends Component {
 
   getChartData() {
     var test = [
-      [['x1', "bpanda1"], ['x2', 10]],
-      [['x1', "bpanda2"], ['x2', 7]],
-      [['x1', "bpanda3"], ['x2', 17]],
-      [['x1', "bpanda4"], ['x2', 4]]
+      [['x1', "Jan 2 2018"], ['x2', 100]],
+      [['x1', "Sep 4 2018"], ['x2', 13]],
+      [['x1', "Nov 13 2018"], ['x2', 0]],
+      [['x1', "Dec 13 2018"], ['x2', 15]]
     ];
     // Ajax calls here
     var xValues = [];
@@ -52,9 +52,12 @@ class App extends Component {
           {
             label:yAxisName,
             data: yValues,
+            default: 0,
             backgroundColor: 'blue',
             fill:false,
-            lineTension: 0
+            lineTension:0,
+            stacked:true,
+            fillGapsWithZero: true
           }
         ]
       }
