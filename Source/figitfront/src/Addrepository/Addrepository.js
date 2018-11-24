@@ -58,7 +58,7 @@ render(){
           <form name="add_name" id="add_name" onSubmit={(event)=>{this.onSubmit(event)}} action="#">
             <div className="table-responsive">
               <div className="d-flex justify-content-center">
-                <table className="table table-bordered" id="dynamic_field" style={{width: 650+'px'}}>
+                <table className="table" id="dynamic_field" style={{width: 650+'px'}}>
                   <tbody>
                     <tr>
                       <td><input type="text" id="link"  placeholder="Paste your GitHub repository link here" className="form-control name_list" /></td>

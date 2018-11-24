@@ -27,8 +27,12 @@ img{
     width:"";
   
 }
+
+#usr1, #usr2 {
+	width: 80%
+}
+
 .form-group input{
-	width: 80%;
 	margin-bottom:40px;
 	margin-left: 35px;
 	height: 35px; 
