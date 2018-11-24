@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
 //import axios from 'axios';
 import './signin.css';
+import Pin from './logo2.png';
 
 //axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const FormItem = Form.Item;
@@ -14,7 +15,7 @@ class Signin extends Component {
         super(props);
        
         this.state = {
-          value : 'default email',
+          value : '',
           returnedValue: 'default'
         };
 
@@ -61,45 +62,56 @@ class Signin extends Component {
       
       return (
         <div className="Signin">
-          
-          <div class="topnav">
-  <a class="active" href="C:/Users/PALAK CHUGH/Desktop/SER 515/Bootstrap/Create.html">
-  <img src="" alt="LOGO"></img>
-  </a>
-  <div class="topnav-right">
-    <a href="#search">Help</a>
-    <a href="#about">About</a>
-  </div>
-</div>
+          <div className="topnav">
+            <a className="active" href="C:/Users/desai/Desktop/bootland.html"><img src={Pin} alt="FigitLogo"/></a>
+              <div className="topnav-right">
+                <a href="C:/Users/desai/Desktop/help.html">Help</a>
+                <a href="C:/Users/desai/Desktop/about.html">About</a>
+              </div>
+        </div>
 <br></br> 
 <div class="header">
-  <p id="first"> Welcome Back!</p>
-   
+  <p id="first"> Welcome Back!</p> 
 </div>
+<br/>
+<br/>
 <div class="container-fluid">
   <div class="row">
- <div class="col-lg-3 offset-lg-1">
-   
-    <div >
-      <h4 >Sign in with account</h4>
+  <div class="col-lg-3 card  justify-content-center offset-lg-1" id="accountcard">
+   <div className = "">
+      <br/>
+      <h4>Sign in with account</h4>
       <div class="form-group">
-      <button type="button" class="btn" aria-label="Left Align"><span id="span1" ><i className="fab fa-github"> Sign in with GitHub</i></span></button>
-      
-      <button type="button" class="btn-default" aria-label="Left Align"><span id="span2"><i className="fab fa-google"> Sign in with Google</i></span></button>
+      <button type="button" id="gitbutton" className="btn-default signinbutton" aria-label="Left Align"><span><i className="fab fa-github"> Sign in with GitHub</i></span></button>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <button type="button" id="googbutton" className="btn-default signinbutton" aria-label="Left Align"><span><i className="fab fa-google"> Sign in with Google</i></span></button>
       </div>
-      
-      </div>
+     <br/>
+      <br/>
+      <br/>
+      <br/>
+    </div>
  </div>
 
  <div class="col-lg-2 offset-lg-1">
+  <br/>
+      <br/>
+      <br/>
+      <br/>
   <h4>-or-</h4>
  </div>
 
-  <div class="col-lg-3 offset-lg-1">
+  <div class="col-lg-3 card offset-lg-1" id="usercard">
   <h4  id="head">Sign in with credentials</h4>
   <div class="form-group" >
+    <br/>
+      <br/>
+      <br/>
+      <br/>
     <Form onSubmit= {(event) => this.onSubmit(event)}>
-    
    <FormItem >
    <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" value={this.state.value}
     onChange={this.handleChange}>
@@ -111,7 +123,7 @@ class Signin extends Component {
             </FormItem>
            
             <FormItem>
-                <button  class="smallbtn" htmlType="submit"><span id = "span2">Get in</span></button>
+                <button class="smallbtn" htmlType="submit">Get in</button>
             </FormItem>
             
     <br></br>    

@@ -47,7 +47,7 @@
   }
 
   render(){
-  return(   <div className="body">  
+  return(   <div className="landpage">  
               <div className="topnav">
                   <a className="active" href="C:/Users/desai/Desktop/bootland.html"><img src={Pin} alt="FigitLogo"/></a>
                       <div className="topnav-right">
@@ -55,6 +55,11 @@
                           <a href="C:/Users/desai/Desktop/about.html">About</a>
                       </div>
               </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               <br/>
               <br/>
               <br/>
@@ -68,9 +73,8 @@
                           <div className="d-flex justify-content-center">
                               <input type="email" className="form-control" id="usr" name="username" placeholder="Enter your email here" value={this.state.value} onChange={this.handleChange}></input>
                           </div>
-                          <br/>
                           <div className="d-flex justify-content-center">
-                              <button type="submit" className="button">Get Started!!</button>
+                              <button type="submit" className="getinbutton">Get Started</button>
                           </div>
                           <br/>
                           <div className="d-flex justify-content-center">
@@ -78,6 +82,16 @@
                           </div>
                       </form>
                   </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               </div>
           </div>
        );  
