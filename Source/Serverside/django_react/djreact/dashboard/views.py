@@ -20,9 +20,13 @@ def repository_list(request, username):
     if request.method == 'POST':
         rows = request.data
         for row in rows:
-            query = "INSERT INTO application_user_repositories ('application_username','repository_url') values ('"+row["application_username"]+"','"+row["repository_url"]+"')"
+            repo_url_split = row["repository_url"].split("/")
+            repo_name = repo_url_split[3]+"_"+repo_url_split[4]
+            query = "INSERT INTO application_user_repositories ('application_username','github_repository','repository_url') values ('"+row["application_username"]+"','"+repo_name+"','"+row["repository_url"]+"')"
             with connection.cursor() as cursor:
                 cursor.execute(query)
+        return HttpResponse("Repositories Added", content_type="application/json")
+        
 """
 @api_view(['GET'])
 def repository_list_by_user(request, user):
