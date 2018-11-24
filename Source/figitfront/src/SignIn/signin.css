@@ -17,9 +17,7 @@ div h4{
 	text-align:center;
 }
 
-#head{
-	margin-bottom: -16px;
-}
+
 img{
 
     background-color: transparent;
@@ -108,14 +106,14 @@ text-align: center;
 
 .button{
         
-        alignment-baseline: 10px;
-        align-items: baseline;
-          color: #FFFFFF;
-          text-align: center;
-          padding: 0px;
-          cursor: pointer;
-         align-self: center;
-         margin-left: 120px;
+alignment-baseline: 10px;
+align-items: baseline;
+color: #FFFFFF;
+text-align: center;
+padding: 0px;
+cursor: pointer;
+align-self: center;
+margin-left: 100px;
 }
 
 .btn-default
