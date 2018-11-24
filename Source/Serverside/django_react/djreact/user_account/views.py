@@ -23,6 +23,9 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 
+import json
+from django.http import HttpResponse
+
 User = get_user_model()
 
 class UserCreateAPIView(CreateAPIView):
@@ -49,8 +52,16 @@ class UserExistAPIView(APIView):
         serializer = UserExistSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             new_data = serializer.data
+            element = {}
+            element["email"] = False
+            json_output = json.dumps(element)
             if new_data["email"] == "NOT_EXISTS":
-                return Response("false", status=status.HTTP_200_OK)
+                return HttpResponse(json_output, content_type="application/json", status=status.HTTP_200_OK)
+                #return Response('{"value":"false"}', status=status.HTTP_200_OK)
             else:
-                return Response("true", status=status.HTTP_200_OK)
-        return Response("false", status=status.HTTP_400_BAD_REQUEST)
+                element["email"] = True
+                json_output = json.dumps(element)
+                return HttpResponse(json_output, content_type="application/json", status=status.HTTP_200_OK)
+                #return Response('{"value":"true"}', status=status.HTTP_200_OK)
+        return HttpResponse(json_output, content_type="application/json", status=status.HTTP_200_OK)
+        #return Response('{"value":"false"}', status=status.HTTP_400_BAD_REQUEST)

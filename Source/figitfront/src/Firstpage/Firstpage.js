@@ -17,20 +17,17 @@
 
   onSubmit (event) {
     event.preventDefault();
-    var url = 'http://localhost:8000/dashboard/repos_byuser/';
+    var url = 'http://localhost:8000/user/user_exists/';
     const value = this.state.value;
-    url = url + value + "/";
     fetch(url, {
-    method: 'GET',
+    method: 'POST',
     headers: {
     'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json'}})
-    .then(response => response.json());
-    // .then(response => {alert(response)});
-    //Condition to check before redirection
-    // if(event.target.value != null){
-        this.redirectToTarget();
-      // }
+    'Content-Type': 'application/json'},
+	body: JSON.stringify({"email": value})
+	})
+    .then(response => {return(response.json())})
+    .then(response => {alert(response["email"])});
   }
 
   handleChange(event) {
