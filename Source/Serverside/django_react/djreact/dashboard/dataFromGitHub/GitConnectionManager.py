@@ -3,7 +3,7 @@
 #import statements
 from github import Github
 from github import GithubException
-from Constants import Constants
+from .Constants import Constants
 
 #class definition
 class GitConnectionManager:

@@ -4,15 +4,13 @@
 
 #import statements
 from github import Github
-from GitConnectionManager import GitConnectionManager
+from .GitConnectionManager import GitConnectionManager
 
-from GitCommitData import GitCommitData
-from GitCommitData import CommitData
+from .GitCommitData import GitCommitData
 
-from GitPullRequestData import GitPullRequestData
-from GitPullRequestData import PullRequestData
-from GitCollaboratorData import GitCollaboratorData
-from DatabaseManager import DatabaseManager
+from .GitPullRequestData import GitPullRequestData
+from .GitCollaboratorData import GitCollaboratorData
+from .DatabaseManager import DatabaseManager
 
 
 #----------------------------------------------------------------------------------------
@@ -137,14 +135,16 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
 
-manager = GitConnectionManager()
+def getDataFromGitHubIntoDB(repositoryName):
 
-collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData("ScrumDevils-SER_515")
-print("Got Collaborator Data !")
-commitData = GitCommitData(manager.getConnection()).getCommitData("ScrumDevils-SER_515")
-print("Got Commit Data !")
-(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData("ScrumDevils-SER_515")
-print("Got Pull Request Data !")
+	manager = GitConnectionManager()
 
-DatabaseManager.populateRepository("ScrumDevils-SER_515", collaboratorData, commitData, pullRequestData, pullReviewData)
-print("Data Inserted !")
+	collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData(repositoryName)
+	print("Got Collaborator Data !")
+	commitData = GitCommitData(manager.getConnection()).getCommitData(repositoryName)
+	print("Got Commit Data !")
+	(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData(repositoryName)
+	print("Got Pull Request Data !")
+
+	DatabaseManager.populateRepository(repositoryName, collaboratorData, commitData, pullRequestData, pullReviewData)
+	print("Data Inserted !")
