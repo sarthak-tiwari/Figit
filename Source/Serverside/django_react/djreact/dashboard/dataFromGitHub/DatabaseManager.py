@@ -1,7 +1,7 @@
 #class to access the local database instance
 
 import sqlite3
-from Constants import Constants
+from .Constants import Constants
 
 class DatabaseManager:
 
@@ -27,7 +27,7 @@ class DatabaseManager:
 
         conn = DatabaseManager.getConnection()
 
-        for row in conn.execute('SELECT * FROM dashboard_user_repositories;'):
+        for row in conn.execute('SELECT * FROM application_user_repositories;'):
             print(row)
 
 
