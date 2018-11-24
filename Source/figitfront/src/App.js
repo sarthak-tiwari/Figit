@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import ReactDOM from 'react-dom';
 import Help from './Help/Help';
+import CommitList from './CommitList/CommitList';
 import PullRequest from './pullReq/pullReq';
 import LineChart from './Chart/LineChart';
 
@@ -19,3 +20,4 @@ class App extends Component {
 }
 
 export default App;
+
