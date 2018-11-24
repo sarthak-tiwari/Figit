@@ -9,7 +9,8 @@
   constructor(props){
       super(props);
       this.state = {
-          value: ''
+          value: '',
+          returnedValue: 'default'
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -17,20 +18,18 @@
 
   onSubmit (event) {
     event.preventDefault();
-    var url = 'http://localhost:8000/dashboard/repos_byuser/';
+    var url = 'http://localhost:8000/user/user_exists/';
     const value = this.state.value;
-    url = url + value + "/";
     fetch(url, {
-    method: 'GET',
+    method: 'POST',
     headers: {
     'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json'}})
-    .then(response => response.json());
-    // .then(response => {alert(response)});
-    //Condition to check before redirection
-    // if(event.target.value != null){
-        this.redirectToTarget();
-      // }
+    'Content-Type': 'application/json'},
+	body: JSON.stringify({"email": value})
+	})
+    .then(response => {return(response.json())})
+    .then(response => {this.setState({returnedValue: response["value"]})})
+    .then(response => {this.redirectToTarget()})
   }
 
   handleChange(event) {
@@ -38,7 +37,13 @@
     }
 
   redirectToTarget = () => {
-    this.props.history.push('/addrepository');
+    const value = this.state.value;
+    if (this.state.returnedValue === true){
+        this.props.history.push({pathname: '/signin', state: {email: value}});
+    }
+    else {
+        this.props.history.push('/help');
+    }
   }
 
   render(){

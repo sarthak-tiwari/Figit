@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
+import ReactDOM from 'react-dom';
+import Help from './Help/Help';
+import CommitList from './CommitList/CommitList';
+import PullRequest from './pullReq/pullReq';
 import './index.js';
 import Firstpage from './Firstpage/Firstpage';
 import Addrepository from './Addrepository/Addrepository';
 import Dashboard from './Dashboard/Dashboard';
+import Signin from './SignIn/signin';
 
 class App extends Component {
-
+  
   render() {
     return(
       <Router>
@@ -15,6 +20,8 @@ class App extends Component {
 	      <Route exact path="/" component={Firstpage} />
 	      <Route path="/addrepository" component={Addrepository} />
 	      <Route path="/dashboard" component={Dashboard} />
+		  	<Route path="/help" component={Help} />
+		  	<Route path="/signin" component={Signin} />
       	</div>
 	  </Router>
     );
