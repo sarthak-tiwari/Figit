@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
-//import axios from 'axios';
-import './signin.css';
+import './Signin.css';
 
 //axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const FormItem = Form.Item;
@@ -63,7 +62,7 @@ class Signin extends Component {
         <div className="Signin">
           
           <div class="topnav">
-  <a class="active" href="C:/Users/PALAK CHUGH/Desktop/SER 515/Bootstrap/Create.html">
+  <a class="active" href="">
   <img src="" alt="LOGO"></img>
   </a>
   <div class="topnav-right">
