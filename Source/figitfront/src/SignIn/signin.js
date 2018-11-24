@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import { Form,Input, Button } from 'antd';
-//import axios from 'axios';
 import './signin.css';
 import Pin from './logo2.png';
 
