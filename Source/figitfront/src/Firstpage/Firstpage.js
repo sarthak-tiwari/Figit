@@ -37,8 +37,9 @@
     }
 
   redirectToTarget = () => {
+    const value = this.state.value;
     if (this.state.returnedValue === true){
-        this.props.history.push('/signin');
+        this.props.history.push({pathname: '/signin', state: {email: value}});
     }
     else {
         this.props.history.push('/help');

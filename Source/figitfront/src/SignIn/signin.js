@@ -8,16 +8,24 @@ import './signin.css';
 const FormItem = Form.Item;
 
 class Signin extends Component {
+  
+  constructor(props) {
 
-    constructor() {
-
-        super();
-
+        super(props);
+       
         this.state = {
+          value : 'default email',
           returnedValue: 'default'
         };
 
         this.onSubmit = this.onSubmit.bind(this);
+        this.setState({value: "abc.com"});
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
     }
 
     onSubmit (event) { 
@@ -93,7 +101,8 @@ class Signin extends Component {
     <Form onSubmit= {(event) => this.onSubmit(event)}>
     
    <FormItem >
-   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" >
+   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" value={this.state.value}
+    onChange={this.handleChange}>
         </input>
             </FormItem>
             <FormItem >

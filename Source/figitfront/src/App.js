@@ -20,8 +20,8 @@ class App extends Component {
 	      <Route exact path="/" component={Firstpage} />
 	      <Route path="/addrepository" component={Addrepository} />
 	      <Route path="/dashboard" component={Dashboard} />
-		  <Route path="/help" component={Help} />
-		  <Route path="/signin" component={Signin} />
+		  	<Route path="/help" component={Help} />
+		  	<Route path="/signin" component={Signin} />
       	</div>
 	  </Router>
     );
