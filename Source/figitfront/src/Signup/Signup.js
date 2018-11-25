@@ -14,7 +14,8 @@ class Signup extends Component {
     }
     handleSubmit = (event) =>
   
-    { event.preventDefault();
+    { 
+      event.preventDefault();
       const title = event.target.elements.title.value;
       const content = event.target.elements.content.value;
       const user_id = localStorage.getItem('token');
