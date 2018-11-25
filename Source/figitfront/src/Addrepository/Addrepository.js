@@ -16,7 +16,6 @@ class Addrepository extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onAdd = this.onAdd.bind(this);
-    this.onRemove = this.onRemove.bind(this);
   }
 
   onSubmit (event) {
@@ -51,14 +50,6 @@ class Addrepository extends React.Component {
     $('#row' + button_id + '').remove();
     });
  }
-
-
-
-onRemove(){
-  alert("Hi");
-  var button_id = $(this).attr("id");
-	$('#row' + button_id + '').remove();
-}
 
 render(){
   return(
