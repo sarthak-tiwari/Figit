@@ -1,8 +1,8 @@
 import React from 'react';
 import Toggle from './Toggle';
-import Flashbut2 from './Flashbut2'
-import Flashbut from './Flashbut';
-import Flashbut3 from './Flashbut3';
+import PieChart from './PieChart';
+import LineChart from './LineChart';
+import BarGraph from './BarGraph';
 import './Flashbut.css';
 class Wholeflash extends React.Component {
 
@@ -38,9 +38,9 @@ class Wholeflash extends React.Component {
         <button class="button" onClick = {this.toggleDiv1}>Pie Graph</button>
         <button class="button button2" onClick = {this.toggleDiv2}>Line Graph</button>
         <button class="button button3" onClick = {this.toggleDiv3}>Bar Graph</button>
-        { (this.state.showInt === 1) && Toggle(1) }
-        { (this.state.showInt === 2) && Toggle(2) }
-        { (this.state.showInt === 3) && Toggle(3) }
+        { (this.state.showInt === 1) && <PieChart />}
+        { (this.state.showInt === 2) && <LineChart /> }
+        { (this.state.showInt === 3) && <BarGraph /> }
       </div>
           
           
