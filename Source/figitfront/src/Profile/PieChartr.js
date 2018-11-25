@@ -1,7 +1,7 @@
 import React from 'react';
-import Pin from './logo.png';
+
 import {Pie} from 'react-chartjs-2';
-import './Chart.css';
+import './PieChartr.css';
 
 class PieChart extends React.Component {
 	
@@ -17,6 +17,17 @@ class PieChart extends React.Component {
         this.getChartData();
       }
     
+      newClick(){
+        if(document.getElementById('commit_pie').checked) {
+            document.getElementById('commitselect_pie').style.display = "block";
+            document.getElementById('pullreqselect_pie').style.display = "none";
+         } 
+         else if (document.getElementById('pullrequest_pie').checked) {
+           document.getElementById('commitselect_pie').style.display = "none";
+           document.getElementById('pullreqselect_pie').style.display = "block";
+         }
+      }
+
       getChartData() {
         var test = [
           [['x1', "Jan 2 2018"], ['x2', 100]],
@@ -87,6 +98,32 @@ class PieChart extends React.Component {
 						},
 					}}
         		/>
+
+                <div class="select">
+                    <form id="dataselect_bar" onClick= {this.newClick}>
+                        <input type="radio" name="valuetype" value="commit" id="commit_pie" defaultChecked/> Commits
+                        <div class="pull_pie">
+                        <input type="radio" name="valuetype" value="pullrequest" id="pullrequest_pie"/> Pull Requests
+                        </div>
+                    </form>
+                    <br/>
+                    
+                    <form id="commitselect_pie">
+                        <input type="radio" name="committype" value="count" defaultChecked/> Commits counts<br/>
+                        <input type="radio" name="committype" value="adds"/> No. of additions<br/>
+                        <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
+                        <input type="radio" name="committype" value="filmod"/> Files modified<br/>
+                    </form>
+                    
+
+                    <form id="pullreqselect_pie" >
+                        <input type="radio" name="pullreqtype" value="count" defaultChecked/> Count<br/>
+                        <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
+                        <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
+                        <br/>
+                    </form>
+
+                </div>
 			</div>  
 		  )
 	  }

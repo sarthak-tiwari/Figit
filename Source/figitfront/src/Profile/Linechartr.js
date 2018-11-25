@@ -126,7 +126,7 @@ class Linechart extends React.Component {
                     </form>
                     <br/>
                     
-                    <form id="commitselect" class="card">
+                    <form id="commitselect">
                         <input type="radio" name="committype" value="count" defaultchecked/> Commits counts<br/>
                         <input type="radio" name="committype" value="adds"/> No. of additions<br/>
                         <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
@@ -134,7 +134,7 @@ class Linechart extends React.Component {
                     </form>
                     
 
-                    <form id="pullreqselect" class="card">
+                    <form id="pullreqselect">
                         <input type="radio" name="pullreqtype" value="count" defaultchecked/> Count<br/>
                         <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
                         <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
