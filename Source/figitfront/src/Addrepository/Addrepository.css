@@ -9,6 +9,10 @@ body {
   background-color:transparent;
 }
 
+.intext {
+  margin-top: 5px;
+}
+
 .topnav a {
   float: left;
   color: #707070;
@@ -43,11 +47,11 @@ body {
 }
 
 
-    .btn{
+    .btnadd{
         background-color: #F44336;
           color: #FFFFFF;
           text-align: center;
-          <!-- padding: 20px; -->
+          padding: 20px;
           cursor: pointer;
       }
 

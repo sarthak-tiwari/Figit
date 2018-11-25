@@ -10,7 +10,6 @@ const FormItem = Form.Item;
 class Signin extends Component {
   
   constructor(props) {
-
         super(props);
        
         this.state = {
@@ -81,12 +80,11 @@ class Signin extends Component {
       <br/>
       <h4>Sign in with account</h4>
       <div class="form-group">
-      <button type="button" id="gitbutton" className="btn-default signinbutton" aria-label="Left Align"><span><i className="fab fa-github"> Sign in with GitHub</i></span></button>
+      <button type="button" id="gitbutton" className="btn-default signinbutton" aria-label="Left Align"><i className="fab fa-github"> Sign in with GitHub</i></button>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      <button type="button" id="googbutton" className="btn-default signinbutton" aria-label="Left Align"><span><i className="fab fa-google"> Sign in with Google</i></span></button>
+      
+      <button type="button" id="googbutton" className="btn-default signinbutton" aria-label="Left Align"><i className="fab fa-google"> Sign in with Google</i></button>
       </div>
      <br/>
       <br/>
@@ -103,7 +101,7 @@ class Signin extends Component {
   <h4>-or-</h4>
  </div>
 
-  <div class="col-lg-3 card offset-lg-1" id="usercard">
+  <div class="col-lg-3 card offset-lg-1 justify-content-center" id="usercard">
   <h4  id="head">Sign in with credentials</h4>
   <div class="form-group" >
     <br/>
@@ -122,7 +120,7 @@ class Signin extends Component {
             </FormItem>
            
             <FormItem>
-                <button class="smallbtn" htmlType="submit">Get in</button>
+                <button class="getinbutton  " htmlType="submit">Get in</button>
             </FormItem>
             
     <br></br>    
