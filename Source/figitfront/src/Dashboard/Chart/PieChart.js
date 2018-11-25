@@ -6,15 +6,19 @@ import './PieChart.css';
 class PieChart extends React.Component {
 	
     constructor(){
-        super();
-        this.state = {
-          chartData:{}
-        }
-        var test = new Object();
+        
+      super();
+
+      this.state = {
+        chartData:{},
+        location:''
       }
+      
+      var test = new Object();
+    }
     
       componentWillMount(){
-        this.getChartData();
+        this.fetchData("commitCount");
       }
     
       newClick(){
@@ -28,20 +32,65 @@ class PieChart extends React.Component {
          }
       }
 
-      getChartData() {
-        var test = [
-          [['x1', "Jan 2 2018"], ['x2', 100]],
-          [['x1', "Sep 4 2018"], ['x2', 13]],
-          [['x1', "Nov 13 2018"], ['x2', 0]],
-          [['x1', "Dec 13 2018"], ['x2', 15]]
-        ];
-        // Ajax calls here
+      fetchData(param){
+        
+        var url = '';
+        var colName = '';
+        var userName = 'committer_name';
+        var location = '';
+        if(param === "commitCount") {
+          url = 'http://localhost:8000/dashboard/commit_count/ScrumDevils-SER_515/';
+          colName = 'commit_count';
+          location = 'Commit Contributions';
+        }
+        else if(param === "commitAddCount") {
+          url = 'http://localhost:8000/dashboard/commit/additions_count/ScrumDevils-SER_515/';
+          colName = 'additions_count';
+          location = 'Number of Additions in Commits';
+        }
+        else if(param === "commitDelCount") {
+          url = 'http://localhost:8000/dashboard/commit/deletions_count/ScrumDevils-SER_515/';
+          colName = 'deletions_count';
+          location = 'Number of Deletions in Commits';
+        }
+        else if(param === "commitModCount") {
+          url = 'http://localhost:8000/dashboard/commit/files_modified_count/ScrumDevils-SER_515/';
+          colName = 'modified_count';
+          location = 'Number of Files Modified in Commits';
+        }
+        else if(param === "pullReqCount") {
+          url = 'http://localhost:8000/dashboard/pull_requests/raise_count/ScrumDevils-SER_515/';
+          colName = 'raise_count';
+          userName = 'requester_login';
+          location = 'Number of Pull Requests Raised';
+        }
+        else if(param === "pullRevCount") {
+          url = 'http://localhost:8000/dashboard/pull_requests/review_count/ScrumDevils-SER_515/';
+          colName = 'review_count';
+          userName = 'reviewer_login';
+          location = 'Number of Pull Requests Reviewed';
+        }
+
+        fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'}
+	      })
+        .then(response => {return(response.json())})
+        .then(response => {this.getChartData(response, colName, userName, location)})
+      }
+
+      getChartData(test, colName, userName, loc) {
+        
         var xValues = [];
         var yValues = [];
+
         for(var i=0; i<test.length; i++) {
-            xValues.push(test[i][0][1]);
-            yValues.push(test[i][1][1]);
+            xValues.push(test[i][userName]);
+            yValues.push(test[i][colName]);
         }
+
         var yAxisName = "Count";
         var backgroundColor = [
                   'rgba(255, 99, 132, 0.6)',
@@ -68,16 +117,18 @@ class PieChart extends React.Component {
                 fillGapsWithZero: true
               }
             ]
-          }
+          },
+          location:loc
         });
+
+        
       }
 	
-	static defaultProps = {
-		displayTitle:true,
-		displayLegend: true,
-		legendPosition:'right',
-	    location:'City',
-    }
+	    static defaultProps = {
+		    displayTitle:true,
+		    displayLegend: true,
+		    legendPosition:'right',
+      }
     
 
 
@@ -89,7 +140,7 @@ class PieChart extends React.Component {
 					options={{
 						title:{
 						 display:this.props.displayTitle,
-						 text:' '+this.props.location,
+						 text:' '+this.state.location,
 						 fontSize:25
 						},
 						legend:{
@@ -109,17 +160,16 @@ class PieChart extends React.Component {
                     <br/>
                     
                     <form id="commitselect_pie">
-                        <input type="radio" name="committype" value="count" defaultChecked/> Commits counts<br/>
-                        <input type="radio" name="committype" value="adds"/> No. of additions<br/>
-                        <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
-                        <input type="radio" name="committype" value="filmod"/> Files modified<br/>
+                        <input type="radio" name="committype" value="count" onClick={(event)=>{this.fetchData('commitCount')}} defaultChecked/> Commits counts<br/>
+                        <input type="radio" name="committype" value="adds" onClick={(event)=>{this.fetchData('commitAddCount')}}/> No. of additions<br/>
+                        <input type="radio" name="committype" value="dels" onClick={(event)=>{this.fetchData('commitDelCount')}}/> No. of deletions<br/>
+                        <input type="radio" name="committype" value="filmod" onClick={(event)=>{this.fetchData('commitModCount')}}/> Files modified<br/>
                     </form>
                     
 
                     <form id="pullreqselect_pie" >
-                        <input type="radio" name="pullreqtype" value="count" defaultChecked/> Count<br/>
-                        <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
-                        <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
+                        <input type="radio" name="pullreqtype" value="raised" onClick={(event)=>{this.fetchData('pullReqCount')}}/> Raised<br/>
+                        <input type="radio" name="pullreqtype" value="reviewed" onClick={(event)=>{this.fetchData('pullRevCount')}}/> Reviewed<br/>
                         <br/>
                     </form>
 
