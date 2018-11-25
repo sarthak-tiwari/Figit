@@ -1,0 +1,31 @@
+  #pullreqselect_pie{
+    display: none;
+    float: right;
+    box-shadow: 3px 3px 6px #c4c4c0;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:fit-content;  
+  }
+  
+  #commitselect_pie{
+    box-shadow: 3px 3px 6px #c4c4c0;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:fit-content;
+
+  }
+
+  .pull_pie{
+    float:right;   
+  }
+
+
+  .piechart{
+    height:300px;
+    width:600px; 
+    font-size:Roboto;
+  }
