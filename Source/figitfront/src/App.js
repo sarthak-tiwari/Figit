@@ -10,7 +10,7 @@ import Addrepository from './Addrepository/Addrepository';
 import Signin from './SignIn/signin';
 import Signup from './Signup/Signup';
 import About from './About/About';
-import Dashboard from './Profile/Dash';
+import Dashboard from './Dashboard/Dash';
 import Linechart from './Chart/Linechart/Linechart';
 
 class App extends Component {
@@ -26,7 +26,6 @@ class App extends Component {
 				<Route path="/about" component={About} />
 		  	<Route path="/signin" component={Signin} />
 				<Route path="/signup" component={Signup} />
-				<Route path="/dashboard" component={Dashboard} />
 				<Route path="/linechart" component={Linechart} />
       	</div>
 	  </Router>

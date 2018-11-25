@@ -1,10 +1,8 @@
 import React from 'react';
-//import './pullReq.css';
-import Pin from './logo.png';
 import {Bar} from 'react-chartjs-2';
-import './Chart.css';
+import './BarGraph.css';
 
-class LineChart extends React.Component {
+class BarGraph extends React.Component {
 	
     constructor(){
         super();
@@ -18,6 +16,17 @@ class LineChart extends React.Component {
         this.getChartData();
       }
     
+      newClick(){
+        if(document.getElementById('commit_bar').checked) {
+            document.getElementById('commitselect_bar').style.display = "block";
+            document.getElementById('pullreqselect_bar').style.display = "none";
+         } 
+         else if (document.getElementById('pullrequest_bar').checked) {
+           document.getElementById('commitselect_bar').style.display = "none";
+           document.getElementById('pullreqselect_bar').style.display = "block";
+         }
+      }
+
       getChartData() {
         var test = [
           [['x1', "Jan 2 2018"], ['x2', 10]],
@@ -87,6 +96,8 @@ class LineChart extends React.Component {
 	    location:'City',
     }
     
+
+
 	  render() {
 		  return (
 			<div class="bargraph">
@@ -112,9 +123,36 @@ class LineChart extends React.Component {
           }
 					}}
         		/>
+
+                 <div class="select">
+                    <form id="dataselect_bar" onClick= {this.newClick}>
+                        <input type="radio" name="valuetype" value="commit" id="commit_bar" defaultChecked/> Commits
+                        <div class="pull_bar">
+                        <input type="radio" name="valuetype" value="pullrequest" id="pullrequest_bar"/> Pull Requests
+                        </div>
+                    </form>
+                    <br/>
+                    
+                    <form id="commitselect_bar" >
+                        <input type="radio" name="committype" value="count" defaultChecked/> Commits counts<br/>
+                        <input type="radio" name="committype" value="adds"/> No. of additions<br/>
+                        <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
+                        <input type="radio" name="committype" value="filmod"/> Files modified<br/>
+                    </form>
+                    
+
+                    <form id="pullreqselect_bar" >
+                        <input type="radio" name="pullreqtype" value="count" defaultChecked/> Count<br/>
+                        <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
+                        <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
+                        <br/>
+                    </form>
+
+                </div>
+
 			</div>  
 		  )
 	  }
 }
 
-export default LineChart;
+export default BarGraph;

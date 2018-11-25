@@ -1,4 +1,4 @@
-.button {
+.flashb button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -13,5 +13,5 @@
     height: 37px;
 }
 
-.button2 {background-color: #008CBA;} 
-.button3 {background-color: #f44336;} 
+.flashb .button2 {background-color: #008CBA;} 
+.flashb .button3 {background-color: #f44336;} 

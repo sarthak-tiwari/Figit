@@ -1,15 +1,11 @@
-.col-md-12
-{
-  border-right: 1px solid gray;
-}
-
-div h4
+.memberh4 h4
 {
   font-size:18px;
   padding:20px 0px 0px 0px;
   font-family:'Roboto', sans-serif;
+  color: #8f8f8f;
 }
-.card{
+.Projects .card{
   position: absolute;
   text-align: center;
   width:100%;
@@ -18,8 +14,9 @@ div h4
   margin-bottom: 20px;
 }
 
-p
+.memberp p
 {
   text-align: justify;
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -19,11 +19,11 @@ class Member extends React.Component {
     return (
 <div className="Projects">
          <div class="card" id ="style-1">
-             <div >
+             <div class="memberh4">
                
              <h4><b>Contributors</b></h4>
 																			
-                
+<div class="memberp">         
 <p>
     <Memberprofile photo = {this.state.myprofile[0].photo} emailid = {this.state.myprofile[0].emailid} gitLink = {this.state.myprofile[0].gitLink}/>
   </p>
@@ -39,9 +39,9 @@ class Member extends React.Component {
   <Memberprofile photo = {this.state.myprofile[5].photo} emailid = {this.state.myprofile[5].emailid} gitLink = {this.state.myprofile[5].gitLink}/> 
   
   </p>
-  
+  </div> 
 
-             </div>
+  </div>
 </div>
 
 
