@@ -61,7 +61,7 @@ render(){
                 <table className="table" id="dynamic_field" style={{width: 650+'px'}}>
                   <tbody>
                     <tr>
-                      <td><input type="text" id="link"  placeholder="Paste your GitHub repository link here" className="form-control intext name_list" /></td>
+                      <td><input type="text" id="link"  placeholder="Paste your GitHub repository link here" className="form-control intext name_list linkin" /></td>
                       <td><button type="button" name="add" id="add" className="btnadd btn-success"><i className="fas fa-plus"></i> Add More</button></td>
                     </tr>
                   </tbody>

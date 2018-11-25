@@ -15,14 +15,13 @@
 
 	    var i = 0;
 	    $('#add').click(function() {
-	    	alert("ok");
 	        if (document.getElementById('link').value != "") {
 	            i++;
 	            $('#dynamic_field').append(
 	                '<tr id="row' + i + '">+\
-	           	<td><p readonly type="text" +\
+	           	<td><input readonly type="text" +\
 	           	id="link' + i + '" +\
-	           	class="form-control name_list intext"> ' + $('#link').val() + '</p></td> +\
+	           	class="form-control name_list intext linkin" value=" ' + $('#link').val() +' "/></td> +\
 	           	<td><button type="button" +\
 	           	name="remove" id="' + i + '" class="btnadd btn-danger btn_remove"><i class="fas fa-trash-alt"></i></button></td>+\
 	           	</tr>'
