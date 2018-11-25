@@ -4,7 +4,7 @@ import Dashheader from './Dashheader';
 import Projectlist from './Projectlist';
 import Member from './Member';
 import Wholeflash from './Wholeflash';
-class App extends Component {
+class Dashboard extends Component {
 
   render() {
     return(
@@ -12,14 +12,14 @@ class App extends Component {
       <div>
           <Dashheader />
           <div class="row content">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-xl-3">
             <Profilejason />
             <Projectlist />
             </div>
-            <div class="col-lg-6"> 
+            <div class="col-lg-6 col-xl-6"> 
             <Wholeflash />
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-3 col-xl-3">
                 <Member />
               </div>
             </div>
@@ -28,4 +28,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default Dashboard;

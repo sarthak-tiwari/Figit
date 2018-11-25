@@ -10,7 +10,7 @@ import Addrepository from './Addrepository/Addrepository';
 import Signin from './SignIn/signin';
 import Signup from './Signup/Signup';
 import About from './About/About';
-import Dashboard from './Dashboard/Dash';
+import Dashboard from './Profile/Dash';
 import Linechart from './Chart/Linechart/Linechart';
 
 class App extends Component {

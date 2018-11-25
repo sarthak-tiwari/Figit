@@ -70,7 +70,7 @@ class Signup extends Component {
         </div>
 <br></br> 
 <div class="header">
-  <p id="first"> Welcome Back!</p> 
+  <p id="first"> Welcome Aboard!</p> 
 </div>
 <br/>
 <br/>
@@ -103,7 +103,7 @@ class Signup extends Component {
  </div>
 
   <div class="col-lg-3 card offset-lg-1 justify-content-center" id="usercard">
-  <h4  id="head">Sign in with credentials</h4>
+  <h4  id="head">Sign up with credentials</h4>
   <div class="form-group" >
     <br/>
       <br/>
