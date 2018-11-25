@@ -1,0 +1,35 @@
+  .linechart{
+    height:300px;
+    width:500px;
+    font-family: Roboto;
+  }
+
+
+  #pullreqselect{
+    display: none;
+    float: right;
+    font-family: Roboto;
+    
+  }
+  
+  #commitselect{
+    display: none;
+  }
+
+  #pull{
+     
+    float:right;
+   
+    
+  }
+
+
+  .piechart {
+    height:300px;
+    width:600px;
+  }
+
+  .barchart {
+    height:300px;
+    width:600px;
+  }
