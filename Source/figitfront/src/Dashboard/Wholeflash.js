@@ -1,7 +1,7 @@
 import React from 'react';
-import PieChartr from './PieChart';
-import Linechartr from './Linechart';
-import BarGraphr from './BarGraph';
+import PieChartr from './Chart/PieChart';
+import Linechartr from './Chart/Linechart';
+import BarGraphr from './Chart/BarGraph';
 import './Flashbut.css';
 class Wholeflash extends React.Component {
 
