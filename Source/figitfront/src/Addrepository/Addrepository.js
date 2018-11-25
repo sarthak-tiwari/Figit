@@ -10,8 +10,13 @@ class Addrepository extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      i : 0
+    };
+
     this.onSubmit = this.onSubmit.bind(this);
     this.onAdd = this.onAdd.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
 
   onSubmit (event) {
@@ -25,22 +30,35 @@ class Addrepository extends React.Component {
  }
  
  onAdd(){
-   var i = 0;
+   var j = this.state.i;
+   this.setState({i : j + 1});
    if (document.getElementById('link').value != "") {
-       i++;
        $('#dynamic_field').append(
-        '<tr id="row' + i + '">+\
+        '<tr id="row' + j + '">+\
         <td><p readonly type="text" +\
-        id="link' + i + '" +\
+        id="link' + j + '" +\
         class="form-control name_list intext"> ' + $('#link').val() + '</p></td> +\
         <td><button type="button" +\
-        name="remove" id="' + i + '" class="btnadd btn-danger btn_remove"><i class="fas fa-trash-alt"></i></button></td>+\
+        name="remove" +\
+        id="' + j + '" class="btnadd btn-danger btn_remove"><i class="fas fa-trash-alt"></i></button></td>+\
         </tr>'
       );
        document.getElementById('link').value = "";
        $("#submit").removeAttr('disabled');
    } 
+   $(document).on('click', '.btn_remove', function() {
+    var button_id = $(this).attr("id");
+    $('#row' + button_id + '').remove();
+    });
  }
+
+
+
+onRemove(){
+  alert("Hi");
+  var button_id = $(this).attr("id");
+	$('#row' + button_id + '').remove();
+}
 
 render(){
   return(
