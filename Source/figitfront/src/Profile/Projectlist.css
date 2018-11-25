@@ -1,0 +1,23 @@
+.projectlistdiv {
+	background-color : #323544;
+	overflow: auto;
+	color: white;
+	padding: 20px;
+  width: 100%;
+  height: 70vh;
+  box-shadow: 3px 3px 6px solid black;
+}
+
+.projecthead {
+	font-size: 1.4em;
+	font-weight: 600px;
+	font-family: 'Josefin Sans', sans-serif;
+	padding: 1px; 
+}
+
+.projectlist {
+	color: white;
+	text-decoration: none;
+	padding: 5px;
+  list-style-type: none;
+}
