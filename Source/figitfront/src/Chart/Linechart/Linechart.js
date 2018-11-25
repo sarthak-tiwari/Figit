@@ -6,7 +6,7 @@ import $ from 'jquery';
 
 class Linechart extends React.Component {
 	
-    constructor(){
+    constructor(props){
         super();
         this.state = {
           chartData:{}
@@ -90,12 +90,12 @@ class Linechart extends React.Component {
 					options={{
 						title:{
 						 display:this.props.displayTitle,
-						 text:' '+this.props.location,
+						 text:'Commit Data',
 						 fontSize:25
 						},
 						legend:{
 						 display:this.props.displayLegend,
-						 position:this.props.legendPosition
+						 position:'right'
 						},
 						scales: {
 							xAxes: [ {
@@ -119,15 +119,15 @@ class Linechart extends React.Component {
         		/>
                 <div class="select">
                     <form id="dataselect" onClick= {this.newClick}>
-                        <input type="radio" name="valuetype" value="commit" id="commit" checked/>Commits
-                        <div class="pull">
+                        <input type="radio" name="valuetype" value="commit" id="commit" checked />Commits
+                        <div id="pull">
                         <input type="radio" name="valuetype" value="pullrequest" id="pullrequest"/>Pull Requests
                         </div>
                     </form>
                     <br/>
                     
                     <form id="commitselect">
-                        <input type="radio" name="committype" value="count" checked/>Commits counts<br/>
+                        <input type="radio" name="committype" value="count"/>Commits counts<br/>
                         <input type="radio" name="committype" value="adds"/>No. of additions<br/>
                         <input type="radio" name="committype" value="dels"/>No. of deletions<br/>
                         <input type="radio" name="committype" value="filmod"/>Files modified<br/>
@@ -135,7 +135,7 @@ class Linechart extends React.Component {
                     
 
                     <form id="pullreqselect" >
-                        <input type="radio" name="pullreqtype" value="count" checked/>Count<br/>
+                        <input type="radio" name="pullreqtype" value="count"/>Count<br/>
                         <input type="radio" name="pullreqtype" value="raised"/>raised<br/>
                         <input type="radio" name="pullreqtype" value="reviewed"/>reviewed<br/>
                     </form>

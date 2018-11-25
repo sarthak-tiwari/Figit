@@ -1,6 +1,4 @@
-	body {
-
-
+body {
   margin:20;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #F7F7F7;
@@ -9,6 +7,10 @@
 .topnav {
   overflow: hidden;
   background-color:transparent;
+}
+
+.intext {
+  margin-top: 5px;
 }
 
 .topnav a {
@@ -45,11 +47,11 @@
 }
 
 
-    .btn{
+    .btnadd{
         background-color: #F44336;
           color: #FFFFFF;
           text-align: center;
-          <!-- padding: 20px; -->
+          padding: 20px;
           cursor: pointer;
       }
 

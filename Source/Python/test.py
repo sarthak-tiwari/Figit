@@ -137,14 +137,16 @@ from DatabaseManager import DatabaseManager
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
 
-manager = GitConnectionManager()
+def getDataFromGitHubIntoDB(repositoryName):
 
-collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData("ScrumDevils-SER_515")
-print("Got Collaborator Data !")
-commitData = GitCommitData(manager.getConnection()).getCommitData("ScrumDevils-SER_515")
-print("Got Commit Data !")
-(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData("ScrumDevils-SER_515")
-print("Got Pull Request Data !")
+	manager = GitConnectionManager()
 
-DatabaseManager.populateRepository("ScrumDevils-SER_515", collaboratorData, commitData, pullRequestData, pullReviewData)
-print("Data Inserted !")
+	collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData(repositoryName)
+	print("Got Collaborator Data !")
+	commitData = GitCommitData(manager.getConnection()).getCommitData(repositoryName)
+	print("Got Commit Data !")
+	(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData(repositoryName)
+	print("Got Pull Request Data !")
+
+	DatabaseManager.populateRepository(repositoryName, collaboratorData, commitData, pullRequestData, pullReviewData)
+	print("Data Inserted !")

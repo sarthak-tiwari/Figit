@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-import ReactDOM from 'react-dom';
 import Help from './Help/Help';
 import CommitList from './CommitList/CommitList';
 import PullRequest from './pullReq/pullReq';
-import LineChart from './Chart/LineChart';
-import PieChart from './Chart/PieChart';
-import BarGraph from './Chart/BarGraph';
-
+import './index.js';
+import Firstpage from './Firstpage/Firstpage';
+import Addrepository from './Addrepository/Addrepository';
+import Signin from './SignIn/signin';
+import Signup from './Signup/Signup';
+import About from './About/About';
+import Dashboard from './Dashboard/Dash';
+import Linechart from './Chart/Linechart/Linechart';
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <LineChart location="Commit Graph" legendPosition="bottom"/>
-        <PieChart location="Commit Graph" legendPosition="right"/>
-        <BarGraph location="Commit Graph" legendPosition="right"/>  
-      </div>
-
+    return(
+      <Router>
+      	<div className ="App">
+	      <Route exact path="/" component={Firstpage} />
+	      <Route path="/addrepository" component={Addrepository} />
+	      <Route path="/dashboard" component={Dashboard} />
+		  	<Route path="/help" component={Help} />
+				<Route path="/about" component={About} />
+		  	<Route path="/signin" component={Signin} />
+				<Route path="/signup" component={Signup} />
+				<Route path="/linechart" component={Linechart} />
+      	</div>
+	  </Router>
     );
   }
 }
