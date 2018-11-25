@@ -1,0 +1,33 @@
+
+
+  #pullreqselect_bar{
+    display: none;
+    float: right;
+    box-shadow: 3px 3px 6px #c4c4c0;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:fit-content;  
+  }
+  
+  #commitselect_bar{
+    box-shadow: 3px 3px 6px #c4c4c0;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:fit-content;
+
+  }
+
+  .pull_bar{
+    float:right;   
+  }
+
+
+  .bargraph{
+    height:400px;
+    width:600px; 
+    font-size:Roboto;
+  }
