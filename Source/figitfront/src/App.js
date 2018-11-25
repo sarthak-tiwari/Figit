@@ -6,13 +6,17 @@ import Help from './Help/Help';
 import CommitList from './CommitList/CommitList';
 import PullRequest from './pullReq/pullReq';
 import LineChart from './Chart/LineChart';
+import PieChart from './Chart/PieChart';
+import BarGraph from './Chart/BarGraph';
 
 
 class App extends Component {
   render() {
     return (
       <div>
-        <LineChart location="Commit Graph" legendPosition="bottom"/>  
+        <LineChart location="Commit Graph" legendPosition="bottom"/>
+        <PieChart location="Commit Graph" legendPosition="right"/>
+        <BarGraph location="Commit Graph" legendPosition="right"/>  
       </div>
 
     );
@@ -20,4 +24,3 @@ class App extends Component {
 }
 
 export default App;
-
