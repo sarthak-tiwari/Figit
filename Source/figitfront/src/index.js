@@ -12,7 +12,6 @@
 	serviceWorker.unregister();
 
 	$(document).ready(function() {
-
 	    var i = 0;
 	    $('#add').click(function() {
 	        if (document.getElementById('link').value != "") {

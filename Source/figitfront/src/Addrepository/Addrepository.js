@@ -3,41 +3,44 @@ import { Redirect } from 'react-router-dom';
 import './Addrepository.css';
 import '../index.js';
 import Pin from './logo2.png'
+import $ from 'jquery';
 
 class Addrepository extends React.Component {
 
-        constructor(props) {
-            super(props);
+  constructor(props) {
+    super(props);
 
-            this.onSubmit = this.onSubmit.bind(this);
-        }
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onAdd = this.onAdd.bind(this);
+  }
 
-        // state = {
-        //     redirect: false
-        // }
+  onSubmit (event) {
+    event.preventDefault();
+    alert("submitted");
+    this.redirectToTarget();
+  }
 
-        // setRedirect = () => {
-        //     this.setState({
-        //         redirect: true
-        //     })
-        // }
-
-        // renderRedirect = () => {
-        //     if (this.state.redirect) {
-        //         return <Redirect to = '/target' / >
-        //     }
-        // }
-
-        onSubmit (event) {
-           event.preventDefault();
-           alert("submitted");
-           this.redirectToTarget();
-         }
-
-        redirectToTarget = () => {
-            this.props.history.push('/dashboard');
-        }
-
+ redirectToTarget = () => {
+     this.props.history.push('/dashboard');
+ }
+ 
+ onAdd(){
+   var i = 0;
+   if (document.getElementById('link').value != "") {
+       i++;
+       $('#dynamic_field').append(
+        '<tr id="row' + i + '">+\
+        <td><p readonly type="text" +\
+        id="link' + i + '" +\
+        class="form-control name_list intext"> ' + $('#link').val() + '</p></td> +\
+        <td><button type="button" +\
+        name="remove" id="' + i + '" class="btnadd btn-danger btn_remove"><i class="fas fa-trash-alt"></i></button></td>+\
+        </tr>'
+      );
+       document.getElementById('link').value = "";
+       $("#submit").removeAttr('disabled');
+   } 
+ }
 
 render(){
   return(
