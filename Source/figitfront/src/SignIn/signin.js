@@ -19,9 +19,12 @@ class Signin extends Component {
         };
 
         this.onSubmit = this.onSubmit.bind(this);
-        this.setState({value: "abc.com"});
-
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount() {
+      var recievedMessage = this.props.location.state.email;
+      document.getElementById('usr1').value = recievedMessage;
     }
 
     handleChange(event) {
@@ -32,10 +35,8 @@ class Signin extends Component {
       event.preventDefault();
       const title = event.target.elements.title.value;
       const content = event.target.elements.content.value;
-      //const user_id = localStorage.getItem('token');
+      
       var url = 'http://localhost:8000/user/login/';
-      //console.log(event.target.elements.title.value);
-      //console.log(event.target.elements.content.value);
       fetch(url, {
         method: 'POST',
         headers: {
@@ -76,7 +77,7 @@ class Signin extends Component {
 <br/>
 <div class="container-fluid">
   <div class="row">
-  <div class="col-lg-3 card  justify-content-center offset-lg-1" id="accountcard">
+  <div class="col-lg-3 card justify-content-center offset-lg-1" id="accountcard">
    <div className = "">
       <br/>
       <h4>Sign in with account</h4>
@@ -111,8 +112,7 @@ class Signin extends Component {
       <br/>
     <Form onSubmit= {(event) => this.onSubmit(event)}>
    <FormItem >
-   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" value={this.state.value}
-    onChange={this.handleChange}>
+   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" onChange={this.handleChange}>
         </input>
             </FormItem>
             <FormItem >
