@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.http import HttpResponse
 from .helper.helper import Helper
+from .dataFromGitHub import test
 
 # GET and POST Repository List according to Application Users.
 @api_view(['GET','POST'])
@@ -20,20 +21,13 @@ def repository_list(request, username):
     if request.method == 'POST':
         rows = request.data
         for row in rows:
-            query = "INSERT INTO application_user_repositories ('application_username','repository_url') values ('"+row["application_username"]+"','"+row["repository_url"]+"')"
+            repo_url_split = row["repository_url"].split("/")
+            repo_name = repo_url_split[3]+"_"+repo_url_split[4]
+            query = "INSERT INTO application_user_repositories ('application_username','github_repository','repository_url') values ('"+username+"','"+repo_name+"','"+row["repository_url"]+"')"
             with connection.cursor() as cursor:
                 cursor.execute(query)
-"""
-@api_view(['GET'])
-def repository_list_by_user(request, user):
-    #repos = User_Repositories.objects.all()
-    #return render(request,'repository_list.html',{'repos':repos})
-    if request.method == 'GET':
-        columnNames = ['committer_name', 'commit_count']
-        query = "SELECT committer_name, COUNT(*) AS commit_count FROM git_commit_data GROUP BY committer_name ORDER BY commit_count DESC"
-        result = Helper.executeQuery(query, columnNames)
-        return result
-"""
+            test.getDataFromGitHubIntoDB(repo_url_split[4])
+        return HttpResponse("Repositories Added", content_type="application/json")
 
 # GET List of Collaborators according to Github Repository.
 @api_view(['GET'])
@@ -113,5 +107,23 @@ def pull_requests_review_details(request, repo, req_id):
     if request.method == 'GET':
         columnNames = ['reviewer_login', 'review_date','review_comment','review_url']
         query = "SELECT reviewer_login, review_date, review_comment, review_url FROM git_pull_review_data where github_repository = '"+ repo +"' and request_id = '"+ req_id +"'"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Commits according to date of a Github Repository
+@api_view(['GET'])
+def timeline_commit_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['commit_date', 'commit_count']
+        query = "select date(commit_date) as commit_date, count(*) as commit_count from git_commit_data where github_repository = '"+ repo +"' group by date(commit_date) order by date(commit_date)"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Pull Requests according to date of a Github Repository
+@api_view(['GET'])
+def timeline_pull_request_count(request, repo):
+    if request.method == 'GET':
+        columnNames = ['pull_request_date', 'pull_request_count']
+        query = "select date(request_date) as pull_request_date, count(*) as pull_request_count from git_pull_request_data where github_repository = '"+ repo +"' group by date(pull_request_date) order by date(pull_request_date)"
         result = Helper.executeQuery(query, columnNames)
         return result
