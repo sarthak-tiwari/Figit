@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^pull_requests/review_details/(?P<repo>[A-Za-z0-9_@./#&+-]*)/(?P<req_id>[0-9]*)/',views.pull_requests_review_details, name = "pull_requests_review_details"),
     url(r'^timeline/commit_count/(?P<repo>[A-Za-z0-9_@./#&+-]*)/',views.timeline_commit_count, name = "timeline_commit_count"),
     url(r'^timeline/pull_request_count/(?P<repo>[A-Za-z0-9_@./#&+-]*)/',views.timeline_pull_request_count, name = "timeline_pull_request_count"),
+    url(r'^bargraph/commit_count/(?P<repo>[A-Za-z0-9_@./#&+-]*)/',views.bargraph_commit_count, name = "bargraph_commit_count"),
+    url(r'^bargraph/pull_request_count/(?P<repo>[A-Za-z0-9_@./#&+-]*)/',views.bargraph_pull_request_count, name = "bargraph_pull_request_count"),
 ]
 
 

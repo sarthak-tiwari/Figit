@@ -38,7 +38,7 @@ def repository_collaborators(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Commits for each Collaborator of a Github Repository
+# GET Number of Commits for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def commit_count(request, repo):
     if request.method == 'GET':
@@ -47,7 +47,7 @@ def commit_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Additions for each Collaborator of a Github Repository
+# GET Number of Additions for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def commit_additions_count(request, repo):
     if request.method == 'GET':
@@ -56,7 +56,7 @@ def commit_additions_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Deletions for each Collaborator of a Github Repository
+# GET Number of Deletions for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def commit_deletions_count(request, repo):
     if request.method == 'GET':
@@ -65,7 +65,7 @@ def commit_deletions_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Files Modified for each Collaborator of a Github Repository
+# GET Number of Files Modified for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def commit_files_modified_count(request, repo):
     if request.method == 'GET':
@@ -74,7 +74,7 @@ def commit_files_modified_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Pull Requests Raised for each Collaborator of a Github Repository
+# GET Number of Pull Requests Raised for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def pull_requests_raise_count(request, repo):
     if request.method == 'GET':
@@ -83,7 +83,7 @@ def pull_requests_raise_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Pull Requests Reviewed for each Collaborator of a Github Repository
+# GET Number of Pull Requests Reviewed for each Collaborator of a Github Repository (Pie Chart)
 @api_view(['GET'])
 def pull_requests_review_count(request, repo):
     if request.method == 'GET':
@@ -110,7 +110,7 @@ def pull_requests_review_details(request, repo, req_id):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Commits according to date of a Github Repository
+# GET Number of Commits according to date of a Github Repository (TimeLine Graph)
 @api_view(['GET'])
 def timeline_commit_count(request, repo):
     if request.method == 'GET':
@@ -119,11 +119,31 @@ def timeline_commit_count(request, repo):
         result = Helper.executeQuery(query, columnNames)
         return result
 
-# GET Number of Pull Requests according to date of a Github Repository
+# GET Number of Pull Requests according to date of a Github Repository (TimeLine Graph)
 @api_view(['GET'])
 def timeline_pull_request_count(request, repo):
     if request.method == 'GET':
         columnNames = ['pull_request_date', 'pull_request_count']
         query = "select date(request_date) as pull_request_date, count(*) as pull_request_count from git_pull_request_data where github_repository = '"+ repo +"' group by date(pull_request_date) order by date(pull_request_date)"
         result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET Number of Commits of each Contributors according to date (Bar Graph)
+@api_view(['GET'])
+def bargraph_commit_count(request, repo):
+    if request.method == 'GET':
+        columnNames1 = ["committer_name","commit_details"]
+        query1 = "select distinct(committer_name) as committer_name from git_commit_data where github_repository = '"+ repo +"'"
+        columnNames2 = ['commit_date', 'commit_count']
+        result = Helper.executeQueryForAnalysingCommit(query1, columnNames1, columnNames2, repo)
+        return result 
+
+# GET Number of Pull Requests of each Contributors according to date (Bar Graph)
+@api_view(['GET'])
+def bargraph_pull_request_count(request, repo):
+    if request.method == 'GET':
+        columnNames1 = ["requester_name","request_details"]
+        query1 = "select distinct(requester_login) as requester_name from git_pull_request_data where github_repository = '"+ repo +"'"
+        columnNames2 = ['request_date', 'request_count']
+        result = Helper.executeQueryForAnalysingPullRequest(query1, columnNames1, columnNames2, repo)
         return result
