@@ -16,7 +16,7 @@ class Projectlist extends React.Component {
 	  render() {
 		return( <div class = "projectlistdiv">
 				<div class="projecthead">
-					<p>Projects<i class="fas fa-cog"></i></p>
+					<p>Projects<i class="fas fa-cog addprobtn"></i></p>
 				</div>
 				<ul class = "projectlist">
 					<Singleproject project={this.state.Projectlists[0].project}></Singleproject>

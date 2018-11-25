@@ -1,7 +1,7 @@
 import React from 'react';
 import Toggle from './Toggle';
 import PieChart from './PieChart';
-import LineChart from './LineChart';
+import Linechartr from './Linechartr';
 import BarGraph from './BarGraph';
 import './Flashbut.css';
 class Wholeflash extends React.Component {
@@ -34,12 +34,12 @@ class Wholeflash extends React.Component {
     }
 
     render(){
-        return(  <div>
+        return(  <div class="flashb">
         <button class="button" onClick = {this.toggleDiv1}>Pie Graph</button>
         <button class="button button2" onClick = {this.toggleDiv2}>Line Graph</button>
         <button class="button button3" onClick = {this.toggleDiv3}>Bar Graph</button>
         { (this.state.showInt === 1) && <PieChart />}
-        { (this.state.showInt === 2) && <LineChart /> }
+        { (this.state.showInt === 2) && <Linechartr /> }
         { (this.state.showInt === 3) && <BarGraph /> }
       </div>
           

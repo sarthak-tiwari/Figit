@@ -1,17 +1,11 @@
 import React from 'react';
 //import './pullReq.css';
-import Pin from './logo.png';
 import {Line} from 'react-chartjs-2';
-import './Chart.css';
+import './Linechart.css';
+import $ from 'jquery';
 
-class LineChart extends React.Component {
-	/*constructor(props){
-		super(props);
-		this.state = {
-		  chartData:props.chartData
-		}
-    }*/
-    
+class Linechart extends React.Component {
+	
     constructor(){
         super();
         this.state = {
@@ -23,7 +17,16 @@ class LineChart extends React.Component {
       componentWillMount(){
         this.getChartData();
       }
-    
+      
+      newClick(){
+        if(document.getElementById('commit').checked) {
+            document.getElementById('commitselect').style.display = "block";
+            document.getElementById('pullreqselect').style.display = "none";
+         } else if (document.getElementById('pullrequest').checked) {
+           document.getElementById('commitselect').style.display = "none";
+           document.getElementById('pullreqselect').style.display = "block";
+         }
+      }
       getChartData() {
         var test = [
           [['x1', "Jan 2 2018"], ['x2', 100]],
@@ -75,7 +78,9 @@ class LineChart extends React.Component {
 	    location:'City',
     }
     
-
+    show1() {
+        document.getElementById('commitselect').style.display ='block';
+      }
 
 	  render() {
 		  return (
@@ -112,9 +117,35 @@ class LineChart extends React.Component {
 						},
 					}}
         		/>
+                <div class="select">
+                    <form id="dataselect" onClick= {this.newClick}>
+                        <input type="radio" name="valuetype" value="commit" id="commit" defaultchecked/> Commits
+                        <div class="pull">
+                        <input type="radio" name="valuetype" value="pullrequest" id="pullrequest"/> Pull Requests
+                        </div>
+                    </form>
+                    <br/>
+                    
+                    <form id="commitselect" class="card">
+                        <input type="radio" name="committype" value="count" defaultchecked/> Commits counts<br/>
+                        <input type="radio" name="committype" value="adds"/> No. of additions<br/>
+                        <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
+                        <input type="radio" name="committype" value="filmod"/> Files modified<br/>
+                    </form>
+                    
+
+                    <form id="pullreqselect" class="card">
+                        <input type="radio" name="pullreqtype" value="count" defaultchecked/> Count<br/>
+                        <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
+                        <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
+                        <br/>
+                    </form>
+
+                </div>
+ 
 			</div>  
 		  )
 	  }
 }
 
-export default LineChart;
+export default Linechart;
