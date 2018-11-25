@@ -4,15 +4,13 @@
 
 #import statements
 from github import Github
-from GitConnectionManager import GitConnectionManager
+from .GitConnectionManager import GitConnectionManager
 
-from GitCommitData import GitCommitData
-from GitCommitData import CommitData
+from .GitCommitData import GitCommitData
 
-from GitPullRequestData import GitPullRequestData
-from GitPullRequestData import PullRequestData
-from GitCollaboratorData import GitCollaboratorData
-from DatabaseManager import DatabaseManager
+from .GitPullRequestData import GitPullRequestData
+from .GitCollaboratorData import GitCollaboratorData
+from .DatabaseManager import DatabaseManager
 
 
 #----------------------------------------------------------------------------------------
