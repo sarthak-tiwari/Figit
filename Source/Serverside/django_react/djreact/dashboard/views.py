@@ -147,3 +147,19 @@ def bargraph_pull_request_count(request, repo):
         columnNames2 = ['request_date', 'request_count']
         result = Helper.executeQueryForAnalysingPullRequest(query1, columnNames1, columnNames2, repo)
         return result
+
+# GET List of Commit Details of a Contributor of a Github Repository
+def commit_details_of_collaborator(request, repo, collaborator):
+    if request.method == 'GET':
+        columnNames = ['commit_date', 'commit_message','number_of_additions','number_of_deletions','number_of_files_modified','link_to_github']
+        query = "select commit_date, commit_message, number_of_additions, number_of_deletions, number_of_files_modified, link_to_github from git_commit_data where github_repository = '"+ repo +"' and committer_name = '"+ collaborator +"' order by date(commit_date)"
+        result = Helper.executeQuery(query, columnNames)
+        return result
+
+# GET List of Pull Requests Details of a Contributor of a Github Repository
+def pull_request_details_of_collaborator(request, repo, collaborator):
+    if request.method == 'GET':
+        columnNames = ['request_date', 'request_title','request_body','request_url']
+        query = "select request_date, request_title, request_body, request_url from git_pull_request_data where github_repository = '"+ repo +"' and requester_login = '"+ collaborator +"' order by date(request_date)"
+        result = Helper.executeQuery(query, columnNames)
+        return result
