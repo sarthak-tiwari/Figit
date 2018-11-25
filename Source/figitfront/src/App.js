@@ -11,6 +11,7 @@ import Addrepository from './Addrepository/Addrepository';
 import Dashboard from './Dashboard/Dashboard';
 import Signin from './SignIn/signin';
 import Signup from './Signup/Signup';
+import About from './About/About';
 
 class App extends Component {
   
@@ -22,6 +23,7 @@ class App extends Component {
 	      <Route path="/addrepository" component={Addrepository} />
 	      <Route path="/dashboard" component={Dashboard} />
 		  	<Route path="/help" component={Help} />
+				<Route path="/about" component={About} />
 		  	<Route path="/signin" component={Signin} />
 				<Route path="/signup" component={Signup} />
       	</div>

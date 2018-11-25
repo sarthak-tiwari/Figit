@@ -1,7 +1,7 @@
   import React from 'react';
   import './FirstpageStyle.css';
   import Pin from './logo2.png';
-  import { withRouter } from "react-router-dom";
+  import { withRouter, Link } from "react-router-dom";
 
 
   class Firstpage extends React.Component {
@@ -47,14 +47,19 @@
   }
 
   render(){
-  return(   <div className="body">  
+  return(   <div className="landpage">  
               <div className="topnav">
-                  <a className="active" href="C:/Users/desai/Desktop/bootland.html"><img src={Pin} alt="FigitLogo"/></a>
+                  <Link className="active" to="/"><img src={Pin} alt="FigitLogo"/></Link>
                       <div className="topnav-right">
-                          <a href="C:/Users/desai/Desktop/help.html">Help</a>
-                          <a href="C:/Users/desai/Desktop/about.html">About</a>
+                          <Link to="/help">Help</Link>
+                          <Link to="/about">About</Link>
                       </div>
               </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               <br/>
               <br/>
               <br/>
@@ -68,16 +73,25 @@
                           <div className="d-flex justify-content-center">
                               <input type="email" className="form-control" id="usr" name="username" placeholder="Enter your email here" value={this.state.value} onChange={this.handleChange}></input>
                           </div>
-                          <br/>
                           <div className="d-flex justify-content-center">
-                              <button type="submit" className="button">Get Started!!</button>
+                              <button type="submit" className="getinbutton">Get Started</button>
                           </div>
                           <br/>
                           <div className="d-flex justify-content-center">
-                              <a href="#home">or Sign In</a>
+                              <Link to="/signin">or Sign In</Link>
                           </div>
                       </form>
                   </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
               </div>
           </div>
        );  

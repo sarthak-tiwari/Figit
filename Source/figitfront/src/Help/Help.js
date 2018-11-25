@@ -1,6 +1,7 @@
 import React from 'react';
 import './Help.css';
 import Pin from './logo.png';
+import { Link } from "react-router-dom";
 
 class Help extends React.Component {
  
@@ -8,10 +9,10 @@ class Help extends React.Component {
     return( 
             <div>
                 <div class="topnav">
-  		<a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src={Pin} alt="Smiley face"/></a>
+  		<Link class="active" to="/"><img src={Pin} alt="Smiley face"/></Link>
   		<div class="topnav-right">
-    		<a href="C:/Users/desai/Desktop/help.html">Help</a>
-    		<a href="C:/Users/desai/Desktop/about.html">About</a>
+			<Link to="/help">Help</Link>
+        	<Link to="/about">About</Link>
   		</div>
   	</div>
   	<div class="d-flex justify-content-center">

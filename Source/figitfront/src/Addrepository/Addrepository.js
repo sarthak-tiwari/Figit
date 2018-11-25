@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './Addrepository.css';
 import '../index.js';
 import Pin from './logo2.png'
@@ -46,10 +46,10 @@ render(){
   return(
     <div className = "body">
       <div className="topnav">
-            <a className="active" href="C:/Users/desai/Desktop/bootland.html"><img src={Pin} alt="FigitLogo"/></a>
+            <Link className="active" to="/"><img src={Pin} alt="FigitLogo"/></Link>
               <div className="topnav-right">
-                <a href="C:/Users/desai/Desktop/help.html">Help</a>
-                <a href="C:/Users/desai/Desktop/about.html">About</a>
+                <Link to="/help">Help</Link>
+                <Link to="/about">About</Link>
               </div>
         </div>
         <br/><br/><br/><br/><br/>
