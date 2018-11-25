@@ -1,9 +1,11 @@
-    body {
+  .landpage {
     margin:20;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #F7F7F7;
-    background-image: url("/bg1.png");
-    background-size: 105% 100%;
+    background-color: #f7f7f7;
+    background-image: url("background_trans.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
   }
   
   .topnav {
@@ -73,21 +75,21 @@
   }
   
   
-  .button{
+  .getinbutton{
         background-color: #F44336;
         color: #FFFFFF;
         text-align: center;
         padding: 20px; 
         cursor: pointer;}
   
-.button span {
+.getinbutton span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
   
-  .button span:after {
+  .getinbutton span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -96,15 +98,15 @@
     transition: 0.5s;
   }
   
-   .button:hover span {
+   .getinbutton:hover span {
             padding-right: 25px;
             } 
   
-  .button:hover{
+  .getinbutton:hover{
   background-color: #3e8e41;
   }
   
-  .button:hover span:after {
+  .getinbutton:hover span:after {
     opacity: 1;
     right: 0; }
   
