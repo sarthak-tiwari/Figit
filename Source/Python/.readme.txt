@@ -1,1 +1,0 @@
-All the python back-end of the application which interacts with GitHub and Database is in this directory.
