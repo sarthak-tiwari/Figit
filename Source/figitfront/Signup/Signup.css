@@ -1,0 +1,163 @@
+.Signup
+{
+    margin:20;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F7F7F7;
+  background-size: 105% 100%;
+
+}
+
+
+div h4{
+	margin-bottom:40px;
+	padding: 1px 16px;
+	font-family: Roboto;
+	font: 40px;
+	font-weight:300px;
+	text-align:center;
+}
+
+#head{
+	margin-bottom: -16px;
+}
+img{
+
+    background-color: transparent;
+    height:"67 px";
+    width:"";
+  
+}
+.form-group input{
+	width: 340px;
+	height: 35px; 
+	padding: 10px 16px; 
+	box-shadow:0px 2px 6px #707070;
+	
+}
+.form-group-checkbox1{
+	width: 20px; 
+	padding: 1px 0;
+	margin-bottom: 0;
+	position: absolute;
+	
+}
+button span{
+	width: 82px; 
+    height: 38px;
+	padding: 1px 16px;
+    font-family: 'Roboto';
+    border-radius: 4px;
+	background-color: #F44336;
+	color: #FFFFFF;
+	text-align: center;
+	cursor: pointer;
+}
+body {
+	margin:20;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color:#F7F7F7;
+	background-size: 105% 100%;
+}
+
+
+.topnav {
+	overflow: hidden;
+	background-color:transparent;
+}
+
+.topnav a {
+	float: left;
+	color: #707070;
+	text-align: center;
+	padding: 0px 10px;
+	margin-right: 15px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+
+.topnav-right {
+	float:right;
+	margin-top: 25px;
+}
+.topnav a.active {
+	background-color:#F7F7F7;
+	color:#707070;
+}
+
+.header {
+	padding: 5px;
+	text-align:center;
+	background:transparent;
+	color:#000000;
+	font-size: 40px;
+	font-family:'Josefin Sans', sans-serif;
+    
+}
+
+#first
+{
+text-align: center;
+}
+
+.button{
+        
+        alignment-baseline: 10px;
+        align-items: baseline;
+          color: #FFFFFF;
+          text-align: center;
+          padding: 0px;
+          cursor: pointer;
+         align-self: center;
+         margin-left: 120px;
+}
+
+.btn-default
+{
+width: 340px; 
+height: 40px; 
+font-family: Roboto; 
+width: 300px;
+height:40px;
+background-color:#F44336; 
+margin-top: 50px;
+}
+a:hover 
+{
+	color: #0066FF;
+}
+.btn
+{
+    width: 300px; 
+    height:40px;
+    background-color:#24292E; 
+    font-size: 15px; 
+    font-family: Roboto;
+    margin-bottom:50px;
+}
+
+#span1
+{
+    background-color: #24292E;
+    
+}
+#span2
+{
+    background-color: #F44336;
+}
+
+.smallbtn
+{    background-color: #F44336;
+    alignment-baseline: 10px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0px;
+    cursor: pointer;
+   align-self: center;
+   margin-left: 120px;
+}
