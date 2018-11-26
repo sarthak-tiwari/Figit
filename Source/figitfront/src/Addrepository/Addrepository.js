@@ -11,16 +11,17 @@ class Addrepository extends React.Component {
     super(props);
 
     this.state = {
-      i : 0
+      i : 0,
+      value : '',
+      repo_list : [],
     };
-
+    this.repo_list = [];
     this.onSubmit = this.onSubmit.bind(this);
     this.onAdd = this.onAdd.bind(this);
   }
 
   onSubmit (event) {
     event.preventDefault();
-    alert("submitted");
     this.redirectToTarget();
   }
 
@@ -32,6 +33,18 @@ class Addrepository extends React.Component {
    var j = this.state.i;
    this.setState({i : j + 1});
    if (document.getElementById('link').value != "") {
+     var repo = document.getElementById('link').value;
+     this.repo_list.push(repo);
+     var url = 'http://localhost:8000/dashboard/repos/'+this.props.location.state.username+'/';
+     fetch(url, {
+       method: 'POST',
+       headers: {
+         'Accept': 'application/json, text/plain, */*',
+         'Content-Type': 'application/json' },
+       body: JSON.stringify([{"repository_url": repo}]) 
+     })
+     .then(response => {return(response.json())})
+     
        $('#dynamic_field').append(
         '<tr id="row' + j + '">+\
         <td><p readonly type="text" +\

@@ -17,6 +17,7 @@ class Signup extends Component {
           returnedValue: 'default',
           content: "",
           data: "",
+          username: "",
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -54,6 +55,7 @@ confirmPassword=event=>{
     { event.preventDefault();
       const{data,content}=this.state;
       const title = event.target.elements.title.value;
+      this.username = title;
   
       if(data !=content)
       alert("Password do not match");
@@ -78,7 +80,7 @@ confirmPassword=event=>{
           alert("A user with that username already exists.")
       }
       else {
-          this.props.history.push('/addrepository');
+          this.props.history.push({pathname: '/addrepository', state: {username: this.username}});
       }
     }
 

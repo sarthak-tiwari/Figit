@@ -15,7 +15,8 @@ class Signin extends Component {
        
         this.state = {
           value : '',
-          returnedValue: 'default'
+          returnedValue: 'default',
+          username:'',
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -24,7 +25,6 @@ class Signin extends Component {
 
     componentDidMount() {
       var recievedMessage = this.props.location.state.email;
-      document.getElementById('usr1').value = recievedMessage;
     }
 
     handleChange(event) {
@@ -35,6 +35,7 @@ class Signin extends Component {
       event.preventDefault();
       const title = event.target.elements.title.value;
       const content = event.target.elements.content.value;
+      this.username = title;
       
       var url = 'http://localhost:8000/user/login/';
       fetch(url, {
@@ -42,7 +43,7 @@ class Signin extends Component {
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json' },
-        body: JSON.stringify({"email": title, "password": content})
+        body: JSON.stringify({"username": title, "password": content})
       })
       .then(response => {return(response.json())})
       .then(response => {this.setState({returnedValue: response["token"]})})
@@ -54,7 +55,7 @@ class Signin extends Component {
           alert("Invalid Username or Password !")
       }
       else {
-          this.props.history.push('/addrepository');
+          this.props.history.push({pathname: '/addrepository', state: {username: this.username}});
       }
     }
     
@@ -112,7 +113,7 @@ class Signin extends Component {
       <br/>
     <Form onSubmit= {(event) => this.onSubmit(event)}>
    <FormItem >
-   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" onChange={this.handleChange}>
+   <input type="text" class="form-control" id="usr1" placeholder="Enter your username" name="title">
         </input>
             </FormItem>
             <FormItem >
