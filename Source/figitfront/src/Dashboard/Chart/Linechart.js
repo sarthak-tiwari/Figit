@@ -1,8 +1,6 @@
 import React from 'react';
-//import './pullReq.css';
 import {Line} from 'react-chartjs-2';
 import './Linechart.css';
-import $ from 'jquery';
 
 class Linechart extends React.Component {
 	
