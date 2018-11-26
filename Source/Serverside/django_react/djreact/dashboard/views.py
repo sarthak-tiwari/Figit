@@ -34,7 +34,7 @@ def repository_list(request, username):
 def repository_collaborators(request, repo):
     if request.method == 'GET':
         columnNames = ['github_username', 'github_profile_url', 'github_image_url']
-        query = "select p.github_username, p.github_profile_url, p.github_image_url from git_user_profiles as p join git_repository_collaborators as g on p.github_login = g.github_login where g.github_repository = '"+ repo +"'"
+        query = "select distinct p.github_username, p.github_profile_url, p.github_image_url from git_user_profiles as p join git_repository_collaborators as g on p.github_login = g.github_login where g.github_repository = '"+ repo +"'"
         result = Helper.executeQuery(query, columnNames)
         return result
 
