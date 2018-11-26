@@ -6,6 +6,21 @@ import Member from './Member';
 import Wholeflash from './Wholeflash';
 class Dashboard extends Component {
 
+  constructor( props ){
+    super();
+    this.state= {
+      reponame : 'ScrumDevils-SER_515'
+    }
+  }
+
+  componentWillReceiveProps() {
+    this.setState(function(state, props) {
+      return {
+        reponame: props.location.state.reponame
+      };
+    });
+  }
+
   render() {
     return(
       
@@ -14,10 +29,10 @@ class Dashboard extends Component {
           <div class="row content">
             <div class="col-lg-3">
             <Profilejason />
-            <Projectlist />
+            <Projectlist username={'bpanda1'}/>
             </div>
             <div class="col-lg-6"> 
-            <Wholeflash />
+            <Wholeflash reponame={this.state.reponame}/>
               </div>
               <div class="col-lg-3">
                 <Member />

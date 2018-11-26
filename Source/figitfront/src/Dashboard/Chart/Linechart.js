@@ -27,12 +27,12 @@ class Linechart extends React.Component {
         var userName = 'commit_date';
         var location = '';
         if(param === "commitCount") {
-          url = 'http://localhost:8000/dashboard/timeline/commit_count/ScrumDevils-SER_515/';
+          url = 'http://localhost:8000/dashboard/timeline/commit_count/' + this.props.reponame + '/';
           colName = 'commit_count';
           location = 'Commits per day';
         }
         else if(param === "pullReqCount") {
-          url = 'http://localhost:8000/dashboard/timeline/pull_request_count/ScrumDevils-SER_515/';
+          url = 'http://localhost:8000/dashboard/timeline/pull_request_count/' + this.props.reponame + '/';
           colName = 'pull_request_count';
           userName = 'pull_request_date';
           location = 'Pull Requests per day';

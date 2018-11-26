@@ -1,38 +1,24 @@
-.projectlistdiv {
-	background-color : #323544;
+.projectlist{
+	background-color :  #7bdada;
 	overflow: auto;
-	color: white;
-	padding-top: 20px;
+	color:  #323544;
+	padding: 10px;
   width: 100%;
   height: 70vh;
   box-shadow: 3px 3px 6px solid black;
 }
 
-.projecthead {
+.projecthead p{
 	font-size: 1.4em;
 	font-weight: 600px;
 	font-family: 'Josefin Sans', sans-serif;
-	padding: 10px; 
-	text-align: left;
+	padding: 1px; 
 }
 
-.projectlist {
-	color: white;
-	text-decoration: none;
-	padding: 10px;
-  list-style-type: none;
+#liststyle{
+	background-color : #7bdada;
 }
 
-.projectlist li {
-	padding: 10px;
-}
-
-.projectlist li .btndes {
-	padding: 10x;
-	float: left;
-}
-
-.rembtn, .addprobtn {
-	float: right;
-	padding: 4px;
+#listitemstyle{
+	padding-left: 0;
 }

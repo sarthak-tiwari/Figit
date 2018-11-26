@@ -25,7 +25,7 @@ class Addrepository extends React.Component {
   }
 
  redirectToTarget = () => {
-     this.props.history.push('/dashboard');
+     this.props.history.push({pathname: '/dashboard', state: {reponame: 'ScrumDevils-SER_515'}});
  }
  
  onAdd(){

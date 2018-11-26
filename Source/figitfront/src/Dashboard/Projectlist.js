@@ -4,26 +4,66 @@ import Singleproject from './Singleproject';
 
 class Projectlist extends React.Component {
 
-	state = {
-		Projectlists: [
-		  { project:'ProjectName1'},
-		  { project:'ProjectName2'},
-		  { project:'ProjectName3'}
-		]
-	  }
-	 
+	constructor(props){
+
+        super();
+
+        this.state = {
+		  username: '',
+		  projectList : {}
+		}
+		
+      }
+    
+    componentWillMount(){
+		var recievedMessage = this.props.username;
+		this.setState({username: recievedMessage});
+		this.fetchData();
+	}
 	
-	  render() {
-		return( <div class = "projectlistdiv">
-				<div class="projecthead">
-					<p>Projects<i class="fas fa-cog addprobtn"></i></p>
-				</div>
-				<ul class = "projectlist">
-					<Singleproject project={this.state.Projectlists[0].project}></Singleproject>
-					<Singleproject project={this.state.Projectlists[1].project}></Singleproject>
-					<Singleproject project={this.state.Projectlists[2].project}></Singleproject>
-				</ul>
-			</div>);
-}
+	settingProjectList(resp){
+		this.setState({projectList: resp});
+	}
+
+	fetchData(){
+        
+        var url = '';
+        url = 'http://localhost:8000/dashboard/repos/' + this.props.username + '/';
+
+        fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'}
+	      })
+        .then(response => {return(response.json())})
+        .then(response => { this.settingProjectList(response);
+		});
+    }
+
+	render(){
+		
+	var rows =[];
+	
+	if ((this.state.projectlist) != {}){
+		var projectlists = this.state.projectList;
+			
+		for (var j = 0; j<projectlists.length; j++){
+			console.log(projectlists[j]['github_repository']);
+			rows.push(<Singleproject project={projectlists[j]['github_repository']}/>);
+		}
+
+		return( <div> {rows} </div> );
+
+	}
+	//console.log(a['repository_url']);
+	//alert(projectlists[0]['github_repository']);
+
+	else{
+		return( <div>
+					
+						</div>);
+		}
+	}
 }
 export default Projectlist;

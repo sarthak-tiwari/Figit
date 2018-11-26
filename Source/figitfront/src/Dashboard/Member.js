@@ -4,49 +4,27 @@ import Memberprofile from './Memberprofile';
 
 class Member extends React.Component {
 
-    state = {
-        myprofile: [
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.google.com'},
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.yahoo.com'},
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.google.com'},
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.rediff.com'},
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.facebook.com'},
-          { photo:'http://admission.igntuonline.in/dist/img/UserImage.jpg' , emailid:'yrdesai@asu.edu', gitLink:'https://www.google.com'}
-        ]
-      }
-
-  render() {
-    return (
-<div className="Projects">
-         <div class="card" id ="style-1">
-             <div class="memberh4">
-               
-             <h4><b>Contributors</b></h4>
-																			
-<div class="memberp">         
-<p>
-    <Memberprofile photo = {this.state.myprofile[0].photo} emailid = {this.state.myprofile[0].emailid} gitLink = {this.state.myprofile[0].gitLink}/>
-  </p>
- <p><Memberprofile photo = {this.state.myprofile[1].photo} emailid = {this.state.myprofile[1].emailid} gitLink = {this.state.myprofile[1].gitLink}/></p>
-<p><Memberprofile photo = {this.state.myprofile[2].photo} emailid = {this.state.myprofile[2].emailid} gitLink = {this.state.myprofile[2].gitLink}/></p>                    
-<p>
-    <Memberprofile photo = {this.state.myprofile[3].photo} emailid = {this.state.myprofile[3].emailid} gitLink = {this.state.myprofile[3].gitLink}/>
-  </p>
-  <p>
-    <Memberprofile photo = {this.state.myprofile[4].photo} emailid = {this.state.myprofile[4].emailid} gitLink = {this.state.myprofile[4].gitLink}/>
-  </p>
-  <p>
-  <Memberprofile photo = {this.state.myprofile[5].photo} emailid = {this.state.myprofile[5].emailid} gitLink = {this.state.myprofile[5].gitLink}/> 
+  render(){
+    var rows =[];
+    var members = [
+      [['photo','https://avatars3.githubusercontent.com/u/25068531?v=4'],['emailid','yrdesai@asu.edu'],['gitLink','https://www.google.com']],
+      [['photo','http://admission.igntuonline.in/dist/img/UserImage.jpg'],['emailid','bpanda@asu.edu'],['gitLink','https://www.yahoo.com']],
+      [['photo','http://admission.igntuonline.in/dist/img/UserImage.jpg'],['emailid','pchugh@asu.edu'],['gitLink','https://www.google.com']],
+      [['photo','http://admission.igntuonline.in/dist/img/UserImage.jpg'],['emailid','yrdesai@asu.edu'],['gitLink','https://www.google.com']],
+      [['photo','http://admission.igntuonline.in/dist/img/UserImage.jpg'],['emailid','yrdesai@asu.edu'],['gitLink','https://www.google.com']],
+      [['photo','http://admission.igntuonline.in/dist/img/UserImage.jpg'],['emailid','yrdesai@asu.edu'],['gitLink','https://www.google.com']]
+    ];
+    
+    for (var j = 0; j<members.length; j++){
+        rows.push(<Memberprofile photo={members[j][0][1]} emailid={members[j][1][1]} gitLink={members[j][2][1]}/>);
+    }
   
-  </p>
-  </div> 
+    return( <div>
+          {rows}
+            </div>);
+    }
 
-  </div>
-</div>
 
 
-</div>
-    );
-  }
 }
 export default Member;

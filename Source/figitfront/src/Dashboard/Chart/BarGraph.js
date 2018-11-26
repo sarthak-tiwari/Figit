@@ -28,11 +28,11 @@ class BarGraph extends React.Component {
         var countname = 'commit_count';
         var location = '';
         if(param === "commitCount") {
-          url = 'http://localhost:8000/dashboard/bargraph/commit_count/ScrumDevils-SER_515/';
+          url = 'http://localhost:8000/dashboard/bargraph/commit_count/' + this.props.reponame + '/';
           location = 'Commit contribution per week';
         }
         else if(param === "pullReqCount") {
-            url = 'http://localhost:8000/dashboard/timeline/pull_request_count/ScrumDevils-SER_515/';
+            url = 'http://localhost:8000/dashboard/bargraph/pull_request_count/' + this.props.reponame + '/';
             location = 'Pull Request contribution per week';
             username = 'requester_name';
             detailname = 'request_details';
@@ -56,6 +56,7 @@ class BarGraph extends React.Component {
       var yValuesDict = {};
       
       // Prepare the Data as per the JSON value
+      console.log(test);
       for(var i=0; i<test.length; i++) {
           var xValues = [];
           var yValues = [];

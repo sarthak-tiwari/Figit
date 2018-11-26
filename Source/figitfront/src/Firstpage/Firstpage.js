@@ -78,7 +78,7 @@
                           </div>
                           <br/>
                           <div className="d-flex justify-content-center">
-                              <Link to="/signin">or Sign In</Link>
+                              <Link to={{pathname:"/signin", state:{email: ''}}}>or Sign In</Link>
                           </div>
                       </form>
                   </div>
