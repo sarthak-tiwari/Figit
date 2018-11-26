@@ -5,39 +5,57 @@ import './Linechart.css';
 class Linechart extends React.Component {
 	
     constructor(){
+
         super();
+
         this.state = {
-          chartData:{}
+          chartData:{},
+          location:''
         }
+        
         var test = new Object();
       }
     
       componentWillMount(){
-        this.getChartData();
+        this.fetchData("commitCount");
+      }
+
+      fetchData(param){
+        
+        var url = '';
+        var colName = '';
+        var userName = 'commit_date';
+        var location = '';
+        if(param === "commitCount") {
+          url = 'http://localhost:8000/dashboard/timeline/commit_count/ScrumDevils-SER_515/';
+          colName = 'commit_count';
+          location = 'Commits per day';
+        }
+        else if(param === "pullReqCount") {
+          url = 'http://localhost:8000/dashboard/timeline/pull_request_count/ScrumDevils-SER_515/';
+          colName = 'pull_request_count';
+          userName = 'pull_request_date';
+          location = 'Pull Requests per day';
+        }
+
+        fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'}
+	      })
+        .then(response => {return(response.json())})
+        .then(response => {this.getChartData(response, colName, userName, location)})
       }
       
-      newClick(){
-        if(document.getElementById('commit').checked) {
-            document.getElementById('commitselect').style.display = "block";
-            document.getElementById('pullreqselect').style.display = "none";
-         } else if (document.getElementById('pullrequest').checked) {
-           document.getElementById('commitselect').style.display = "none";
-           document.getElementById('pullreqselect').style.display = "block";
-         }
-      }
-      getChartData() {
-        var test = [
-          [['x1', "Jan 2 2018"], ['x2', 100]],
-          [['x1', "Sep 4 2018"], ['x2', 13]],
-          [['x1', "Nov 13 2018"], ['x2', 0]],
-          [['x1', "Dec 13 2018"], ['x2', 15]]
-        ];
-        // Ajax calls here
+      getChartData(test, colName, userName, loc) {
+
         var xValues = [];
         var yValues = [];
+
         for(var i=0; i<test.length; i++) {
-            xValues.push(test[i][0][1]);
-            yValues.push(test[i][1][1]);
+          xValues.push(test[i][userName]);
+          yValues.push(test[i][colName]);
         }
         var yAxisName = "Count";
         var backgroundColor = [
@@ -65,20 +83,16 @@ class Linechart extends React.Component {
                 fillGapsWithZero: true
               }
             ]
-          }
+          },
+          location:loc
         });
       }
 	
 	static defaultProps = {
 		displayTitle:true,
 		displayLegend: true,
-		legendPosition:'right',
-	    location:'City',
+		legendPosition:'right'
     }
-    
-    show1() {
-        document.getElementById('commitselect').style.display ='block';
-      }
 
 	  render() {
 		  return (
@@ -116,31 +130,14 @@ class Linechart extends React.Component {
 					}}
         		/>
                 <div class="select">
-                    <form id="dataselect" onClick= {this.newClick}>
-                        <input type="radio" name="valuetype" value="commit" id="commit" defaultchecked/> Commits
+                    <form id="dataselect">
+                        <input type="radio" name="valuetype" value="commit" onClick={(event)=>{this.fetchData('commitCount')}} id="commit" defaultchecked/> Commit Counts
                         <div class="pull">
-                        <input type="radio" name="valuetype" value="pullrequest" id="pullrequest"/> Pull Requests
+                        <input type="radio" name="valuetype" value="pullrequest" onClick={(event)=>{this.fetchData('pullReqCount')}} id="pullrequest"/> Pull Requests
                         </div>
                     </form>
                     <br/>
-                    
-                    <form id="commitselect">
-                        <input type="radio" name="committype" value="count" defaultchecked/> Commits counts<br/>
-                        <input type="radio" name="committype" value="adds"/> No. of additions<br/>
-                        <input type="radio" name="committype" value="dels"/> No. of deletions<br/>
-                        <input type="radio" name="committype" value="filmod"/> Files modified<br/>
-                    </form>
-                    
-
-                    <form id="pullreqselect">
-                        <input type="radio" name="pullreqtype" value="count" defaultchecked/> Count<br/>
-                        <input type="radio" name="pullreqtype" value="raised"/> Raised<br/>
-                        <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
-                        <br/>
-                    </form>
-
                 </div>
- 
 			</div>  
 		  )
 	  }
