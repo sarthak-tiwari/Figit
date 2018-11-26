@@ -102,7 +102,7 @@ class Linechart extends React.Component {
 					options={{
 						title:{
 						 display:this.props.displayTitle,
-						 text:' '+this.props.location,
+						 text:' '+this.state.location,
 						 fontSize:25
 						},
 						legend:{
