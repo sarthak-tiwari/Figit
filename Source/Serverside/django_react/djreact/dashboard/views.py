@@ -134,7 +134,7 @@ def bargraph_commit_count(request, repo):
     if request.method == 'GET':
         columnNames1 = ["committer_name","commit_details"]
         query1 = "select distinct(committer_name) as committer_name from git_commit_data where github_repository = '"+ repo +"'"
-        columnNames2 = ['commit_date', 'commit_count']
+        columnNames2 = ['week_name', 'commit_count']
         result = Helper.executeQueryForAnalysingCommit(query1, columnNames1, columnNames2, repo)
         return result 
 
@@ -144,7 +144,7 @@ def bargraph_pull_request_count(request, repo):
     if request.method == 'GET':
         columnNames1 = ["requester_name","request_details"]
         query1 = "select distinct(requester_login) as requester_name from git_pull_request_data where github_repository = '"+ repo +"'"
-        columnNames2 = ['request_date', 'request_count']
+        columnNames2 = ['week_name', 'request_count']
         result = Helper.executeQueryForAnalysingPullRequest(query1, columnNames1, columnNames2, repo)
         return result
 
