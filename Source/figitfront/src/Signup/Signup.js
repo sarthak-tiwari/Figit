@@ -14,7 +14,10 @@ class Signup extends Component {
        
         this.state = {
           value : '',
-          returnedValue: 'default'
+          returnedValue: 'default',
+          content: "",
+          data: "",
+          username: "",
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -24,39 +27,63 @@ class Signup extends Component {
         
 
     }
-
+inputPassword=event=>{
+  this.setState({data:event.target.value});
+}
+confirmPassword=event=>{
+  this.setState({content:event.target.value});
+}
+    componentDidMount() {
+      var recievedMessage = this.props.location.state.email;
+    }
+  
+  
     handleChange(event) {
       this.setState({value: event.target.value});
     }
     
+
+    inputPassword=event=>{
+      this.setState({data:event.target.value});
+    }
+    confirmPassword=event=>{
+      this.setState({content:event.target.value});
+    }
+
     onSubmit = (event) =>
   
     { event.preventDefault();
+      const{data,content}=this.state;
       const title = event.target.elements.title.value;
-      const content = event.target.elements.content.value;
-      const user_id = localStorage.getItem('token');
-      var url = 'http://localhost:8000/user/login/';
-      console.log(event.target.elements.title.value);
-      console.log(event.target.elements.content.value);
+      this.username = title;
+  
+      if(data !=content)
+      alert("Password do not match");
+      else
+      {
+      var url = 'http://localhost:8000/user/register/';
       fetch(url, {
-        method: 'post',
+        method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-            
-        },
-        body: JSON.stringify({"email": event.target.elements.title.value, "password": event.target.elements.content.value})
+          'Content-Type': 'application/json' },
+        body: JSON.stringify({"email": this.props.location.state.email, "username": title, "password": data}) 
       })
-        .then(res=>res.json())
-        .then(res => console.log(res));
-         
-        var x = {email:event.target.elements.title.value, password:event.target.elements.content.value};
-      alert(JSON.stringify(x));
-        
+      .then(response => {return(response.json())})
+      .then(response => {this.setState({returnedValue: response["email"]})})
+      .then(response => {this.redirectToTarget()})
     }
-        
+    }
 
-    
+    redirectToTarget = () => {
+      if (this.state.returnedValue != this.props.location.state.email){
+          alert("A user with that username already exists.")
+      }
+      else {
+          this.props.history.push({pathname: '/addrepository', state: {username: this.username}});
+      }
+    }
+
     render() {
       
       return (
@@ -111,16 +138,16 @@ class Signup extends Component {
       <br/>
     <Form onSubmit= {(event) => this.onSubmit(event)}>
    <FormItem >
-   <input type="text" class="form-control" id="usr1" placeholder="Enter your email" name="title" value={this.state.value}
+   <input type="text" class="form-control" id="usr1" placeholder="Enter your username" name="title" value={this.state.value}
     onChange={this.handleChange}>
         </input>
             </FormItem>
             <FormItem >
-            <input type="Password" class="form-control" id="usr2" placeholder="Choose Password" name="content">
+            <input type="Password" class="form-control" id="usr2" placeholder="Choose Password" name="data" onChange={this.inputPassword}>
         </input>
             </FormItem>
             <FormItem >
-            <input type="Password" class="form-control" id="usr2" placeholder="Confirm Password" name="content">
+            <input type="Password" class="form-control" id="usr2" placeholder="Confirm Password" name="content" onChange={this.confirmPassword}>
         </input>
             </FormItem>
            

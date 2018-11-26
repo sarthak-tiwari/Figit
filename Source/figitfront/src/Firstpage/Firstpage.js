@@ -42,7 +42,7 @@
         this.props.history.push({pathname: '/signin', state: {email: value}});
     }
     else {
-        this.props.history.push('/signup');
+        this.props.history.push({pathname: '/Signup', state: {email: value}});
     }
   }
 
