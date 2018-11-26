@@ -13,6 +13,7 @@
     padding-top:2px;
     padding-bottom:5px;
     width:100%;  
+    background-color:rgb(247, 238, 238);
   }
   
   #commitselect{
@@ -22,7 +23,7 @@
     padding-top:2px;
     padding-bottom:5px;
     width:100%;
-
+    background-color:whitesmoke;
   }
 
   .pull{

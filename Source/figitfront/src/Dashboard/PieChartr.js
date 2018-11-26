@@ -122,7 +122,6 @@ class PieChart extends React.Component {
                         <input type="radio" name="pullreqtype" value="reviewed"/> Reviewed<br/>
                         <br/>
                     </form>
-
                 </div>
 			</div>  
 		  )
