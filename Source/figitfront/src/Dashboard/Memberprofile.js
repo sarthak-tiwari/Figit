@@ -3,13 +3,15 @@ import './Memberprofile.css';
 
 const Memberprofile = (props) => {
     return (
-    <a href={props.gitLink}>
+    <div class="memberlink">
+    <a href={props.gitURL}>
     <div className = "profile1">
                 <div className= "photo2">
-                    <img src = {props.photo} alt="photo"/>
-                    <span>{props.emailid}</span>
+                    <img src = {props.image} alt="photo"/>
+                    <span id="contriname">{props.username}</span>
                 </div>
             </div> 
     </a>
+    </div>
     )};
 export default Memberprofile;

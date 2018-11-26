@@ -45,11 +45,10 @@ class Projectlist extends React.Component {
 		
 	var rows =[];
 	
-	if ((this.state.projectlist) != {}){
+	if ((this.state.projectList) != {}){
 		var projectlists = this.state.projectList;
 			
 		for (var j = 0; j<projectlists.length; j++){
-			console.log(projectlists[j]['github_repository']);
 			rows.push(<Singleproject project={projectlists[j]['github_repository']}/>);
 		}
 

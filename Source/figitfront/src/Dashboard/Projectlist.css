@@ -1,5 +1,5 @@
 .projectlist{
-	background-color :  #7bdada;
+	background-color :  #7ecbdf;
 	overflow: auto;
 	color:  #323544;
 	padding: 10px;
@@ -16,9 +16,10 @@
 }
 
 #liststyle{
-	background-color : #7bdada;
+	background-color :  #7ecbdf;
 }
 
 #listitemstyle{
 	padding-left: 0;
 }
+
