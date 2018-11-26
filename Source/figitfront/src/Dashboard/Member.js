@@ -19,12 +19,15 @@ class Member extends React.Component {
         rows.push(<Memberprofile photo={members[j][0][1]} emailid={members[j][1][1]} gitLink={members[j][2][1]}/>);
     }
   
-    return( <div>
+    return( <div class="contributorlist card">
+          <div class="contriheading">
+              <h3>Contributors</h3>
+              </div>
+            <div>
           {rows}
+            </div>
             </div>);
     }
-
-
 
 }
 export default Member;
