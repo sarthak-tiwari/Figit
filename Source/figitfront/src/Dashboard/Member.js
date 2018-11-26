@@ -10,7 +10,6 @@ class Member extends React.Component {
 
     this.state = {
       username: '',
-      projectList : {},
       row: []
     }
 
@@ -19,36 +18,22 @@ class Member extends React.Component {
 
   componentWillMount(){
     var recievedMessage = this.props.username;
-    this.setState({username: recievedMessage});
+    //this.setState({username: recievedMessage});
     this.fetchData();
   }
 
   settingProjectList(resp){
-    //console.log(resp); 
-    console.log(resp); 
     var rows =[];
     //if ((this.state.projectList) != {}){
     var members = {};
     members = resp;
-      console.log("Members: " + {members});
-      console.log("val: " + this.state.projectList);
      for (var j = 0; j<resp.length; j++){
-         console.log(resp[j]['github_username']);
-         console.log(resp[j]['github_profile_url']);
-         console.log(resp[j]['github_image_url']);
           rows.push(<Memberprofile username={resp[j]['github_username']} 
                   gitURL={resp[j]['github_profile_url']} 
                   image={resp[j]['github_image_url']} />);
-          console.log(rows[j]);
       }
 
-      this.setState(function(state, rows) {
-        return {
-          row: rows
-        };
-      });
-
-//  }
+      this.setState({ row: rows });
 }
 
   fetchData() {
@@ -69,15 +54,14 @@ class Member extends React.Component {
 
   render(){
     console.log(this.state.row);
-    console.log(this.state.projectList);
       return( <div class="contributorlist card">
-          <div class="contriheading">
-              <h3>Contributors</h3>
-              </div>
-            <div>
-            {this.state.row}
-            </div>
-            </div>);
+                <div class="contriheading">
+                  <h3>Contributors</h3>
+                </div>
+                <div>
+                  {this.state.row}
+                </div>
+              </div>);
     }
 }    
 
