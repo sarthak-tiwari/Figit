@@ -29,7 +29,7 @@ class Dashboard extends Component {
           <div class="row content">
             <div class="col-lg-3">
             <Profilejason />
-            <Projectlist username={'bpanda1'}/>
+            <Projectlist username={'sanand22'}/>
             </div>
             <div class="col-lg-6"> 
             <Wholeflash reponame={this.state.reponame}/>
