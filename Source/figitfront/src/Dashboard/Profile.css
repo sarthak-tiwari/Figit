@@ -1,0 +1,25 @@
+.profile{
+    border: 1px;
+    box-shadow:0 2px 2px #ccc;
+    width:100%;
+    background-color:rgb(47, 87, 105); 
+  }
+  
+  .photo1 img
+  {
+    display:inline-block;
+    vertical-align:middle;
+    padding:20px;
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+  }
+  
+  .photo1 span
+  {
+    display:block;
+    display:inline-block;
+    font-family:Roboto;
+    color:#FFFFFF;
+    font-size: 1.25em;
+  }

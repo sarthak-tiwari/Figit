@@ -11,6 +11,7 @@ from GitCommitData import CommitData
 
 from GitPullRequestData import GitPullRequestData
 from GitPullRequestData import PullRequestData
+from GitCollaboratorData import GitCollaboratorData
 from DatabaseManager import DatabaseManager
 
 
@@ -69,12 +70,17 @@ from DatabaseManager import DatabaseManager
 #gitData = GitCommitData(manager.getConnection())
 #gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-#for commit in gitData.getCommitData():
+#result = gitData.getCommitData()
+
+#print("Count of Commits: " + str(len(result)))
+
+#for commit in result:
 #    print(commit.commiterName)
 #    print(commit.commitDate)
 #    print("Number of Additions: " + str(commit.numberOfAdditions))
 #    print("Number of Deletions: " + str(commit.numberOfDeletions))
 #    print("Files Modified: " + commit.filesModified)
+#    print("Link: " + commit.linkToGithub)
 #    print(commit.commitMessage)
 #    print("----------\n")
 
@@ -88,21 +94,59 @@ from DatabaseManager import DatabaseManager
 #gitData = GitPullRequestData(manager.getConnection())
 #gitData.setGitHubRepository("ScrumDevils-SER_515")
 
-#result = gitData.getPullRequestData()
+#(pullRequestData, pullReviewData) = gitData.getPullRequestData()
 
-#print(len(result))
-
-#for commit in result:
-#    print(commit.creatorLogin)
-#    print(commit.createdAt)
-#    print(commit.requestTitle)
-#    print(commit.requestDescription)
-#    print(commit.reviewers)
-#    print("----------\n")
+#DatabaseManager.insertPullRequestDataValues(pullRequestData)
+#DatabaseManager.insertPullReviewDataValues(pullReviewData)
 
 
 
 #----------------------------------------------------------------------------------------
 #Sample code testing DatabaseManager Class
 
-DatabaseManager.getValues()
+#manager = GitConnectionManager()
+
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#result = gitData.getCommitData()
+
+#DatabaseManager.insertCommitDataValues("ScrumDevils-SER_515", result)
+
+#manager = GitConnectionManager()
+#gitData = GitCommitData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#gitData.test()
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code testing GitCollaboratorData Class
+
+#manager = GitConnectionManager()
+
+#gitData = GitCollaboratorData(manager.getConnection())
+#gitData.setGitHubRepository("ScrumDevils-SER_515")
+
+#result = gitData.getCollaboratorData()
+#DatabaseManager.insertCollaboratorDataValues("sarthak-tiwari/ScrumDevils-SER_515", result)
+
+
+
+#----------------------------------------------------------------------------------------
+#Sample code testing DatabaseManager Class
+
+def getDataFromGitHubIntoDB(repositoryName):
+
+	manager = GitConnectionManager()
+
+	collaboratorData = GitCollaboratorData(manager.getConnection()).getCollaboratorData(repositoryName)
+	print("Got Collaborator Data !")
+	commitData = GitCommitData(manager.getConnection()).getCommitData(repositoryName)
+	print("Got Commit Data !")
+	(pullRequestData, pullReviewData) = GitPullRequestData(manager.getConnection()).getPullRequestData(repositoryName)
+	print("Got Pull Request Data !")
+
+	DatabaseManager.populateRepository(repositoryName, collaboratorData, commitData, pullRequestData, pullReviewData)
+	print("Data Inserted !")

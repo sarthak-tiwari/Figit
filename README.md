@@ -15,4 +15,4 @@ This directory contains the entire development work done by the team. The work h
 
 - Designs: Initial designs of web-page interfaces
 - Documents: Contains all the project related documentation
-- Source: Source code for the application
+- Source: Source code for the application.

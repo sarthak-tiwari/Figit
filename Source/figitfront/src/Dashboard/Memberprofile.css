@@ -1,0 +1,35 @@
+.profile1{
+    border: 1px;
+    box-shadow:0 2px 2px #ccc;
+    width:100%;
+    height:70px;
+    margin:10px 5px 5px 5px;
+  }
+
+  .memberlink a :hover{
+    background-color:rgb(240, 240, 240);
+  }
+  
+  .photo2 img
+  {
+    display:inline-block;
+    vertical-align:middle;
+    padding:5px;
+    margin: 5px;
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+  }
+  
+  #contriname {
+    font-size: 1em;
+    margin-left: 15px;
+  }
+  .photo2 span
+  {
+    display:block;
+    display:inline-block;
+    font-family:Roboto;
+    color: black;
+    font-size: 0.8em;
+  }
