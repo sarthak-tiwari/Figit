@@ -19,7 +19,12 @@
 	background-color :  #7ecbdf;
 }
 
-#listitemstyle{
+.itemtype{
+	font-size: 1em;
+}
+
+.listitemstyle{
 	padding-left: 0;
+	font-size: 1em;
 }
 

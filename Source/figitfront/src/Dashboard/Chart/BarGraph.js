@@ -28,11 +28,11 @@ class BarGraph extends React.Component {
         var countname = 'commit_count';
         var location = '';
         if(param === "commitCount") {
-          url = 'http://localhost:8000/dashboard/bargraph/commit_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/bargraph/commit_count/' + this.props.reponame + '/';
           location = 'Commit contribution per week';
         }
         else if(param === "pullReqCount") {
-            url = 'http://localhost:8000/dashboard/bargraph/pull_request_count/' + this.props.reponame + '/';
+            url = 'http://54.153.101.175:8000/dashboard/bargraph/pull_request_count/' + this.props.reponame + '/';
             location = 'Pull Request contribution per week';
             username = 'requester_name';
             detailname = 'request_details';

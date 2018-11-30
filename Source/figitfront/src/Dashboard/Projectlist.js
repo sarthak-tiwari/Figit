@@ -28,7 +28,7 @@ class Projectlist extends React.Component {
 	fetchData(){
         
         var url = '';
-        url = 'http://localhost:8000/dashboard/repos/' + this.props.username + '/';
+        url = 'http://54.153.101.175:8000/dashboard/repos/' + this.props.username + '/';
 
         fetch(url, {
         method: 'GET',
@@ -51,15 +51,16 @@ class Projectlist extends React.Component {
 		for (var j = 0; j<projectlists.length; j++){
 			rows.push(<Singleproject project={projectlists[j]['github_repository']}/>);
 		}
-
-		return( <div> {rows} </div> );
-
+		return(
+			
+			 <div class="projectlist">
+			  {rows} </div> );
 	}
 	//console.log(a['repository_url']);
 	//alert(projectlists[0]['github_repository']);
 
 	else{
-		return( <div>
+		return( <div class="projectlist">
 					
 						</div>);
 		}

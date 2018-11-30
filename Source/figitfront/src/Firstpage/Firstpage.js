@@ -18,7 +18,7 @@
 
   onSubmit (event) {
     event.preventDefault();
-    var url = 'http://localhost:8000/user/user_exists/';
+    var url = 'http://54.153.101.175:8000/user/user_exists/';
     const value = this.state.value;
     fetch(url, {
     method: 'POST',
@@ -64,8 +64,8 @@
               <br/>
               <br/>
               <div className="header" id="home">
-                  <p>Analysing Git.</p>
-                  <p>Simplified.</p>
+                  <h2 class="headingp">Analysing Git.</h2>
+                  <h2 class="headingp">Simplified.</h2>
               </div>
               <div className="container-fluid">
                   <div className="form-group">  

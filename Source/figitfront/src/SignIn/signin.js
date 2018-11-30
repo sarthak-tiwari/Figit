@@ -37,7 +37,7 @@ class Signin extends Component {
       const content = event.target.elements.content.value;
       this.username = title;
       
-      var url = 'http://localhost:8000/user/login/';
+      var url = 'http://54.153.101.175:8000/user/login/';
       fetch(url, {
         method: 'POST',
         headers: {

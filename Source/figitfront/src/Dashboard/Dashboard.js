@@ -4,6 +4,7 @@ import Dashheader from './Dashheader';
 import Projectlist from './Projectlist';
 import Member from './Member';
 import Wholeflash from './Wholeflash';
+import List from './List';
 class Dashboard extends Component {
 
   constructor( props ){
@@ -29,7 +30,7 @@ class Dashboard extends Component {
           <div class="row content">
             <div class="col-lg-3">
             <Profilejason />
-            <Projectlist username={'sanand22'}/>
+            <List />
             </div>
             <div class="col-lg-6"> 
             <Wholeflash reponame={this.state.reponame}/>

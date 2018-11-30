@@ -26,7 +26,7 @@ function InsetList(props) {
 					<p>Projects<i class="fas fa-cog"></i></p>
 				</div>
     <List component="nav" className={classes.root} id="liststyle">
-      <Projectlist></Projectlist>
+      <Projectlist  username={'sanand22'} />
     </List>
     </div>
   );

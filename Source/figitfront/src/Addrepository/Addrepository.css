@@ -66,7 +66,7 @@ body {
 background-color: transparent; height:70+'px'; width:70+'px';
 }
 
-.btn span:after {
+/*.btn span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -86,7 +86,7 @@ color: #FFFFFF;
 
 .btn:hover span:after {
   opacity: 1;
-  right: 0; }
+  right: 0; } */
 
   .footer {
    position: fixed;

@@ -38,33 +38,33 @@ class PieChart extends React.Component {
         var userName = 'committer_name';
         var location = '';
         if(param === "commitCount") {
-          url = 'http://localhost:8000/dashboard/commit_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/commit_count/' + this.props.reponame + '/';
           colName = 'commit_count';
           location = 'Commit Contributions';
         }
         else if(param === "commitAddCount") {
-          url = 'http://localhost:8000/dashboard/commit/additions_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/commit/additions_count/' + this.props.reponame + '/';
           colName = 'additions_count';
           location = 'Number of Additions in Commits';
         }
         else if(param === "commitDelCount") {
-          url = 'http://localhost:8000/dashboard/commit/deletions_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/commit/deletions_count/' + this.props.reponame + '/';
           colName = 'deletions_count';
           location = 'Number of Deletions in Commits';
         }
         else if(param === "commitModCount") {
-          url = 'http://localhost:8000/dashboard/commit/files_modified_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/commit/files_modified_count/' + this.props.reponame + '/';
           colName = 'modified_count';
           location = 'Number of Files Modified in Commits';
         }
         else if(param === "pullReqCount") {
-          url = 'http://localhost:8000/dashboard/pull_requests/raise_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/pull_requests/raise_count/' + this.props.reponame + '/';
           colName = 'raise_count';
           userName = 'requester_login';
           location = 'Number of Pull Requests Raised';
         }
         else if(param === "pullRevCount") {
-          url = 'http://localhost:8000/dashboard/pull_requests/review_count/' + this.props.reponame + '/';
+          url = 'http://54.153.101.175:8000/dashboard/pull_requests/review_count/' + this.props.reponame + '/';
           colName = 'review_count';
           userName = 'reviewer_login';
           location = 'Number of Pull Requests Reviewed';

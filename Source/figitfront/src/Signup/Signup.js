@@ -61,7 +61,7 @@ confirmPassword=event=>{
       alert("Password do not match");
       else
       {
-      var url = 'http://localhost:8000/user/register/';
+      var url = 'http://54.153.101.175:8000/user/register/';
       fetch(url, {
         method: 'POST',
         headers: {

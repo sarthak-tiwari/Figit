@@ -1,6 +1,7 @@
 import React from 'react';
 import './Dashheader.css';
 import Pin from './logo.png';
+import { Redirect, Link } from 'react-router-dom';
 
 class Dashheader extends React.Component {
     
@@ -8,12 +9,12 @@ class Dashheader extends React.Component {
     render(){
     return( 
         <div class="topnav">
-        <a class="active" href="C:\Users\desai\Desktop\bootland.html"><img src={Pin} alt="Smiley face"/></a>
+        <Link class="active" to="/"><img src={Pin} alt="Smiley face"/></Link>
         <div class="topnav-right">
-          <a href="#search">Help</a>
-          <a href="#about">About</a>
-          <a href="#about"><i class="fas fa-cogs"></i></a>
-          <a href="#about"><i class="fas fa-sign-out-alt"></i></a>
+          <Link to="/help">Help</Link>
+          <Link to="/about">About</Link>
+          <Link to="/addrepository"><i class="fas fa-cogs"></i></Link>
+          <Link to="/"><i class="fas fa-sign-out-alt"></i></Link>
         </div>
       </div>
       

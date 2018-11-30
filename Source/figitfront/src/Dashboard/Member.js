@@ -39,7 +39,7 @@ class Member extends React.Component {
   fetchData() {
         
     var url = '';
-    url = 'http://localhost:8000/dashboard/repos_collaborators/ScrumDevils-SER_515/';
+    url = 'http://54.153.101.175:8000/dashboard/repos_collaborators/ScrumDevils-SER_515/';
 
     fetch(url, {
     method: 'GET',

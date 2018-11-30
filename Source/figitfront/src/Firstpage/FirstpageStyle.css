@@ -70,10 +70,12 @@
       text-align:center;
       background:transparent;
       color:#000000;
-      font-size: 50px;
       font-family:'Josefin Sans', sans-serif;
   }
-  
+
+  .headingp {
+    font-size: 1.5em;
+  }
   
   .getinbutton{
         background-color: #F44336;
@@ -115,3 +117,4 @@
         color: #0066FF;
     }
   
+    
